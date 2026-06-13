@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FieldBourne Digital — Custom data engines for service businesses</title>
+  <meta name="description" content="We build custom web apps that unify emails, SMS, spreadsheets, and calendars into a single dashboard. No more generic CRMs or manual data entry.">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #F7F5F2;
+      --dark:     #1E2A2A;
+      --teal:     #1B6B6B;
+      --teal-lt:  #EAF3F3;
+      --amber:    #E8943A;
+      --amber-lt: #FDF3E8;
+      --grey:     #C4BDB4;
+      --mid:      #6B7A7A;
+      --white:    #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--dark);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, .display {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.15;
+      font-weight: 800;
+    }
+
+    /* ── NAV ─────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--grey);
+      padding: 0 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-logo {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--teal);
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+
+    .nav-logo span {
+      color: var(--amber);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--mid);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--dark); }
+
+    .nav-cta {
+      background: var(--teal);
+      color: var(--white) !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 6px;
+      font-weight: 600 !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: #155757 !important; color: var(--white) !important; }
+
+    .nav-mobile-cta {
+      display: none;
+      background: var(--teal);
+      color: var(--white);
+      padding: 0.45rem 1rem;
+      border-radius: 6px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-decoration: none;
+    }
+
+    /* ── HERO ────────────────────────────────────── */
+    .hero {
+      padding: 80px 5vw 64px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      background: var(--amber-lt);
+      color: var(--amber);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.75rem;
+      border-radius: 4px;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      letter-spacing: -0.03em;
+      color: var(--dark);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--teal);
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--mid);
+      line-height: 1.7;
+      max-width: 460px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn-primary {
+      background: var(--teal);
+      color: var(--white);
+      padding: 0.85rem 1.75rem;
+      border-radius: 8px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover { background: #155757; transform: translateY(-1px); }
+
+    .btn-ghost {
+      color: var(--teal);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .btn-ghost:hover { color: #155757; }
+
+    .hero-trust {
+      margin-top: 2rem;
+      font-size: 0.82rem;
+      color: var(--grey);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* ── TICKER (real‑time data activity) ──────────────── */
+    .ticker-wrap {
+      background: var(--white);
+      border: 1px solid var(--grey);
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 32px rgba(30,42,42,0.07);
+    }
+
+    .ticker-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--bg);
+    }
+
+    .ticker-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--dark);
+    }
+
+    .ticker-live {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      color: var(--mid);
+    }
+
+    .live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #2DC97E;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .event-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      min-height: 220px;
+    }
+
+    .event-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.65rem 0.75rem;
+      border-radius: 8px;
+      background: var(--bg);
+      animation: slideIn 0.4s ease;
+      font-size: 0.85rem;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(-8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .event-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .event-icon.data   { background: #E8F5E9; }
+    .event-icon.email  { background: #E3F2FD; }
+    .event-icon.sms    { background: #FDF3E8; }
+    .event-icon.sheet  { background: #F3E5F5; }
+    .event-icon.cal    { background: #FFEBEE; }
+
+    .event-body { flex: 1; }
+
+    .event-label {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      color: var(--dark);
+      font-size: 0.82rem;
+      line-height: 1.3;
+    }
+
+    .event-detail {
+      color: var(--mid);
+      font-size: 0.78rem;
+      margin-top: 0.1rem;
+    }
+
+    .event-time {
+      font-size: 0.72rem;
+      color: var(--grey);
+      white-space: nowrap;
+      margin-top: 0.2rem;
+    }
+
+    .event-badge {
+      font-size: 0.68rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      white-space: nowrap;
+      align-self: center;
+    }
+
+    .badge-auto     { background: var(--teal-lt); color: var(--teal); }
+    .badge-ingested { background: var(--amber-lt); color: var(--amber); }
+
+    /* ── SECTION SHELL ───────────────────────────── */
+    section { padding: 80px 5vw; }
+
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-eyebrow {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-heading {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      letter-spacing: -0.025em;
+      color: var(--dark);
+      max-width: 640px;
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      color: var(--mid);
+      font-size: 1.05rem;
+      max-width: 540px;
+      line-height: 1.7;
+    }
+
+    /* ── PROBLEM ─────────────────────────────────── */
+    #problem {
+      background: var(--dark);
+      color: var(--white);
+    }
+
+    #problem .section-heading { color: var(--white); }
+    #problem .section-sub { color: var(--grey); }
+    #problem .section-eyebrow { color: var(--amber); }
+
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .pain-card {
+      padding: 1.75rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+    }
+
+    .pain-number {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--amber);
+      line-height: 1;
+      margin-bottom: 0.75rem;
+    }
+
+    .pain-label {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .pain-desc {
+      font-size: 0.9rem;
+      color: var(--grey);
+      line-height: 1.65;
+    }
+
+    /* ── BESPOKE DIFFERENCE ───────────────────────── */
+    .compare-box {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 2rem;
+      margin-top: 3rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+      border: 1px solid var(--grey);
+    }
+
+    .compare-grid {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .compare-col {
+      flex: 1;
+      min-width: 220px;
+    }
+
+    .compare-col h4 {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      color: var(--teal);
+    }
+
+    .compare-col ul {
+      list-style: none;
+    }
+
+    .compare-col li {
+      margin-bottom: 0.7rem;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--dark);
+    }
+
+    .compare-col li::before {
+      content: "✗";
+      color: var(--grey);
+      font-weight: 700;
+    }
+
+    .compare-col li.yes::before {
+      content: "✓";
+      color: var(--teal);
+    }
+
+    /* ── HOW IT WORKS ────────────────────────────── */
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 3.5rem;
+    }
+
+    .step-row {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 1.5rem;
+      padding: 2rem 0;
+      border-top: 1px solid var(--grey);
+    }
+
+    .step-row:last-child { border-bottom: 1px solid var(--grey); }
+
+    .step-num {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--teal);
+      opacity: 0.25;
+      line-height: 1;
+      padding-top: 0.25rem;
+    }
+
+    .step-content h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--dark);
+    }
+
+    .step-content p {
+      color: var(--mid);
+      font-size: 0.95rem;
+      max-width: 560px;
+    }
+
+    /* ── FEATURES ────────────────────────────────── */
+    #features { background: var(--white); }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .feature-card {
+      padding: 1.75rem;
+      background: var(--bg);
+      border-radius: 12px;
+      border: 1px solid transparent;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .feature-card:hover {
+      border-color: var(--grey);
+      box-shadow: 0 4px 20px rgba(30,42,42,0.06);
+    }
+
+    .feature-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--teal-lt);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--dark);
+    }
+
+    .feature-card p {
+      font-size: 0.88rem;
+      color: var(--mid);
+      line-height: 1.65;
+    }
+
+    /* ── CASE STUDY / SOCIAL PROOF ───────────────── */
+    .casestudy {
+      background: var(--teal-lt);
+      border-radius: 24px;
+      padding: 2rem;
+      margin-top: 3rem;
+      border: 1px solid var(--grey);
+    }
+
+    .casestudy h3 {
+      font-size: 1.25rem;
+      color: var(--teal);
+      margin-bottom: 0.5rem;
+    }
+
+    .metric-badge {
+      background: var(--white);
+      border-radius: 40px;
+      padding: 0.3rem 1rem;
+      display: inline-block;
+      font-weight: 700;
+      font-size: 0.75rem;
+      color: var(--teal);
+      margin-bottom: 1rem;
+    }
+
+    /* ── PRICING ─────────────────────────────────── */
+    #pricing { background: var(--bg); }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+      align-items: start;
+    }
+
+    .pricing-card {
+      background: var(--white);
+      border: 1px solid var(--grey);
+      border-radius: 14px;
+      padding: 2rem;
+      position: relative;
+    }
+
+    .pricing-card.featured {
+      border-color: var(--teal);
+      box-shadow: 0 8px 40px rgba(27,107,107,0.15);
+    }
+
+    .popular-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--teal);
+      color: var(--white);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.85rem;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .plan-name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--mid);
+      margin-bottom: 0.5rem;
+    }
+
+    .plan-price {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 2rem;
+      color: var(--dark);
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .plan-price sup {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .plan-price sub {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--mid);
+    }
+
+    .plan-desc {
+      font-size: 0.85rem;
+      color: var(--mid);
+      margin: 0.75rem 0 1.5rem;
+      line-height: 1.5;
+    }
+
+    .plan-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .plan-features li {
+      font-size: 0.85rem;
+      color: var(--dark);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .plan-features li::before {
+      content: '✓';
+      color: var(--teal);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .plan-cta {
+      display: block;
+      text-align: center;
+      padding: 0.8rem;
+      border-radius: 8px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .plan-cta.outline {
+      border: 2px solid var(--grey);
+      color: var(--dark);
+    }
+
+    .plan-cta.outline:hover {
+      border-color: var(--teal);
+      color: var(--teal);
+    }
+
+    .plan-cta.solid {
+      background: var(--teal);
+      color: var(--white);
+      border: 2px solid var(--teal);
+    }
+
+    .plan-cta.solid:hover { background: #155757; transform: translateY(-1px); }
+
+    /* ── TESTIMONIALS ────────────────────────────── */
+    #testimonials { background: var(--teal); color: var(--white); }
+    #testimonials .section-eyebrow { color: var(--amber); }
+    #testimonials .section-heading { color: var(--white); }
+
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .testi-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      padding: 1.75rem;
+    }
+
+    .testi-quote {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 1.25rem;
+    }
+
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .testi-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--amber);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 0.85rem;
+      color: var(--white);
+    }
+
+    .testi-name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--white);
+    }
+
+    .testi-role {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.55);
+    }
+
+    /* ── FINAL CTA ───────────────────────────────── */
+    #final-cta {
+      background: var(--dark);
+      text-align: center;
+      padding: 100px 5vw;
+    }
+
+    #final-cta .section-heading {
+      color: var(--white);
+      max-width: 720px;
+      margin: 0 auto 1rem;
+    }
+
+    #final-cta .section-sub {
+      color: var(--grey);
+      max-width: 480px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .cta-note {
+      margin-top: 1.25rem;
+      font-size: 0.82rem;
+      color: var(--mid);
+    }
+
+    /* ── FOOTER ──────────────────────────────────── */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 2rem 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-logo {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      color: var(--white);
+      font-size: 1.05rem;
+    }
+
+    .footer-logo span { color: var(--amber); }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      color: var(--mid);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      font-size: 0.8rem;
+      color: var(--mid);
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--white); }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 48px 5vw 40px;
+        gap: 2.5rem;
+      }
+      .pain-grid, .features-grid, .pricing-grid { grid-template-columns: 1fr; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .nav-mobile-cta { display: inline-block; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="#" class="nav-logo">Field<span>bourne</span> Digital</a>
+  <ul class="nav-links">
+    <li><a href="#how">How it works</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#contact" class="nav-cta">Book a consultation</a></li>
+  </ul>
+  <a href="#contact" class="nav-mobile-cta">Book a consultation</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Bespoke data automation for small business</div>
+    <h1>Your business data is everywhere.<br/><em>We bring it together.</em></h1>
+    <p class="hero-sub">
+      Stop wrestling with generic CRMs and manual data entry. We build you a custom web app that connects your emails, SMS, spreadsheets, calendars — into one live dashboard that runs itself.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Book free consultation →</a>
+      <a href="#how" class="btn-ghost">See how it's different</a>
+    </div>
+    <p class="hero-trust">✓ No lock-in &nbsp;·&nbsp; ✓ Built for your workflow &nbsp;·&nbsp; ✓ Aussie owned</p>
+  </div>
+  <div class="ticker-wrap">
+    <div class="ticker-header">
+      <span class="ticker-title">Live data lake activity</span>
+      <span class="ticker-live"><span class="live-dot"></span> auto-sync</span>
+    </div>
+    <div class="event-list" id="eventList"></div>
+  </div>
+</div>
+
+<section id="problem">
+  <div class="section-inner">
+    <div class="section-eyebrow">The real cost of scattered data</div>
+    <h2 class="section-heading">Your team spends more time typing than working</h2>
+    <p class="section-sub">Off‑the‑shelf software forces you into rigid workflows. Meanwhile, leads slip, spreadsheets pile up, and nobody has a single source of truth.</p>
+    <div class="pain-grid">
+      <div class="pain-card"><div class="pain-number">70%</div><div class="pain-label">of admin time is re‑entry</div><p class="pain-desc">Copying data between emails, SMS, job sheets and accounting software — over and over again.</p></div>
+      <div class="pain-card"><div class="pain-number">3+ tools</div><div class="pain-label">to track one job</div><p class="pain-desc">Calendar for bookings, notes app for details, chat for updates. Nothing talks to each other.</p></div>
+      <div class="pain-card"><div class="pain-number">No visibility</div><div class="pain-label">after hours</div><p class="pain-desc">Emails and texts arrive when you're closed. Without a central system, they get buried — and forgotten.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="section-inner">
+    <div class="section-eyebrow">Built around you, not a template</div>
+    <h2 class="section-heading">We don't sell software. We build your data engine.</h2>
+    <div class="steps">
+      <div class="step-row"><div class="step-num">1</div><div class="step-content"><h3>Map your messy data sources</h3><p>Emails, SMS threads, spreadsheets, missed calls, calendar invites — we audit everything you use today.</p></div></div>
+      <div class="step-row"><div class="step-num">2</div><div class="step-content"><h3>Build your custom lake & dashboard</h3><p>We create a secure web app that automatically ingests, cleans, and organises all that data into one live view.</p></div></div>
+      <div class="step-row"><div class="step-num">3</div><div class="step-content"><h3>Automate the busywork</h3><p>Set rules: new lead → auto‑reply, assign to a tech, create calendar event. No more manual steps.</p></div></div>
+      <div class="step-row"><div class="step-num">4</div><div class="step-content"><h3>Your team just works</h3><p>They see exactly what they need, when they need it — from any device. No training marathons.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="section-inner">
+    <div class="section-eyebrow">What your data engine includes</div>
+    <h2 class="section-heading">Every business is different. Your solution should be too.</h2>
+    <div class="features-grid">
+      <div class="feature-card"><div class="feature-icon">🔌</div><h3>Connect anything</h3><p>Gmail, Outlook, SMS, spreadsheets, even paper logs — we ingest it all into a single source of truth.</p></div>
+      <div class="feature-card"><div class="feature-icon">⚡</div><h3>Automated workflows</h3><p>Lead comes in → auto-assign, send SMS, add to calendar. Build rules that match your exact process.</p></div>
+      <div class="feature-card"><div class="feature-icon">📊</div><h3>Live manager dashboard</h3><p>See every open job, every conversation, every follow‑up due — all in a dashboard built for your metrics.</p></div>
+      <div class="feature-card"><div class="feature-icon">🔔</div><h3>Smart alerts & reminders</h3><p>Never lose a lead again. We add timers and notifications that nudge your team before things go cold.</p></div>
+      <div class="feature-card"><div class="feature-icon">🔓</div><h3>You own your data</h3><p>No proprietary lock‑in. Export everything anytime. We believe in software that serves you, not the other way.</p></div>
+      <div class="feature-card"><div class="feature-icon">📱</div><h3>Works everywhere</h3><p>Mobile, tablet, desktop. No app store required — just a secure login from any browser.</p></div>
+    </div>
+    <div class="compare-box">
+      <div class="compare-grid">
+        <div class="compare-col"><h4>❌ Generic CRM / off‑the‑shelf</h4><ul><li>Forces you to change your process</li><li>Hidden per‑user fees</li><li>Data stuck in their silos</li><li>One‑size‑fits‑all dashboards</li></ul></div>
+        <div class="compare-col"><h4>✅ FieldBourne Digital (bespoke)</h4><ul class="yes-list"><li class="yes">We adapt to your workflow</li><li class="yes">Flat pricing, no per‑seat tax</li><li class="yes">Your data stays yours, always</li><li class="yes">Dashboard built around your KPIs</li></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="section-inner">
+    <div class="section-eyebrow">Simple, honest pricing</div>
+    <h2 class="section-heading">One fixed project fee + low monthly upkeep</h2>
+    <p class="section-sub">No per‑user surprises. No lock-in contracts.</p>
+    <div class="pricing-grid">
+      <div class="pricing-card"><div class="plan-name">Essential lake</div><div class="plan-price"><sup>$</sup>2,500<sub> setup</sub> + <sup>$</sup>79<sub>/mo</sub></div><p class="plan-desc">Perfect for small teams with 2-3 core data sources.</p><ul class="plan-features"><li>Up to 3 data sources connected</li><li>Custom dashboard & auto‑ingestion</li><li>Basic workflow automation</li><li>Email + SMS support</li></ul><a href="#contact" class="plan-cta outline">Get quote →</a></div>
+      <div class="pricing-card featured"><div class="popular-badge">Most popular</div><div class="plan-name">Professional engine</div><div class="plan-price"><sup>$</sup>5,000<sub> setup</sub> + <sup>$</sup>149<sub>/mo</sub></div><p class="plan-desc">For growing businesses with multiple field staff.</p><ul class="plan-features"><li>Unlimited data sources</li><li>Advanced rules & SLA alerts</li><li>Team role management</li><li>Priority support + training</li></ul><a href="#contact" class="plan-cta solid">Start consultation</a></div>
+      <div class="pricing-card"><div class="plan-name">Enterprise</div><div class="plan-price"><sup>$</sup>Custom</div><p class="plan-desc">Franchises, multi‑location, legacy system integration.</p><ul class="plan-features"><li>Custom API connectors</li><li>On‑premise or dedicated cloud</li><li>White‑glove onboarding</li><li>Ongoing feature development</li></ul><a href="#contact" class="plan-cta outline">Talk to us</a></div>
+    </div>
+    <div class="casestudy"><span class="metric-badge">📺 Real client: TVMagic Companion</span><h3>TV aerial franchise saves 15+ hours a week</h3><p>We turned their missed calls, SMS enquiries, and messy Excel sheets into a custom web app. Now every lead is captured automatically, jobs assigned with one click, and the owner sees live updates from all technicians. No more chasing — just the dashboard.</p></div>
+  </div>
+</section>
+
+<section id="testimonials">
+  <div class="section-inner">
+    <div class="section-eyebrow">Trusted by service pros</div>
+    <h2 class="section-heading">What business owners say</h2>
+    <div class="testi-grid">
+      <div class="testi-card"><p class="testi-quote">“Before FieldBourne, I had three different spreadsheets and a pile of sticky notes. Now everything lives in one place — from the first text message to the completed job. It's like having an extra admin.”</p><div class="testi-author"><div class="testi-avatar">MT</div><div><div class="testi-name">Mark T.</div><div class="testi-role">TV Aerial & Satellite, NSW</div></div></div></div>
+      <div class="testi-card"><p class="testi-quote">“The lead timer alone paid for the setup in one month. We didn't have to change a thing — they built it around our WhatsApp and calendar. Absolute game changer.”</p><div class="testi-author"><div class="testi-avatar">SL</div><div><div class="testi-name">Sarah L.</div><div class="testi-role">Electrical & Data, VIC</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="final-cta">
+  <div class="section-inner"><div class="section-eyebrow" style="color:var(--amber);">Your data, unified</div><h2 class="section-heading">Stop running your business from memory and spreadsheets</h2><p class="section-sub">Book a free 20‑min consultation. We'll map your current data mess and show exactly what a custom engine would look like.</p><a href="#contact" class="btn-primary" style="font-size:1.05rem; padding:1rem 2.25rem;">Book my free consultation →</a><p class="cta-note">No obligation. No credit card. Just a conversation about what's possible.</p></div>
+</section>
+
+<section id="contact" style="background: var(--bg); padding: 80px 5vw;">
+  <div class="section-inner" style="display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start;">
+    <div><div class="section-eyebrow">Let's talk</div><h2 class="section-heading" style="margin-bottom:1rem;">Tell us about your data puzzle</h2><p class="section-sub" style="margin-bottom:1.5rem;">We'll reach out within 1 business day to schedule a no‑pressure chat.</p><div style="display:flex; flex-direction:column; gap:0.6rem;"><div style="font-size:0.9rem; color:var(--mid);">📧 &nbsp;hello@fieldbournedigital.com.au</div><div style="font-size:0.9rem; color:var(--mid);">🇦🇺 &nbsp;Built for Australian small business</div></div></div>
+    <div><div style="background:var(--white); border:1px solid var(--grey); border-radius:14px; padding:2rem; display:flex; flex-direction:column; gap:1rem;"><input type="text" placeholder="Your name" id="consultName" style="border:1px solid var(--grey); border-radius:8px; padding:0.75rem 1rem; background:var(--bg);"><input type="email" placeholder="Email address" id="consultEmail" style="border:1px solid var(--grey); border-radius:8px; padding:0.75rem 1rem; background:var(--bg);"><input type="tel" placeholder="Phone" id="consultPhone" style="border:1px solid var(--grey); border-radius:8px; padding:0.75rem 1rem; background:var(--bg);"><select id="consultType" style="border:1px solid var(--grey); border-radius:8px; padding:0.75rem 1rem; background:var(--bg);"><option value="">What best describes your business?</option><option>TV / antenna service</option><option>Electrical</option><option>Plumbing</option><option>Solar & renewables</option><option>HVAC</option><option>Other field service</option></select><textarea id="consultMsg" placeholder="What data sources do you currently use? (e.g., email, SMS, spreadsheets, calendar)" rows="3" style="border:1px solid var(--grey); border-radius:8px; padding:0.75rem 1rem; background:var(--bg);"></textarea><button onclick="handleConsult(event)" style="background:var(--teal); color:white; border:none; padding:0.9rem; border-radius:8px; font-weight:700; cursor:pointer;">Send — I want a custom data engine</button><p style="font-size:0.78rem; color:var(--grey); text-align:center;">We'll reply within one business day. No spam, no pressure.</p></div></div>
+  </div>
+</section>
+
+<footer><div class="footer-logo">Field<span>bourne</span> Digital</div><p class="footer-copy">© 2025 FieldBourne Digital — bespoke data solutions for field service & trade businesses</p><ul class="footer-links"><li><a href="#">Privacy</a></li><li><a href="#">Terms</a></li><li><a href="#contact">Contact</a></li></ul></footer>
+
+<script>
+  const dataEvents = [
+    { icon: '📧', cls: 'email', label: 'Email ingested (Gmail)', detail: 'Lead: New antenna install, Parramatta', badge: 'badge-ingested', badgeText: 'Auto-captured', time: 'Just now' },
+    { icon: '💬', cls: 'sms', label: 'SMS thread synced', detail: 'Customer: "No signal since yesterday"', badge: 'badge-auto', badgeText: 'New lead', time: '2 min ago' },
+    { icon: '📊', cls: 'sheet', label: 'Spreadsheet job update', detail: 'Row 23 status → "In progress"', badge: 'badge-ingested', badgeText: 'Synced', time: '6 min ago' },
+    { icon: '📅', cls: 'cal', label: 'Calendar event created', detail: 'Job #1042 scheduled for tomorrow 9am', badge: 'badge-auto', badgeText: 'Auto-assigned', time: '12 min ago' },
+    { icon: '📞', cls: 'data', label: 'Missed call → lead', detail: 'John from Penrith, 0412 *** ***', badge: 'badge-ingested', badgeText: 'New lead', time: '21 min ago' },
+    { icon: '✉️', cls: 'email', label: 'Email auto-reply sent', detail: 'Quote requested: TV wall mount', badge: 'badge-auto', badgeText: 'Auto-reply', time: '34 min ago' }
+  ];
+  let idx = 0;
+  const list = document.getElementById('eventList');
+  function renderEvents(items) { list.innerHTML = ''; items.forEach(ev => { const el = document.createElement('div'); el.className = 'event-item'; el.innerHTML = `<div class="event-icon ${ev.cls}">${ev.icon}</div><div class="event-body"><div class="event-label">${ev.label}</div><div class="event-detail">${ev.detail}</div><div class="event-time">${ev.time}</div></div><span class="event-badge ${ev.badge}">${ev.badgeText}</span>`; list.appendChild(el); }); }
+  function tick() { const start = idx % dataEvents.length; renderEvents([dataEvents[start % dataEvents.length], dataEvents[(start+1)%dataEvents.length], dataEvents[(start+2)%dataEvents.length], dataEvents[(start+3)%dataEvents.length]]); idx++; }
+  tick(); setInterval(tick, 3400);
+  function handleConsult(e) { e.preventDefault(); const btn = e.target; btn.textContent = '✓ Request sent — we’ll be in touch shortly'; btn.style.background = '#2DC97E'; btn.disabled = true; }
+</script>
+</body>
+</html>
