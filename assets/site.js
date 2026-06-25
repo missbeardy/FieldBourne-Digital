@@ -1,6 +1,6 @@
 (function () {
   const dataEvents = [
-    { icon: '📧', cls: 'email', label: 'New enquiry via email', detail: 'Antenna install requested — Parramatta', badge: 'badge-ingested', badgeText: 'New lead', time: 'Just now' },
+    { icon: '📧', cls: 'email', label: 'New enquiry via email', detail: 'Antenna install requested, Parramatta', badge: 'badge-ingested', badgeText: 'New lead', time: 'Just now' },
     { icon: '💬', cls: 'sms', label: 'SMS enquiry received', detail: '"No signal since yesterday, need help ASAP"', badge: 'badge-auto', badgeText: 'Lead created', time: '2 min ago' },
     { icon: '📊', cls: 'sheet', label: 'Job status updated', detail: 'Job #1041 — marked In Progress', badge: 'badge-ingested', badgeText: 'Updated', time: '6 min ago' },
     { icon: '📅', cls: 'cal', label: 'Job booked automatically', detail: 'Job #1042 scheduled — tomorrow 9am', badge: 'badge-auto', badgeText: 'Auto-assigned', time: '12 min ago' },
@@ -45,13 +45,13 @@
   }
 
   function showFormSuccess(btn) {
-    btn.textContent = '✓ Sent — Darren will be in touch within one business day';
+    btn.textContent = '✓ Sent. Darren will be in touch within one business day';
     btn.style.background = '#2DC97E';
     btn.disabled = true;
   }
 
   function showFormError(btn, originalText) {
-    btn.textContent = 'Something went wrong — please email us directly';
+    btn.textContent = 'Something went wrong. Please email us directly';
     btn.disabled = false;
     setTimeout(function () {
       btn.textContent = originalText;
