@@ -905,6 +905,8 @@ footer {
 }
 
 /* ── OUTCOMES (4 pillars) ───────────────────── */
+#outcomes { background: var(--white); }
+
 .outcomes-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
