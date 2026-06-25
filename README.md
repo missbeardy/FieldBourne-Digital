@@ -33,7 +33,7 @@ Edit `assets/site-config.js`:
 
 1. Repo **Settings → Pages → Build and deployment → GitHub Actions**
 2. Push to `main` — workflow `.github/workflows/pages.yml` deploys the site
-3. For custom domain `fieldbournedigital.com.au`, `CNAME` is included — add DNS records at your registrar:
+3. When your custom domain is ready, add a `CNAME` file containing `fieldbournedigital.com.au` and configure DNS at your registrar:
    - `A` records → GitHub Pages IPs, or
    - `CNAME` `www` → `missbeardy.github.io`
 4. Enable **Enforce HTTPS** in Pages settings

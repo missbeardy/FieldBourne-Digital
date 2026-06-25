@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://fieldbournedigital.com.au/sitemap.xml
+Sitemap: https://missbeardy.github.io/FieldBourne-Digital/sitemap.xml

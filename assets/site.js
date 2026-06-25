@@ -2,9 +2,9 @@
   const dataEvents = [
     { icon: '📧', cls: 'email', label: 'New enquiry via email', detail: 'Antenna install requested, Parramatta', badge: 'badge-ingested', badgeText: 'New lead', time: 'Just now' },
     { icon: '💬', cls: 'sms', label: 'SMS enquiry received', detail: '"No signal since yesterday, need help ASAP"', badge: 'badge-auto', badgeText: 'Lead created', time: '2 min ago' },
-    { icon: '📊', cls: 'sheet', label: 'Job status updated', detail: 'Job #1041 — marked In Progress', badge: 'badge-ingested', badgeText: 'Updated', time: '6 min ago' },
-    { icon: '📅', cls: 'cal', label: 'Job booked automatically', detail: 'Job #1042 scheduled — tomorrow 9am', badge: 'badge-auto', badgeText: 'Auto-assigned', time: '12 min ago' },
-    { icon: '📞', cls: 'data', label: 'Missed call captured', detail: 'John from Penrith — callback queued', badge: 'badge-ingested', badgeText: 'New lead', time: '21 min ago' },
+    { icon: '📊', cls: 'sheet', label: 'Job status updated', detail: 'Job #1041 marked In Progress', badge: 'badge-ingested', badgeText: 'Updated', time: '6 min ago' },
+    { icon: '📅', cls: 'cal', label: 'Job booked automatically', detail: 'Job #1042 scheduled, tomorrow 9am', badge: 'badge-auto', badgeText: 'Auto-assigned', time: '12 min ago' },
+    { icon: '📞', cls: 'data', label: 'Missed call captured', detail: 'John from Penrith, callback queued', badge: 'badge-ingested', badgeText: 'New lead', time: '21 min ago' },
     { icon: '✉️', cls: 'email', label: 'Auto-reply sent', detail: 'Quote request acknowledged instantly', badge: 'badge-auto', badgeText: 'Auto-reply', time: '34 min ago' },
   ];
 
