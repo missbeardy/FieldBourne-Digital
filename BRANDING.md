@@ -103,7 +103,10 @@ These patterns are already working in live copy — reuse the *structure*, not n
 - **Proof over claim:** show a live, specific number/scenario (3 new leads today, 12 open jobs) rather than a generic feature list
 - **Founder voice, first person, unpolished:** *"I'd rather show you it working than talk at you about features."*
 - **Friction-reducer micro-copy:** *"No credit card. We respond within one business day."* — specific, not vague reassurance
-- **CTA verb:** "Book a free chat" — never "Book a demo," "Request a consultation," or "Get started" (too generic/corporate for this audience)
+- **CTA verb:** "Book a free chat" for consultative sales. "Join waitlist" for self-serve coming soon. Never "Book a demo" or "Get started."
+- **Hero secondary CTA:** "See the live board" scrolls to `#showcase`. Case study links use "Read the case study".
+- **Pricing frame:** Do not publish dollar amounts on the marketing site. Allude to a one-time implementation fee plus flat monthly subscription, quoted on the free chat. Foundational Client = premium build at entry rate for early clients.
+- **Contact form:** Name + phone required. Email and message optional. Trade type via tap buttons, not dropdown. Submit stays "Send message" (Darren follows up by email).
 
 ---
 

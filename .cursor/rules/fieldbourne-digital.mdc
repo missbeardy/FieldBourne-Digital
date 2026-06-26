@@ -20,7 +20,7 @@ Static marketing site (HTML/CSS/JS, no bundler). Deployed from repo root via Git
 ## When editing
 
 - Match existing page structure (nav, footer, font links, `styles.css`).
-- Use config for external URLs; avoid duplicating `hello@fieldbournedigital.com.au` or app URLs.
+- Use config for external URLs; avoid duplicating `admin@fieldbournedigital.com.au` or app URLs.
 - Follow `BRANDING.md` for voice, banned words, and the Section 8 self-check.
 - Never use em dashes in site copy. Use commas, full stops, or colons instead.
 - Australian English, trade-business tone, no generic SaaS jargon.

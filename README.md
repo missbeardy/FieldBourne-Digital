@@ -28,6 +28,8 @@ Edit `assets/site-config.js`:
 
 - `formEndpoint` — your [Formspree](https://formspree.io) form URL (falls back to `mailto:` until set)
 - `tvmagicAppUrl` — FieldBourne Companion app login URL
+- `clientVideoYoutubeId` — client testimonial embed (swap when real clip is ready)
+- `clientVideoFirstName` — first name only in client proof section
 
 ## Deployment (GitHub Pages)
 

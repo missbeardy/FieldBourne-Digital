@@ -1,4 +1,14 @@
 (function () {
+  const BUSINESS_TYPES = [
+    'TV / antenna service',
+    'Electrical',
+    'Plumbing',
+    'Solar & renewables',
+    'HVAC',
+    'Franchise head office',
+    'Other field service',
+  ];
+
   const dataEvents = [
     { icon: '📧', cls: 'email', label: 'New enquiry via email', detail: 'Antenna install requested, Parramatta', badge: 'badge-ingested', badgeText: 'New lead', time: 'Just now' },
     { icon: '💬', cls: 'sms', label: 'SMS enquiry received', detail: '"No signal since yesterday, need help ASAP"', badge: 'badge-auto', badgeText: 'Lead created', time: '2 min ago' },
@@ -60,16 +70,96 @@
 
   function buildMailtoUrl(data) {
     const config = window.SITE_CONFIG || {};
-    const email = config.contactEmail || 'hello@fieldbournedigital.com.au';
-    const subject = encodeURIComponent('FieldBourne consultation request from ' + (data.name || 'website'));
+    const email = config.contactEmail || 'admin@fieldbournedigital.com.au';
+    const intent = data.intent || 'consult';
+    const intentLabel = intent === 'waitlist' ? 'Self-serve waitlist' : 'Free chat request';
+    const subject = encodeURIComponent('FieldBourne ' + intentLabel + ' from ' + (data.name || 'website'));
     const body = encodeURIComponent(
+      'Intent: ' + intentLabel + '\n' +
       'Name: ' + data.name + '\n' +
-      'Email: ' + data.email + '\n' +
       'Phone: ' + data.phone + '\n' +
-      'Business type: ' + data.businessType + '\n\n' +
-      'Message:\n' + data.message
+      'Email: ' + (data.email || '(not provided)') + '\n' +
+      'Business type: ' + (data.businessType || '(not selected)') + '\n\n' +
+      'Message:\n' + (data.message || '(none)')
     );
     return 'mailto:' + email + '?subject=' + subject + '&body=' + body;
+  }
+
+  function setBusinessType(value) {
+    const hidden = document.getElementById('consultType');
+    if (hidden) hidden.value = value || '';
+
+    document.querySelectorAll('.type-btn').forEach(function (btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-value') === value);
+    });
+  }
+
+  function initBusinessTypeButtons() {
+    const wrap = document.getElementById('businessTypeButtons');
+    if (!wrap) return;
+
+    wrap.innerHTML = '';
+    BUSINESS_TYPES.forEach(function (type) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'type-btn';
+      btn.setAttribute('data-value', type);
+      btn.textContent = type;
+      btn.addEventListener('click', function () {
+        setBusinessType(type);
+      });
+      wrap.appendChild(btn);
+    });
+  }
+
+  function setFormIntent(intent) {
+    const form = document.getElementById('consultForm');
+    if (!form) return;
+
+    const intentInput = form.querySelector('[name="formIntent"]');
+    if (intentInput) intentInput.value = intent;
+
+    const heading = document.getElementById('contactFormHeading');
+    const note = document.getElementById('contactFormNote');
+    const submit = form.querySelector('button[type="submit"]');
+
+    if (intent === 'waitlist') {
+      if (heading) heading.textContent = 'Join the self-serve waitlist';
+      if (note) note.textContent = 'Name and phone are all we need. Darren will email you when solo self-serve launches.';
+      if (submit) submit.textContent = 'Notify me →';
+    } else {
+      if (heading) heading.textContent = 'Book a free chat';
+      if (note) note.textContent = 'Name and phone required. Darren will email you within one business day to arrange a chat.';
+      if (submit) submit.textContent = 'Send message →';
+    }
+  }
+
+  function initFormDefaults() {
+    const params = new URLSearchParams(window.location.search);
+    const path = params.get('path');
+
+    if (path === 'solo' || path === 'waitlist') {
+      setFormIntent('waitlist');
+    } else if (path === 'team' || path === 'consult') {
+      setFormIntent('consult');
+    }
+
+    const referrer = document.referrer || '';
+    if (referrer.includes('tvmagic.html')) {
+      setBusinessType('TV / antenna service');
+    }
+  }
+
+  function initClientVideo() {
+    const config = window.SITE_CONFIG || {};
+    const iframe = document.getElementById('clientVideoFrame');
+    const nameEl = document.getElementById('clientVideoName');
+    if (!iframe || !config.clientVideoYoutubeId) return;
+
+    iframe.src = 'https://www.youtube-nocookie.com/embed/' + config.clientVideoYoutubeId + '?rel=0';
+    if (nameEl && config.clientVideoFirstName) {
+      nameEl.textContent = config.clientVideoFirstName;
+    }
   }
 
   async function handleConsult(e) {
@@ -86,12 +176,13 @@
       name: form.consultName.value.trim(),
       email: form.consultEmail.value.trim(),
       phone: form.consultPhone.value.trim(),
-      businessType: form.consultType.value,
+      businessType: form.consultType.value.trim(),
       message: form.consultMsg.value.trim(),
+      intent: form.formIntent.value || 'consult',
     };
 
-    if (!data.name || !data.email) {
-      alert('Please enter your name and email address.');
+    if (!data.name || !data.phone) {
+      alert('Please enter your name and phone number.');
       return;
     }
 
@@ -100,6 +191,10 @@
 
     const endpoint = config.formEndpoint || '';
     const useFormspree = endpoint && !endpoint.includes('YOUR_FORM_ID');
+    const subject =
+      data.intent === 'waitlist'
+        ? 'New FieldBourne self-serve waitlist signup'
+        : 'New FieldBourne free chat request';
 
     if (!useFormspree) {
       window.location.href = buildMailtoUrl(data);
@@ -110,11 +205,12 @@
     try {
       const formData = new FormData();
       formData.append('name', data.name);
-      formData.append('email', data.email);
+      formData.append('email', data.email || 'not provided');
       formData.append('phone', data.phone);
       formData.append('business_type', data.businessType);
       formData.append('message', data.message);
-      formData.append('_subject', 'New FieldBourne consultation request');
+      formData.append('intent', data.intent);
+      formData.append('_subject', subject);
 
       const response = await fetch(endpoint, {
         method: 'POST',
@@ -124,6 +220,8 @@
 
       if (response.ok) {
         form.reset();
+        setBusinessType('');
+        setFormIntent(data.intent);
         showFormSuccess(btn);
       } else {
         showFormError(btn, originalText);
@@ -134,19 +232,11 @@
     }
   }
 
-  function initFormDefaults() {
-    const select = document.getElementById('consultType');
-    if (!select) return;
-
-    const referrer = document.referrer || '';
-    if (referrer.includes('tvmagic.html')) {
-      select.value = 'TV / antenna service';
-    }
-  }
-
   document.addEventListener('DOMContentLoaded', function () {
     initTicker();
+    initBusinessTypeButtons();
     initFormDefaults();
+    initClientVideo();
 
     const form = document.getElementById('consultForm');
     if (form) {
