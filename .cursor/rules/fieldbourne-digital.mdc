@@ -1,0 +1,25 @@
+---
+description: FieldBourne Digital marketing site — structure, brand, and build conventions
+alwaysApply: true
+---
+
+# FieldBourne Digital marketing site
+
+Read `AGENTS.md` and `README.md` before making changes.
+
+## What this repo is
+
+Static marketing site (HTML/CSS/JS, no bundler). Deployed from repo root via GitHub Pages. Product app lives in [tv-magic-companion](https://github.com/missbeardy/tv-magic-companion) — link only, do not embed app code here.
+
+## Key files
+
+- `assets/site-config.js` — `formEndpoint`, `tvmagicAppUrl`, `contactEmail`, `siteUrl`
+- `assets/styles.css` — brand tokens (`--teal`, `--amber`, `--dark`, `--bg`)
+- `assets/site.js` — contact form + homepage ticker
+
+## When editing
+
+- Match existing page structure (nav, footer, font links, `styles.css`).
+- Use config for external URLs; avoid duplicating `hello@fieldbournedigital.com.au` or app URLs.
+- Australian English, trade-business tone, no generic SaaS jargon.
+- Minimal scope: no new frameworks, build tools, or dependencies unless explicitly requested.

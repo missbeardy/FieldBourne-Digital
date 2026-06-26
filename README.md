@@ -45,6 +45,16 @@ python3 -m http.server 8080
 # open http://localhost:8080
 ```
 
+## AI / agent context
+
+- `AGENTS.md` — project guide for Cursor and other coding agents
+- `.cursor/rules/` — always-on conventions for this repo
+
 ## Related repos
 
-- [tv-magic-companion](https://github.com/missbeardy/tv-magic-companion) — TVMagic Companion web app (separate repo)
+| Repo | Role |
+|------|------|
+| [FieldBourne-Digital](https://github.com/missbeardy/FieldBourne-Digital) | This marketing site |
+| [tv-magic-companion](https://github.com/missbeardy/tv-magic-companion) | TVMagic Companion web app |
+
+Repo URLs are also in `assets/site-config.js` under `repos`.
