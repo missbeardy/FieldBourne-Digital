@@ -333,6 +333,13 @@ section { padding: 80px 5vw; }
   margin-bottom: 0.75rem;
 }
 
+.eyebrow-brand-wordmark {
+  text-transform: none;
+  letter-spacing: -0.02em;
+}
+
+.brand-teal { color: var(--teal); }
+
 .section-heading {
   font-size: clamp(1.8rem, 3vw, 2.6rem);
   letter-spacing: -0.025em;
@@ -640,6 +647,22 @@ section { padding: 80px 5vw; }
   line-height: 1.5;
 }
 
+.plan-proof {
+  font-size: 0.82rem;
+  color: var(--teal);
+  margin: -0.75rem 0 1.25rem;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.contact-proof {
+  font-size: 0.9rem;
+  color: var(--teal);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
 .plan-features {
   list-style: none;
   display: flex;
@@ -832,7 +855,7 @@ footer {
   .integration-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* ── HERO SHOWCASE (TVMagic) ─────────────────── */
+/* ── HERO SHOWCASE (FieldBourne Companion) ───── */
 .hero-showcase {
   background: var(--dark);
   border-radius: 16px;

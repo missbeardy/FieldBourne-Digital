@@ -1,0 +1,11 @@
+{
+  "name": "fieldbourne-digital",
+  "private": true,
+  "scripts": {
+    "dev": "serve . -l 8080",
+    "start": "npm run dev"
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}

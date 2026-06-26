@@ -134,8 +134,19 @@
     }
   }
 
+  function initFormDefaults() {
+    const select = document.getElementById('consultType');
+    if (!select) return;
+
+    const referrer = document.referrer || '';
+    if (referrer.includes('tvmagic.html')) {
+      select.value = 'TV / antenna service';
+    }
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     initTicker();
+    initFormDefaults();
 
     const form = document.getElementById('consultForm');
     if (form) {

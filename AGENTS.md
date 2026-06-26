@@ -2,12 +2,14 @@
 
 Marketing site for [FieldBourne Digital](https://fieldbournedigital.com.au). Static HTML/CSS/JS deployed to GitHub Pages.
 
+**Before any copy or voice changes, read [`BRANDING.md`](BRANDING.md) first.** It is the source of truth for tone, banned words, and copy patterns.
+
 ## Repo role
 
 | Repo | Purpose |
 |------|---------|
 | **This repo** (`FieldBourne-Digital`) | Public marketing site, case study, contact form |
-| [tv-magic-companion](https://github.com/missbeardy/tv-magic-companion) | TVMagic Companion web app (separate product) |
+| [tv-magic-companion](https://github.com/missbeardy/tv-magic-companion) | FieldBourne Companion web app (separate repo, legacy repo name) |
 
 Do not merge app code into this repo. Link to the app via `assets/site-config.js` (`tvmagicAppUrl`).
 
@@ -24,7 +26,7 @@ Do not merge app code into this repo. Link to the app via `assets/site-config.js
 |------|---------|
 | `index.html` | Homepage |
 | `about.html` | Founder / company story |
-| `tvmagic.html` | TVMagic case study |
+| `tvmagic.html` | FieldBourne Companion case study |
 | `privacy.html`, `terms.html` | Legal |
 
 ## Brand tokens
@@ -51,10 +53,11 @@ Wordmark pattern: `Field<span class="logo-bourne">bourne</span> Digital`
 ## Local preview
 
 ```bash
-python -m http.server 8080
+npm install
+npm run dev
 ```
 
-Open `http://localhost:8080`.
+Open [http://localhost:8080](http://localhost:8080).
 
 ## Deploy
 
@@ -64,4 +67,4 @@ Custom domain: `fieldbournedigital.com.au` via `CNAME`.
 
 ## Scope for changes
 
-Keep diffs small. This site is marketing copy and layout — not the job-management product. Feature work for TVMagic belongs in `tv-magic-companion`.
+Keep diffs small. This site is marketing copy and layout, not the job-management product. Feature work for FieldBourne Companion belongs in `tv-magic-companion`.

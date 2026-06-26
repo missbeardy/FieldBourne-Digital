@@ -5,7 +5,7 @@ alwaysApply: true
 
 # FieldBourne Digital marketing site
 
-Read `AGENTS.md` and `README.md` before making changes.
+Read `BRANDING.md` before any copy changes, then `AGENTS.md` and `README.md`.
 
 ## What this repo is
 
@@ -21,5 +21,7 @@ Static marketing site (HTML/CSS/JS, no bundler). Deployed from repo root via Git
 
 - Match existing page structure (nav, footer, font links, `styles.css`).
 - Use config for external URLs; avoid duplicating `hello@fieldbournedigital.com.au` or app URLs.
+- Follow `BRANDING.md` for voice, banned words, and the Section 8 self-check.
+- Never use em dashes in site copy. Use commas, full stops, or colons instead.
 - Australian English, trade-business tone, no generic SaaS jargon.
 - Minimal scope: no new frameworks, build tools, or dependencies unless explicitly requested.

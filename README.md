@@ -19,7 +19,7 @@ Logo mark: `assets/logo-mark.svg` (Path mark — Option 2)
 
 - `index.html` — Homepage
 - `about.html` — Founder and company story
-- `tvmagic.html` — TVMagic Companion case study
+- `tvmagic.html` — FieldBourne Companion case study
 - `privacy.html` / `terms.html` — Legal
 
 ## Configuration
@@ -27,7 +27,7 @@ Logo mark: `assets/logo-mark.svg` (Path mark — Option 2)
 Edit `assets/site-config.js`:
 
 - `formEndpoint` — your [Formspree](https://formspree.io) form URL (falls back to `mailto:` until set)
-- `tvmagicAppUrl` — TVMagic Companion login URL
+- `tvmagicAppUrl` — FieldBourne Companion app login URL
 
 ## Deployment (GitHub Pages)
 
@@ -41,12 +41,17 @@ Edit `assets/site-config.js`:
 ## Local preview
 
 ```bash
-python3 -m http.server 8080
-# open http://localhost:8080
+npm install
+npm run dev
 ```
+
+Open [http://localhost:8080](http://localhost:8080).
+
+No build step — the repo root is served as static files. Use this instead of opening HTML files directly in the browser so links and form referrer logic work correctly.
 
 ## AI / agent context
 
+- `BRANDING.md` — voice, tone, colours, and copy rules (read first for any copy work)
 - `AGENTS.md` — project guide for Cursor and other coding agents
 - `.cursor/rules/` — always-on conventions for this repo
 
@@ -55,6 +60,6 @@ python3 -m http.server 8080
 | Repo | Role |
 |------|------|
 | [FieldBourne-Digital](https://github.com/missbeardy/FieldBourne-Digital) | This marketing site |
-| [tv-magic-companion](https://github.com/missbeardy/tv-magic-companion) | TVMagic Companion web app |
+| [tv-magic-companion](https://github.com/missbeardy/tv-magic-companion) | FieldBourne Companion web app (repo name legacy) |
 
 Repo URLs are also in `assets/site-config.js` under `repos`.
