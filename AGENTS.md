@@ -1,54 +1,42 @@
 # FieldBourne Digital — agent guide
 
-Marketing site for [FieldBourne Digital](https://fieldbournedigital.com.au). Static HTML/CSS/JS deployed to GitHub Pages.
+Marketing site for [FieldBourne Digital](https://fieldbournedigital.com.au).
 
-**Before any copy or voice changes, read [`BRANDING.md`](BRANDING.md) first.** It is the source of truth for tone, banned words, and copy patterns.
+**Before any copy or voice changes, read [`BRANDING.md`](BRANDING.md) first.**
 
 ## Repo role
 
 | Repo | Purpose |
 |------|---------|
-| **This repo** (`FieldBourne-Digital`) | Public marketing site, case study, contact form |
-| [tv-magic-companion](https://github.com/missbeardy/tv-magic-companion) | FieldBourne Companion web app (separate repo, legacy repo name) |
+| **This repo** (`FieldBourne-Digital`) | Public marketing site |
+| [tv-magic-companion](https://github.com/missbeardy/tv-magic-companion) | FieldBourne Companion web app (separate repo) |
 
-Do not merge app code into this repo. Link to the app via `assets/site-config.js` (`tvmagicAppUrl`).
+Do not merge app code into this repo. Link to the app via `src/config/site.ts` (`tvmagicAppUrl`).
 
 ## Stack
 
-- Plain HTML pages at repo root (no build step, no framework)
-- Shared styles: `assets/styles.css`
-- Shared behaviour: `assets/site.js`
-- Runtime config: `assets/site-config.js` (load before `site.js`)
-
-## Pages
-
-| File | Purpose |
-|------|---------|
-| `index.html` | Homepage |
-| `about.html` | Founder / company story |
-| `tvmagic.html` | FieldBourne Companion case study |
-| `privacy.html`, `terms.html` | Legal |
+- Vite + React + TypeScript + Tailwind CSS v4
+- Motion (`motion/react`) for page motion (respect `prefers-reduced-motion`)
+- Deploy: `npm run build` → GitHub Pages from `dist/`
+- Legacy static HTML kept under `legacy/` for reference
+- Copy drafts under `copy/`
 
 ## Brand tokens
 
-Use CSS variables from `assets/styles.css`:
+Map exact hex values in `src/index.css` `@theme` (do not invent new primaries):
 
-- Teal `#1B6B6B` → `--teal`
-- Amber `#E8943A` → `--amber`
-- Charcoal `#1E2A2A` → `--dark`
-- Cream `#F7F5F2` → `--bg`
+- Teal `#1B6B6B` · Amber `#E8943A` · Charcoal `#1E2A2A` · Cream `#F7F5F2`
 - Headings: Plus Jakarta Sans · Body: Inter
-- Logo mark: `assets/logo-mark.svg`
+- Logo mark: `public/logo-mark.svg`
 
-Wordmark pattern: `Field<span class="logo-bourne">bourne</span> Digital`
+## Pages (React routes)
 
-## Editing conventions
-
-- Copy new nav/footer blocks from an existing page; keep links consistent.
-- Prefer CSS classes over inline styles except for one-off page tweaks.
-- Put URLs and contact details in `site-config.js`, not hard-coded in multiple files.
-- Contact form uses Formspree when `formEndpoint` is set; otherwise falls back to `mailto:`.
-- Client login footer link reads `tvmagicAppUrl` from config (see `index.html`).
+| Route | Purpose |
+|------|---------|
+| `/` | Homepage (lead catcher) |
+| `/about` | Founder / company story |
+| `/fieldbourne` | Companion case study (`/tvmagic` redirects here) |
+| `/privacy`, `/terms` | Legal |
 
 ## Local preview
 
@@ -57,14 +45,12 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:8080](http://localhost:8080).
-
 ## Deploy
 
-Push to `main` → `.github/workflows/pages.yml` deploys the repo root to GitHub Pages.
+Push to `main` → `.github/workflows/pages.yml` builds and deploys `dist/`.
 
-Custom domain: `fieldbournedigital.com.au` via `CNAME`.
+Custom domain: `fieldbournedigital.com.au` via `public/CNAME`.
 
 ## Scope for changes
 
-Keep diffs small. This site is marketing copy and layout, not the job-management product. Feature work for FieldBourne Companion belongs in `tv-magic-companion`.
+Keep diffs focused. Feature work for FieldBourne Companion belongs in `tv-magic-companion`.

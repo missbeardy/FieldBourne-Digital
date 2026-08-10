@@ -9,19 +9,21 @@ Read `BRANDING.md` before any copy changes, then `AGENTS.md` and `README.md`.
 
 ## What this repo is
 
-Static marketing site (HTML/CSS/JS, no bundler). Deployed from repo root via GitHub Pages. Product app lives in [tv-magic-companion](https://github.com/missbeardy/tv-magic-companion) — link only, do not embed app code here.
+Vite + React + TypeScript + Tailwind marketing site. Deployed via GitHub Pages from `dist/`. Product app lives in [tv-magic-companion](https://github.com/missbeardy/tv-magic-companion) — link only, do not embed app code here.
 
 ## Key files
 
-- `assets/site-config.js` — `formEndpoint`, `tvmagicAppUrl`, `contactEmail`, `siteUrl`
-- `assets/styles.css` — brand tokens (`--teal`, `--amber`, `--dark`, `--bg`)
-- `assets/site.js` — contact form + homepage ticker
+- `src/config/site.ts` — `formEndpoint`, `tvmagicAppUrl`, `contactEmail`, `siteUrl`
+- `src/index.css` — brand tokens in `@theme` (exact FieldBourne hex values)
+- `src/pages/` — Home, About, Fieldbourne case study, legal
+- `src/components/motion.tsx` — FadeIn / Stagger with reduced-motion support
+- `legacy/` — previous static HTML site (reference only)
 
 ## When editing
 
-- Match existing page structure (nav, footer, font links, `styles.css`).
-- Use config for external URLs; avoid duplicating `admin@fieldbournedigital.com.au` or app URLs.
+- Keep brand colours exact: teal `#1B6B6B`, amber `#E8943A`, cream `#F7F5F2`, charcoal `#1E2A2A`.
+- Use `site.ts` for external URLs; avoid hard-coding contact email or app URLs.
 - Follow `BRANDING.md` for voice, banned words, and the Section 8 self-check.
 - Never use em dashes in site copy. Use commas, full stops, or colons instead.
 - Australian English, trade-business tone, no generic SaaS jargon.
-- Minimal scope: no new frameworks, build tools, or dependencies unless explicitly requested.
+- Prefer intentional Motion moments over decorative noise; always respect `prefers-reduced-motion`.
