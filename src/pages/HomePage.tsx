@@ -4,6 +4,7 @@ import { ContactForm } from '../components/ContactForm';
 import { FadeIn, Stagger, StaggerItem } from '../components/motion';
 import { Showcase } from '../components/Showcase';
 import { SITE_CONFIG } from '../config/site';
+import { usePageMeta } from '../hooks/usePageMeta';
 
 const howSteps = [
   ['Enquiry comes in', 'Customer calls, texts, emails, leaves a voicemail, or messages on Facebook.'],
@@ -56,6 +57,10 @@ const faqs = [
 
 export function HomePage() {
   const reduce = useReducedMotion();
+  usePageMeta(
+    'Missed Call Follow-Up for Aussie Tradies | FieldBourne',
+    'Turn missed calls and messages into organised leads, fast follow-up, quotes and booked jobs. FieldBourne sits beside ServiceM8 or Tradify. No full software swap.',
+  );
 
   return (
     <>

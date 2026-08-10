@@ -1,6 +1,12 @@
 import { SITE_CONFIG } from '../config/site';
+import { usePageMeta } from '../hooks/usePageMeta';
 
 export function PrivacyPage() {
+  usePageMeta(
+    'Privacy Policy | FieldBourne Digital',
+    'How FieldBourne Digital collects and uses personal information when you visit our website or contact us.',
+  );
+
   return (
     <div className="px-[5vw] py-16">
       <div className="mx-auto max-w-3xl space-y-4 text-mid">
