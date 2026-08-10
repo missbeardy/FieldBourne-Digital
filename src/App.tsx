@@ -35,8 +35,9 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/fieldbourne" element={<FieldbournePage />} />
-          <Route path="/tvmagic" element={<Navigate to="/fieldbourne" replace />} />
+          <Route path="/case-study/tvmagic" element={<FieldbournePage />} />
+          <Route path="/fieldbourne" element={<Navigate to="/case-study/tvmagic" replace />} />
+          <Route path="/tvmagic" element={<Navigate to="/case-study/tvmagic" replace />} />
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/terms" element={<TermsPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />

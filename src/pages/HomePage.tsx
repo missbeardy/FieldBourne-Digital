@@ -215,18 +215,16 @@ export function HomePage() {
       <section className="px-[5vw] py-16">
         <div className="mx-auto max-w-6xl">
           <FadeIn className="rounded-2xl border border-grey bg-teal-lt p-8 md:p-10">
-            <span className="mb-3 inline-block rounded bg-amber-lt px-2.5 py-1 font-heading text-xs font-bold text-amber">
-              Live client: FieldBourne Companion
-            </span>
-            <h3 className="mb-3 max-w-3xl font-heading text-2xl font-extrabold text-dark">
-              A TV aerial franchise: from missed calls, voicemail and SMS, to organised leads on FieldBourne Companion
-            </h3>
-            <p className="mb-5 max-w-3xl text-mid">
-              Every lead captured via SMS, email and missed call. Follow-up that does not rely on memory. Jobs assigned with one click. This is what the front door looks like in a real trade business.
-            </p>
-            <Link to="/fieldbourne" className="font-heading font-semibold text-teal no-underline hover:text-teal-hover">
-              Read the case study →
-            </Link>
+              <div className="mb-3 font-heading text-xs font-bold uppercase tracking-wider text-amber">Live client</div>
+              <h3 className="mb-3 max-w-3xl font-heading text-2xl font-extrabold text-dark">
+                TVMagic: from manual SMS forwards to auto-assigned leads on FieldBourne Companion
+              </h3>
+              <p className="mb-5 max-w-3xl text-mid">
+                Nick, TVMagic Franchisee, was manually forwarding around 15 leads a day. Now SMS, voicemail and email land in the app and assign to the right tech.
+              </p>
+              <Link to="/case-study/tvmagic" className="font-heading font-semibold text-teal no-underline hover:text-teal-hover">
+                Read the case study →
+              </Link>
           </FadeIn>
         </div>
       </section>
@@ -257,9 +255,9 @@ export function HomePage() {
           <FadeIn>
             <div className="mb-3 font-heading text-xs font-bold uppercase tracking-wider text-amber">From a real client</div>
             <h2 className="mb-3 font-heading text-3xl font-extrabold text-dark">
-              Not Darren. {SITE_CONFIG.clientVideoFirstName}, franchise owner.
+              Not Darren. {SITE_CONFIG.clientVideoFirstName}, TVMagic Franchisee.
             </h2>
-            <p className="mb-6 text-mid">Our first franchise client on FieldBourne Companion. Full client video coming soon.</p>
+            <p className="mb-6 text-mid">Our first live client on FieldBourne Companion. Full client video coming soon.</p>
             <div className="aspect-video overflow-hidden rounded-xl border border-grey bg-dark/5">
               <iframe
                 className="h-full w-full"
@@ -271,9 +269,9 @@ export function HomePage() {
               />
             </div>
             <p className="mt-6 text-lg font-medium text-dark">
-              “We saved about 12 hours a week on admin. Leads land in one place and I book from my phone.”
+              “Within 90 days I was doing zero lead allocation. Leads land in the app and assign themselves.”
             </p>
-            <p className="mt-2 text-sm text-mid">TV aerial franchise · FieldBourne Companion · first live client</p>
+            <p className="mt-2 text-sm text-mid">Nick · TVMagic Franchisee · FieldBourne Companion</p>
           </FadeIn>
         </div>
       </section>

@@ -6,17 +6,18 @@ const linkClass = ({ isActive }: { isActive: boolean }) =>
 export function Nav() {
   return (
     <nav className="sticky top-0 z-50 flex h-16 items-center justify-between border-b border-grey bg-cream px-[5vw]">
-      <Link to="/" className="inline-flex items-center gap-2.5 no-underline">
-        <img src="/logo-mark.svg" alt="" width={28} height={28} />
-        <span className="font-heading text-[1.15rem] font-extrabold tracking-tight text-teal whitespace-nowrap">
-          Field<span className="text-amber">bourne</span> Digital
-        </span>
+      <Link to="/" className="inline-flex items-center no-underline" aria-label="FieldBourne Digital home">
+        <img
+          src="/logo-current.png"
+          alt="FieldBourne Digital"
+          className="h-10 w-auto object-contain sm:h-11"
+        />
       </Link>
 
       <ul className="hidden items-center gap-8 list-none md:flex">
         <li><a href="/#how" className="text-sm font-medium text-mid no-underline hover:text-dark">How it works</a></li>
         <li><a href="/#beside" className="text-sm font-medium text-mid no-underline hover:text-dark">Beside your tools</a></li>
-        <li><NavLink to="/fieldbourne" className={linkClass}>FieldBourne</NavLink></li>
+        <li><NavLink to="/case-study/tvmagic" className={linkClass}>Case study</NavLink></li>
         <li><NavLink to="/about" className={linkClass}>About</NavLink></li>
         <li>
           <a

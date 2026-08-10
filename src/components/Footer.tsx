@@ -4,11 +4,13 @@ import { SITE_CONFIG } from '../config/site';
 export function Footer() {
   return (
     <footer className="flex flex-col items-center gap-4 border-t border-grey/40 bg-dark px-[5vw] py-10 text-center md:flex-row md:justify-between md:text-left">
-      <div>
-        <div className="font-heading text-lg font-extrabold text-white">
-          Field<span className="text-amber">bourne</span> Digital
-        </div>
-        <p className="mt-1 text-sm text-grey">© 2026 FieldBourne Digital · ABN {SITE_CONFIG.abn}</p>
+      <div className="flex flex-col items-center gap-3 md:items-start">
+        <img
+          src="/logo-current.png"
+          alt="FieldBourne Digital"
+          className="h-12 w-auto rounded-md bg-white object-contain p-1.5"
+        />
+        <p className="text-sm text-grey">© 2026 FieldBourne Digital · ABN {SITE_CONFIG.abn}</p>
       </div>
       <ul className="flex list-none flex-wrap justify-center gap-5">
         <li><Link to="/privacy" className="text-sm text-grey no-underline hover:text-white">Privacy</Link></li>

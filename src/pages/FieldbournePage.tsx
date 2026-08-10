@@ -2,33 +2,47 @@ import { FadeIn, Stagger, StaggerItem } from '../components/motion';
 import { Showcase } from '../components/Showcase';
 import { usePageMeta } from '../hooks/usePageMeta';
 
-const problems = [
-  ['Missed while on the tools', 'Phone, SMS, email and web forms landed while techs were working. Callbacks were late or forgotten.'],
-  ['Jobs in spreadsheets', 'No single board for what was open, assigned or overdue across the team.'],
-  ['Owner flying blind', 'Chasing technicians for updates instead of seeing live status from any device.'],
+const beforeProblems = [
+  [
+    'Website enquiries',
+    'Customer contact form became an email, then an SMS to Nick. He had to read it and manually forward it to the right technician.',
+  ],
+  [
+    'Missed calls on 3CX',
+    'If the first person missed the call, voicemail lived on desktop only. Someone had to listen, write it up, and send it on by hand.',
+  ],
+  [
+    'Fifteen leads a day',
+    'Volume was high enough that manual allocation and callbacks became a daily grind, not a side task.',
+  ],
 ];
 
-const built = [
-  ['Lead board', 'Status tracking so new enquiries do not disappear into texts and voicemail.'],
-  ['Missed-call capture', 'Inbound SMS, email and missed calls become organised leads automatically.'],
-  ['Booking that assigns', 'Calendar booking creates and assigns jobs without retyping the same details.'],
-  ['Team view', 'Manager sees every tech pipeline in one place, not five group chats.'],
-  ['Follow-up and reviews', 'SMS follow-ups and Google review requests that do not rely on memory.'],
-  ['Quote to complete', 'Quote composer and job completion workflows that keep the job moving.'],
+const nowFlow = [
+  [
+    'SMS',
+    'Messages hit a Twilio number via automation, land as a lead in the app, and auto-assign to the best-suited technician based on franchise rules like job capability and location.',
+  ],
+  [
+    'Voicemail',
+    'Voicemail is auto-forwarded by email to an API that extracts it, adds a summary and transcription in the app, then runs automated assignment.',
+  ],
+  [
+    'Email',
+    'Forwarded inbox mail is extracted and pushed into the app as an organised lead, ready for follow-up.',
+  ],
 ];
 
-const tools = [
-  ['Twilio', 'SMS & phone'],
-  ['Email', 'Inbound parsing'],
-  ['Calendar', 'Bookings'],
-  ['Stripe', 'Franchise billing'],
-  ['Google', 'Review links'],
+const outcomes = [
+  ['Zero manual allocation', 'Within 90 days, Nick no longer allocates and assigns leads by hand. That work is automated.'],
+  ['~12 hours / week', 'Placeholder outcome: roughly 12 hours a week back from admin grind. To be confirmed on recording.'],
+  ['Ack on arrival', 'Placeholder outcome: customer is acknowledged as soon as the lead comes in.'],
+  ['~45 minutes', 'Placeholder outcome: assignments and callbacks move within about 45 minutes. To be confirmed on recording.'],
 ];
 
 export function FieldbournePage() {
   usePageMeta(
-    'FieldBourne Companion Case Study | FieldBourne Digital',
-    'How a TV aerial franchise went from missed calls and spreadsheets to FieldBourne Companion: organised leads, follow-up and live job status.',
+    'TVMagic Case Study | FieldBourne Companion',
+    'How Nick at TVMagic stopped manually forwarding leads. Missed calls, SMS and email now land in FieldBourne Companion and auto-assign to the right tech.',
   );
 
   return (
@@ -37,14 +51,15 @@ export function FieldbournePage() {
         <div className="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-2 md:gap-14">
           <FadeIn>
             <div className="mb-4 inline-block rounded bg-amber-lt px-3 py-1 font-heading text-xs font-bold uppercase tracking-wider text-amber">
-              Case study
+              Case study · TVMagic
             </div>
             <h1 className="mb-4 font-heading text-[clamp(2.2rem,4vw,3.2rem)] font-extrabold tracking-tight text-dark">
-              FieldBourne Companion
+              From manual SMS forwards to auto-assigned leads
             </h1>
-            <p className="mb-6 max-w-xl text-lg leading-relaxed text-mid">
-              A national TV aerial and satellite franchise. FieldBourne Digital's first live deployment, and the proof that the front door works.
+            <p className="mb-3 max-w-xl text-lg leading-relaxed text-mid">
+              Nick, TVMagic Franchisee, was the bottleneck between every enquiry and every technician. FieldBourne Companion became the front door.
             </p>
+            <p className="mb-6 text-sm text-mid">FieldBourne Digital's first live deployment.</p>
             <a href="/#contact" className="inline-block rounded-lg bg-teal px-5 py-3 font-heading text-sm font-bold text-white no-underline hover:bg-teal-hover">
               Book a free chat →
             </a>
@@ -58,16 +73,16 @@ export function FieldbournePage() {
       <section className="px-[5vw] py-16 md:py-20">
         <div className="mx-auto max-w-6xl">
           <FadeIn>
-            <div className="mb-3 font-heading text-xs font-bold uppercase tracking-wider text-amber">The problem</div>
+            <div className="mb-3 font-heading text-xs font-bold uppercase tracking-wider text-amber">Before</div>
             <h2 className="mb-4 max-w-3xl font-heading text-3xl font-extrabold text-dark">
-              Enquiries came in. Follow-up did not keep up.
+              Every lead ran through Nick by hand
             </h2>
             <p className="mb-10 max-w-3xl text-mid">
-              Leads arrived while technicians were on the tools. Jobs lived in spreadsheets. The owner had no clear view of what was open, assigned or overdue. Missed calls and slow follow-up meant jobs slipped away.
+              Around 15 leads a day. Multiple channels. No single place that turned an enquiry into an assigned job without Nick in the middle.
             </p>
           </FadeIn>
           <Stagger className="grid gap-4 md:grid-cols-3">
-            {problems.map(([title, body]) => (
+            {beforeProblems.map(([title, body]) => (
               <StaggerItem key={title} className="rounded-xl border border-grey bg-white p-6">
                 <h3 className="mb-2 font-heading text-lg font-bold text-dark">{title}</h3>
                 <p className="text-sm leading-relaxed text-mid">{body}</p>
@@ -80,18 +95,18 @@ export function FieldbournePage() {
       <section className="bg-white px-[5vw] py-16 md:py-20">
         <div className="mx-auto max-w-6xl">
           <FadeIn>
-            <div className="mb-3 font-heading text-xs font-bold uppercase tracking-wider text-amber">What we built</div>
+            <div className="mb-3 font-heading text-xs font-bold uppercase tracking-wider text-amber">Now</div>
             <h2 className="mb-4 max-w-3xl font-heading text-3xl font-extrabold text-dark">
-              Front door for enquiries. Board for the work.
+              Enquiries land in the app and assign themselves
             </h2>
             <p className="mb-10 max-w-3xl text-mid">
-              FieldBourne Companion is configured for aerial and satellite work. It catches new enquiries, keeps follow-up moving, and gives the owner a live view across the team.
+              FieldBourne Companion captures the channel, organises the lead, and routes it using TVMagic franchise rules.
             </p>
           </FadeIn>
-          <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {built.map(([title, body]) => (
+          <Stagger className="grid gap-4 md:grid-cols-3">
+            {nowFlow.map(([title, body]) => (
               <StaggerItem key={title} className="rounded-xl border border-grey bg-cream p-6">
-                <h3 className="mb-2 font-heading text-base font-bold text-dark">{title}</h3>
+                <h3 className="mb-2 font-heading text-lg font-bold text-dark">{title}</h3>
                 <p className="text-sm leading-relaxed text-mid">{body}</p>
               </StaggerItem>
             ))}
@@ -102,19 +117,19 @@ export function FieldbournePage() {
       <section className="px-[5vw] py-16 md:py-20">
         <div className="mx-auto max-w-6xl">
           <FadeIn>
-            <div className="mb-3 font-heading text-xs font-bold uppercase tracking-wider text-amber">Connected tools</div>
+            <div className="mb-3 font-heading text-xs font-bold uppercase tracking-wider text-amber">Outcomes</div>
             <h2 className="mb-4 max-w-3xl font-heading text-3xl font-extrabold text-dark">
-              Wired to how they already work
+              Within 90 days, lead allocation stopped being Nick's job
             </h2>
-            <p className="mb-8 max-w-3xl text-mid">
-              The point is not a forced migration. It is catching the enquiry before it disappears, then moving it through booking and follow-up.
+            <p className="mb-10 max-w-3xl text-sm text-mid">
+              Some figures below are early placeholders until Nick's recording and final numbers are locked in.
             </p>
           </FadeIn>
-          <Stagger className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-5">
-            {tools.map(([name, role]) => (
-              <StaggerItem key={name} className="rounded-xl border border-grey bg-white px-4 py-5 text-center">
-                <div className="font-heading text-sm font-extrabold text-dark">{name}</div>
-                <div className="mt-1 text-xs text-mid">{role}</div>
+          <Stagger className="grid gap-4 sm:grid-cols-2">
+            {outcomes.map(([title, body]) => (
+              <StaggerItem key={title} className="rounded-xl border border-grey bg-white p-6">
+                <h3 className="mb-2 font-heading text-lg font-bold text-teal">{title}</h3>
+                <p className="text-sm leading-relaxed text-mid">{body}</p>
               </StaggerItem>
             ))}
           </Stagger>
@@ -123,15 +138,37 @@ export function FieldbournePage() {
 
       <section className="bg-white px-[5vw] py-16 md:py-20">
         <div className="mx-auto max-w-6xl">
-          <FadeIn className="rounded-2xl border border-grey bg-teal-lt p-8 md:p-10">
-            <div className="mb-3 font-heading text-xs font-bold uppercase tracking-wider text-amber">The result</div>
-            <h2 className="mb-4 max-w-3xl font-heading text-3xl font-extrabold text-dark">
-              Missed calls become leads. Jobs get assigned. The owner sees the board.
-            </h2>
-            <p className="max-w-3xl text-mid">
-              Missed calls are captured as leads automatically. Jobs are assigned with one click. The owner checks live job status from any device, with no more chasing technicians for updates.
+          <FadeIn className="rounded-2xl border border-grey bg-cream p-8 md:p-10">
+            <div className="mb-3 font-heading text-xs font-bold uppercase tracking-wider text-amber">Day in the life</div>
+            <h2 className="mb-4 font-heading text-2xl font-extrabold text-dark md:text-3xl">On the tools, still on top of the funnel</h2>
+            <p className="max-w-3xl text-lg leading-relaxed text-dark">
+              “As a technician on the tools, leads come in and I can track where they are in the funnel and book via the app. Notifications hit my phone by app notification and SMS. No need to find my laptop. I can update when I am out of range. My leads, calendar and bookings are all in one spot.”
             </p>
+            <p className="mt-4 text-sm text-mid">How the team works day to day on FieldBourne Companion</p>
           </FadeIn>
+        </div>
+      </section>
+
+      <section className="px-[5vw] py-16 md:py-20">
+        <div className="mx-auto max-w-6xl">
+          <FadeIn>
+            <div className="mb-3 font-heading text-xs font-bold uppercase tracking-wider text-amber">Who uses it</div>
+            <h2 className="mb-8 font-heading text-3xl font-extrabold text-dark">Franchisee overview. Technician daily driver.</h2>
+          </FadeIn>
+          <Stagger className="grid gap-4 md:grid-cols-2">
+            <StaggerItem className="rounded-xl border border-grey bg-white p-6">
+              <h3 className="mb-2 font-heading text-lg font-bold text-dark">Nick, TVMagic Franchisee</h3>
+              <p className="text-sm leading-relaxed text-mid">
+                Sees everyone's workload and calendar. Stops being the manual switchboard for 15 leads a day.
+              </p>
+            </StaggerItem>
+            <StaggerItem className="rounded-xl border border-grey bg-white p-6">
+              <h3 className="mb-2 font-heading text-lg font-bold text-dark">Technicians, every day</h3>
+              <p className="text-sm leading-relaxed text-mid">
+                Phone, tablet and desktop when needed. Leads, bookings and updates without hunting for a laptop between jobs.
+              </p>
+            </StaggerItem>
+          </Stagger>
         </div>
       </section>
 
@@ -142,7 +179,7 @@ export function FieldbournePage() {
             Book a free chat and walk through Companion live
           </h2>
           <p className="mx-auto mb-8 max-w-xl text-grey">
-            We will show you FieldBourne Companion, then map what the same front-door approach would look like for your trade.
+            We will show you how TVMagic runs today, then map what the same front-door approach would look like for your trade. Nick's full recording will land here when it is ready.
           </p>
           <a href="/#contact" className="inline-block rounded-lg bg-teal px-6 py-3 font-heading font-bold text-white no-underline hover:bg-teal-hover">
             Book a free chat →

@@ -12,7 +12,7 @@ export function Showcase() {
           Live now
         </span>
         <div className="font-heading text-lg font-extrabold">FieldBourne Companion</div>
-        <p className="mt-1 text-sm text-white/85">A TV aerial franchise catching leads on FieldBourne today</p>
+        <p className="mt-1 text-sm text-white/85">TVMagic · Nick, franchisee · live on FieldBourne</p>
         <div className="mt-4 grid grid-cols-3 gap-3">
           {[
             ['3', 'new leads today'],
@@ -62,7 +62,7 @@ export function Showcase() {
 
       <div className="flex items-center justify-between border-t border-white/10 px-5 py-3">
         <p className="text-xs text-grey">Real workflow from our first live client.</p>
-        <Link to="/fieldbourne" className="rounded-md bg-amber px-3 py-1.5 text-xs font-bold text-white no-underline hover:opacity-90">
+        <Link to="/case-study/tvmagic" className="rounded-md bg-amber px-3 py-1.5 text-xs font-bold text-white no-underline hover:opacity-90">
           See the case study →
         </Link>
       </div>

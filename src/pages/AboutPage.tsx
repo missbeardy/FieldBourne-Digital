@@ -98,7 +98,7 @@ export function AboutPage() {
             {[
               ['Catch the leak', 'Missed calls, SMS, email, voicemail and Facebook become organised lead cards before the customer rings someone else.'],
               ['Keep your tools', 'No major rip-and-replace of ServiceM8, Tradify, calendars or accounting. Sit beside what already runs the job.'],
-              ['One live proof', 'Our first client is a TV aerial franchise on FieldBourne Companion. Specific, real, and working today.'],
+              ['One live proof', 'Nick at TVMagic runs FieldBourne Companion today. Specific, real, and working.'],
             ].map(([title, body]) => (
               <StaggerItem key={title} className="rounded-xl border border-grey bg-cream p-6">
                 <h3 className="mb-2 font-heading text-lg font-bold text-dark">{title}</h3>
@@ -107,7 +107,7 @@ export function AboutPage() {
             ))}
           </Stagger>
           <FadeIn className="mt-8">
-            <Link to="/fieldbourne" className="font-heading font-semibold text-teal no-underline hover:text-teal-hover">
+            <Link to="/case-study/tvmagic" className="font-heading font-semibold text-teal no-underline hover:text-teal-hover">
               Read the FieldBourne Companion case study →
             </Link>
           </FadeIn>
