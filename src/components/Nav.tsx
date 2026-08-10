@@ -1,4 +1,5 @@
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { BrandLogo } from './BrandLogo';
 
 const linkClass = ({ isActive }: { isActive: boolean }) =>
   `text-sm font-medium transition-colors ${isActive ? 'text-dark' : 'text-mid hover:text-dark'}`;
@@ -6,13 +7,7 @@ const linkClass = ({ isActive }: { isActive: boolean }) =>
 export function Nav() {
   return (
     <nav className="sticky top-0 z-50 flex h-16 items-center justify-between border-b border-grey bg-cream px-[5vw]">
-      <Link to="/" className="inline-flex items-center no-underline" aria-label="FieldBourne Digital home">
-        <img
-          src="/logo-current.png"
-          alt="FieldBourne Digital"
-          className="h-10 w-auto object-contain sm:h-11"
-        />
-      </Link>
+      <BrandLogo variant="nav" />
 
       <ul className="hidden items-center gap-8 list-none md:flex">
         <li><a href="/#how" className="text-sm font-medium text-mid no-underline hover:text-dark">How it works</a></li>

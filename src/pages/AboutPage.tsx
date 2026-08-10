@@ -27,6 +27,13 @@ export function AboutPage() {
       <section className="border-b border-grey/50 px-[5vw] py-16 md:py-20">
         <div className="mx-auto max-w-6xl">
           <FadeIn>
+            <div className="mb-8 inline-block rounded-2xl border border-grey bg-white p-5 shadow-sm">
+              <img
+                src="/logo-current.png"
+                alt="FieldBourne Digital"
+                className="h-auto w-full max-w-[200px] object-contain md:max-w-[240px]"
+              />
+            </div>
             <div className="mb-4 inline-block rounded bg-amber-lt px-3 py-1 font-heading text-xs font-bold uppercase tracking-wider text-amber">
               About
             </div>
