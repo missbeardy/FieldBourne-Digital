@@ -1,0 +1,437 @@
+{
+  "business": {
+    "name": "Sorrel & Slate",
+    "ownerFirstName": "Mel",
+    "area": "Boonah, Scenic Rim"
+  },
+  "chips": [
+    "30 people, Saturday, 2pm?",
+    "What's on the lunch menu?",
+    "Is your produce local?"
+  ],
+  "intents": [
+    {
+      "id": "function-enquiry",
+      "keywords": [
+        "function",
+        "functions",
+        "party",
+        "birthday",
+        "christmas",
+        "wake",
+        "shower",
+        "wedding",
+        "celebration",
+        "event",
+        "group",
+        "people",
+        "guests",
+        "saturday",
+        "sunday",
+        "friday",
+        "thursday",
+        "wednesday",
+        "1pm",
+        "2pm",
+        "3pm",
+        "11am",
+        "midday",
+        "function room",
+        "private room",
+        "hire room"
+      ],
+      "answer": "Yes, we do functions for groups up to 40, with the kitchen next door. Tell me the date, how many are coming and roughly when, and I'll pass it to Mel. She confirms by text or phone, usually within a day.",
+      "startLead": true
+    },
+    {
+      "id": "capacity",
+      "keywords": [
+        "capacity",
+        "seat",
+        "seats",
+        "seating",
+        "fit",
+        "many",
+        "40",
+        "forty",
+        "big",
+        "room size",
+        "how big",
+        "tables"
+      ],
+      "answer": "The function room seats up to 40 at long tables. For a smaller group it still works, because Mel sets the tables to suit. Over 40 and she can talk through a standing format instead.",
+      "startLead": false
+    },
+    {
+      "id": "function-food",
+      "keywords": [
+        "catering",
+        "grazing",
+        "platter",
+        "platters",
+        "morning tea",
+        "high tea",
+        "afternoon tea",
+        "set menu",
+        "long lunch",
+        "food for group",
+        "feed"
+      ],
+      "answer": "For groups there are three formats: morning tea (sweet and savoury plates), a long lunch (a set menu served family style) and grazing tables of local cheese, bread, pickles and fruit. Mel adjusts each one to the group and to any allergies.",
+      "startLead": false
+    },
+    {
+      "id": "function-cost",
+      "keywords": [
+        "deposit",
+        "hire",
+        "fee",
+        "quote",
+        "minimum spend",
+        "per head",
+        "quote me",
+        "package",
+        "packages"
+      ],
+      "answer": "Pricing for functions is per head and depends on the format, so Mel quotes each one. There is a small deposit to hold the date, and no room hire fee on weekday mornings. Leave your details and she'll send a quote.",
+      "startLead": true
+    },
+    {
+      "id": "bookings",
+      "keywords": [
+        "book",
+        "booking",
+        "bookings",
+        "reserve",
+        "reservation",
+        "reservations",
+        "table"
+      ],
+      "answer": "For tables of up to 8, just walk in. For 9 or more, tell me the day and the numbers and I'll pass it to Mel so the kitchen is ready.",
+      "startLead": false
+    },
+    {
+      "id": "hours",
+      "keywords": [
+        "open",
+        "opening",
+        "hours",
+        "close",
+        "closing",
+        "closed",
+        "trading",
+        "when are you open",
+        "sunday",
+        "monday",
+        "tuesday",
+        "weekend"
+      ],
+      "answer": "We're open Wednesday to Friday from 7 am to 2 pm, and Saturday and Sunday from 7 am to 1 pm. Monday and Tuesday we're closed, apart from pre-booked functions.",
+      "startLead": false
+    },
+    {
+      "id": "changeover",
+      "keywords": [
+        "breakfast end",
+        "breakfast finish",
+        "breakfast finishes",
+        "stop serving",
+        "changeover",
+        "switch",
+        "after 11",
+        "11 30",
+        "1130",
+        "still breakfast",
+        "breakfast till",
+        "breakfast until"
+      ],
+      "answer": "Breakfast is served until 11:30 am, then the kitchen switches to the lunch card. The menu on this page changes with your clock, so it shows whichever is on right now.",
+      "startLead": false
+    },
+    {
+      "id": "breakfast",
+      "keywords": [
+        "breakfast",
+        "brekkie",
+        "brunch",
+        "eggs",
+        "omelette",
+        "porridge",
+        "pikelets",
+        "toast",
+        "morning",
+        "early"
+      ],
+      "answer": "Breakfast runs from 7 to 11:30: eggs any way on sourdough, a sorrel and ricotta omelette, roast pumpkin on rye, pikelets with lemon curd, and the Slate Board for a big appetite. The full card is in the menu section above.",
+      "startLead": false
+    },
+    {
+      "id": "lunch",
+      "keywords": [
+        "lunch",
+        "soup",
+        "toastie",
+        "pie",
+        "tart",
+        "salad",
+        "sandwich",
+        "ploughman",
+        "afternoon",
+        "midday",
+        "noon",
+        "dessert",
+        "cake"
+      ],
+      "answer": "From 11:30 it's the lunch card: soup with bread, a ham and pickle toastie, a slow-cooked beef pie, a pumpkin and sage tart, a garden salad bowl, and a ploughman's board. Lemon tart and orange cake for afterwards.",
+      "startLead": false
+    },
+    {
+      "id": "dietary",
+      "keywords": [
+        "vegan",
+        "vegetarian",
+        "gluten",
+        "dairy",
+        "allergy",
+        "allergies",
+        "coeliac",
+        "celiac",
+        "nut",
+        "nuts",
+        "intolerance",
+        "dietary",
+        "gf"
+      ],
+      "answer": "Plenty of the menu is vegetarian, and the garden salad bowl and orange cake are gluten free. The kitchen uses wheat, eggs, dairy and nuts, so please mention any allergy when you order and the team will adjust the plate or tell you straight if they cannot. Vegan options are limited, so ask on the day.",
+      "startLead": false
+    },
+    {
+      "id": "local-produce",
+      "keywords": [
+        "local",
+        "produce",
+        "farm",
+        "farms",
+        "grown",
+        "seasonal",
+        "season",
+        "sorrel",
+        "suppliers",
+        "fresh",
+        "organic",
+        "ingredients"
+      ],
+      "answer": "The menu follows what nearby growers have that week: eggs from a small farm close by, pumpkin and beetroot in season, lemons for the curd and the tart. Sorrel is the sharp green leaf in the omelette and the green sauce. Some plates change without notice for that reason.",
+      "startLead": false
+    },
+    {
+      "id": "coffee",
+      "keywords": [
+        "coffee",
+        "tea",
+        "latte",
+        "flat white",
+        "cappuccino",
+        "espresso",
+        "milk",
+        "oat",
+        "soy",
+        "almond",
+        "decaf",
+        "chai",
+        "hot chocolate",
+        "drinks"
+      ],
+      "answer": "There's espresso coffee all day with dairy, oat or soy milk, plus a pot of tea, chai and hot chocolate. Apple juice is cold-pressed. A flat white is $4.80.",
+      "startLead": false
+    },
+    {
+      "id": "location",
+      "keywords": [
+        "where",
+        "address",
+        "find",
+        "located",
+        "location",
+        "directions",
+        "boonah",
+        "street",
+        "drive",
+        "map",
+        "far"
+      ],
+      "answer": "We're in Boonah, in the Scenic Rim, a comfortable drive from Ipswich and about an hour and a half from Brisbane. There's parking out the front and around the corner. This is a demo site, so the street address is left off.",
+      "startLead": false
+    },
+    {
+      "id": "access",
+      "keywords": [
+        "parking",
+        "park",
+        "wheelchair",
+        "accessible",
+        "access",
+        "pram",
+        "stroller",
+        "step",
+        "steps",
+        "stairs",
+        "toilet",
+        "toilets"
+      ],
+      "answer": "Level entry from the footpath, so wheelchairs and prams roll straight in. There's an accessible toilet, and parking out the front and around the corner.",
+      "startLead": false
+    },
+    {
+      "id": "dogs-kids",
+      "keywords": [
+        "dog",
+        "dogs",
+        "pet",
+        "pets",
+        "puppy",
+        "kid",
+        "kids",
+        "child",
+        "children",
+        "highchair",
+        "baby",
+        "toddler"
+      ],
+      "answer": "Well-behaved dogs are welcome on the front verandah, with a water bowl. Kids are very welcome inside, with a highchair, a smaller serve of the eggs, and a babyccino.",
+      "startLead": false
+    },
+    {
+      "id": "takeaway",
+      "keywords": [
+        "takeaway",
+        "take away",
+        "pickup",
+        "pick up",
+        "takeout",
+        "order ahead",
+        "to go",
+        "delivery"
+      ],
+      "answer": "Coffee, toasties, pies and cake are all available to take away. For a group order ring ahead and it will be ready when you arrive. There's no delivery.",
+      "startLead": false
+    },
+    {
+      "id": "payment",
+      "keywords": [
+        "card",
+        "cash",
+        "eftpos",
+        "pay",
+        "payment",
+        "split",
+        "bill",
+        "visa",
+        "mastercard",
+        "tap"
+      ],
+      "answer": "Card, tap and cash are all fine, and we can split a bill for a group. Function deposits are taken by bank transfer, and Mel sends the details.",
+      "startLead": false
+    },
+    {
+      "id": "contact",
+      "keywords": [
+        "phone",
+        "call",
+        "ring",
+        "email",
+        "contact",
+        "number",
+        "speak",
+        "talk",
+        "mel",
+        "owner",
+        "manager"
+      ],
+      "answer": "You can ring the cafe on (07) 5550 0123 during opening hours, or leave your details here and Mel will call you back. These demo numbers are fictional.",
+      "startLead": true
+    },
+    {
+      "id": "greeting",
+      "keywords": [
+        "hi",
+        "hello",
+        "hey",
+        "g day",
+        "howdy"
+      ],
+      "answer": "G'day. I can help with the menu, hours, local produce, or a function booking for up to 40 people. What would you like to know?",
+      "startLead": false
+    },
+    {
+      "id": "thanks",
+      "keywords": [
+        "thanks",
+        "thank",
+        "cheers",
+        "ta"
+      ],
+      "answer": "Any time. If you'd like Mel to hold a date for a function, just tell me the day and how many are coming.",
+      "startLead": false
+    }
+  ],
+  "fallback": "I'm not sure about that one, and I'd rather not guess. Mel can answer it properly: leave your name and number in the form and she'll get back to you.",
+  "lead": {
+    "fields": [
+      {
+        "id": "name",
+        "label": "Your name",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "mobile",
+        "label": "Mobile number",
+        "type": "tel",
+        "required": true
+      },
+      {
+        "id": "email",
+        "label": "Email (optional)",
+        "type": "email",
+        "required": false
+      },
+      {
+        "id": "date",
+        "label": "Date in mind",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "guests",
+        "label": "Guests",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "start",
+        "label": "Roughly when",
+        "type": "select",
+        "required": false
+      },
+      {
+        "id": "occasion",
+        "label": "The occasion",
+        "type": "select",
+        "required": false
+      },
+      {
+        "id": "notes",
+        "label": "Anything else Mel should know",
+        "type": "textarea",
+        "required": false
+      }
+    ],
+    "confirmation": "Thanks, I've passed that to Mel and she'll get back to you by text or phone, usually within a day. This is a demo, so nothing was actually sent."
+  },
+  "judgeQuestions": [
+    "When does breakfast finish?",
+    "Do you have vegan or gluten free options?",
+    "Can you recommend a good mechanic?"
+  ]
+}

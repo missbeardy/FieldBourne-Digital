@@ -1,0 +1,443 @@
+{
+  "business": {
+    "name": "Lantern Gully Cabins",
+    "ownerFirstName": "Jo",
+    "area": "Rathdowney"
+  },
+  "chips": [
+    "Is the weekend of the 14th free?",
+    "Which cabin suits two people?",
+    "Do I get phone reception?"
+  ],
+  "intents": [
+    {
+      "id": "weekend-2026-10-23",
+      "keywords": [
+        "24th",
+        "weekend 24th",
+        "24th weekend",
+        "24th free",
+        "free 24th",
+        "24 oct",
+        "24 october",
+        "oct 24",
+        "next weekend"
+      ],
+      "answer": "Fri 23 to Sun 25 October. Ironbark is booked. Bottlebrush is free both nights. Spotted Gum is booked. Want me to pass your dates to Jo? She confirms by text.",
+      "startLead": true
+    },
+    {
+      "id": "weekend-2026-10-30",
+      "keywords": [
+        "31st",
+        "weekend 31st",
+        "31st weekend",
+        "31st free",
+        "free 31st",
+        "31 oct",
+        "31 october",
+        "oct 31"
+      ],
+      "answer": "Fri 30 October to Sun 1 November. Ironbark is free both nights. Bottlebrush is booked. Spotted Gum is booked. Want me to pass your dates to Jo? She confirms by text.",
+      "startLead": true
+    },
+    {
+      "id": "weekend-2026-11-06",
+      "keywords": [
+        "7th",
+        "weekend 7th",
+        "7th weekend",
+        "7th free",
+        "free 7th",
+        "7 nov",
+        "7 november",
+        "nov 7"
+      ],
+      "answer": "Fri 6 to Sun 8 November. Ironbark is booked. Bottlebrush is booked. Spotted Gum is free both nights. Want me to pass your dates to Jo? She confirms by text.",
+      "startLead": true
+    },
+    {
+      "id": "weekend-2026-11-13",
+      "keywords": [
+        "14th",
+        "weekend 14th",
+        "14th weekend",
+        "14th free",
+        "free 14th",
+        "14 nov",
+        "14 november",
+        "nov 14"
+      ],
+      "answer": "Fri 13 to Sun 15 November. Ironbark is free both nights. Bottlebrush is booked. Spotted Gum is free on the Saturday night only. Want me to pass your dates to Jo? She confirms by text.",
+      "startLead": true
+    },
+    {
+      "id": "weekend-2026-11-20",
+      "keywords": [
+        "21st",
+        "weekend 21st",
+        "21st weekend",
+        "21st free",
+        "free 21st",
+        "21 nov",
+        "21 november",
+        "nov 21"
+      ],
+      "answer": "Fri 20 to Sun 22 November. Ironbark is booked. Bottlebrush is free both nights. Spotted Gum is booked. Want me to pass your dates to Jo? She confirms by text.",
+      "startLead": true
+    },
+    {
+      "id": "weekend-2026-11-27",
+      "keywords": [
+        "28th",
+        "weekend 28th",
+        "28th weekend",
+        "28th free",
+        "free 28th",
+        "28 nov",
+        "28 november",
+        "nov 28"
+      ],
+      "answer": "Fri 27 to Sun 29 November. Ironbark is free both nights. Bottlebrush is free on the Saturday night only. Spotted Gum is booked. Want me to pass your dates to Jo? She confirms by text.",
+      "startLead": true
+    },
+    {
+      "id": "weekend-2026-12-04",
+      "keywords": [
+        "5th",
+        "weekend 5th",
+        "5th weekend",
+        "5th free",
+        "free 5th",
+        "5 dec",
+        "5 december",
+        "dec 5"
+      ],
+      "answer": "Fri 4 to Sun 6 December. Ironbark is booked. Bottlebrush is booked. Spotted Gum is booked. That weekend is full. I can put your name on the waiting list with Jo.",
+      "startLead": true
+    },
+    {
+      "id": "weekend-2026-12-11",
+      "keywords": [
+        "12th",
+        "weekend 12th",
+        "12th weekend",
+        "12th free",
+        "free 12th",
+        "12 dec",
+        "12 december",
+        "dec 12"
+      ],
+      "answer": "Fri 11 to Sun 13 December. Ironbark is booked. Bottlebrush is booked. Spotted Gum is free both nights. Want me to pass your dates to Jo? She confirms by text.",
+      "startLead": true
+    },
+    {
+      "id": "availability",
+      "keywords": [
+        "weekend",
+        "free",
+        "available",
+        "availability",
+        "vacancy",
+        "vacant",
+        "dates",
+        "date",
+        "calendar",
+        "christmas",
+        "school holidays",
+        "long weekend",
+        "easter",
+        "new year"
+      ],
+      "answer": "I can see the next eight weekends, from 23 October to 13 December. The most room is on the weekends of the 24th, the 14th and the 28th. Long weekends and school holidays fill early. Name a date, like \"the 21st\", and I will check it.",
+      "startLead": false
+    },
+    {
+      "id": "booking",
+      "keywords": [
+        "book",
+        "booking",
+        "reserve",
+        "reservation",
+        "enquire",
+        "enquiry",
+        "hold",
+        "stay"
+      ],
+      "answer": "Happy to start that. Tell me the weekend and how many are coming, and Jo will confirm by text. Nothing is held until she does. You can also text her on 0491 570 158.",
+      "startLead": true
+    },
+    {
+      "id": "price",
+      "keywords": [
+        "price",
+        "prices",
+        "cost",
+        "rate",
+        "rates",
+        "how much",
+        "per night",
+        "afford",
+        "cheap",
+        "expensive",
+        "deposit",
+        "pay",
+        "payment"
+      ],
+      "answer": "Ironbark is from $265 a night, Bottlebrush from $320 and Spotted Gum from $410. Weekends are a two night minimum. Linen, firewood and a bag of kindling are in the price. A 30 percent deposit holds your dates.",
+      "startLead": false
+    },
+    {
+      "id": "cabins",
+      "keywords": [
+        "cabin",
+        "cabins",
+        "which cabin",
+        "sleep",
+        "sleeps",
+        "bed",
+        "bedroom",
+        "bedrooms",
+        "guests",
+        "people",
+        "couple",
+        "romantic",
+        "anniversary",
+        "birthday",
+        "honeymoon",
+        "family",
+        "kids",
+        "children",
+        "child",
+        "baby",
+        "cot",
+        "group",
+        "friends"
+      ],
+      "answer": "Ironbark sleeps two and is the quiet one on the ridge. Bottlebrush sleeps four, down by the creek. Spotted Gum sleeps six, with two bedrooms, and is the one for families. Kids are welcome. Cots and a high chair are on request.",
+      "startLead": false
+    },
+    {
+      "id": "offgrid",
+      "keywords": [
+        "power",
+        "solar",
+        "electricity",
+        "off grid",
+        "off-grid",
+        "charge",
+        "charging",
+        "battery",
+        "lights",
+        "water",
+        "shower",
+        "hot water",
+        "tank",
+        "toilet",
+        "drinking",
+        "fridge"
+      ],
+      "answer": "Power is solar, enough for lights, the fridge and phone charging. Water is rainwater from tanks, with hot showers on gas. The toilets are composting and cleaner than you would guess. Bring a hair dryer if you like, then leave it in the bag.",
+      "startLead": false
+    },
+    {
+      "id": "warmth",
+      "keywords": [
+        "fire",
+        "firepit",
+        "heater",
+        "wood",
+        "firewood",
+        "cold",
+        "winter",
+        "warm",
+        "warmth",
+        "heating",
+        "blanket",
+        "blankets",
+        "freezing"
+      ],
+      "answer": "Every cabin has a wood heater and the firewood is supplied. Spotted Gum also has a firepit out the front. Winter nights drop low in the gully, so the heater and the wool blankets get a workout.",
+      "startLead": false
+    },
+    {
+      "id": "signal",
+      "keywords": [
+        "wifi",
+        "wi-fi",
+        "internet",
+        "signal",
+        "reception",
+        "phone",
+        "coverage",
+        "nbn",
+        "online",
+        "work",
+        "service",
+        "telstra",
+        "optus"
+      ],
+      "answer": "There is no wifi and mobile reception is patchy. You get a bar or two on the ridge near Ironbark and almost nothing down at the creek. That is more or less the idea. Jo keeps one landline-style number for emergencies, written on the fridge.",
+      "startLead": false
+    },
+    {
+      "id": "getting-there",
+      "keywords": [
+        "where",
+        "location",
+        "directions",
+        "drive",
+        "driving",
+        "road",
+        "roads",
+        "getting there",
+        "how far",
+        "find",
+        "rathdowney",
+        "barney",
+        "mount barney",
+        "access",
+        "2wd",
+        "4wd",
+        "car",
+        "gate",
+        "parking",
+        "address",
+        "brisbane",
+        "gold coast"
+      ],
+      "answer": "We are near Rathdowney, in the Scenic Rim, under Mount Barney. The last stretch is gravel, and an ordinary car manages it when it is dry. The street address and gate code come with your confirmation, not on the website.",
+      "startLead": false
+    },
+    {
+      "id": "arrival",
+      "keywords": [
+        "check in",
+        "check-in",
+        "checkin",
+        "check out",
+        "check-out",
+        "checkout",
+        "arrive",
+        "arrival",
+        "late",
+        "early",
+        "bring",
+        "groceries",
+        "food",
+        "kitchen",
+        "cook",
+        "cooking",
+        "supplies",
+        "shop",
+        "coffee"
+      ],
+      "answer": "Check in is from 3pm and check out is by 10am. Arriving after dark is fine, the track has reflectors and Jo leaves a lantern lit. Bring your own food. Each cabin has a gas cooktop, a fridge, pots and pans, and a coffee plunger.",
+      "startLead": false
+    },
+    {
+      "id": "pets",
+      "keywords": [
+        "dog",
+        "dogs",
+        "pet",
+        "pets",
+        "puppy",
+        "cat",
+        "animal",
+        "animals"
+      ],
+      "answer": "Dogs are welcome at Bottlebrush and Spotted Gum by arrangement, so ask Jo first. They stay on a lead near the creek because of the wildlife. No pets in Ironbark.",
+      "startLead": false
+    },
+    {
+      "id": "changes",
+      "keywords": [
+        "cancel",
+        "cancellation",
+        "refund",
+        "change",
+        "reschedule",
+        "rain",
+        "weather",
+        "storm",
+        "flood",
+        "flooded",
+        "wet",
+        "policy"
+      ],
+      "answer": "Change or cancel up to 14 days out and the deposit becomes credit for another weekend. A wet weekend here is no hardship, with a tin roof and a heater. If water cuts the track, Jo moves your dates at no charge.",
+      "startLead": false
+    },
+    {
+      "id": "activities",
+      "keywords": [
+        "activities",
+        "things to do",
+        "walk",
+        "walks",
+        "walking",
+        "hike",
+        "hiking",
+        "swim",
+        "swimming",
+        "stars",
+        "stargazing",
+        "explore",
+        "kayak",
+        "bushwalk",
+        "trail",
+        "trails"
+      ],
+      "answer": "Mostly nothing, on purpose. There is a creek track, a swimming hole when the water is up, and the star paddock after dark. Walks in the national park are a drive away, and Jo can point you to a good trailhead.",
+      "startLead": false
+    }
+  ],
+  "fallback": "I am not sure about that one, and I would rather not guess. Leave your details below and Jo will get back to you, usually by the evening. You can also text her on 0491 570 158 or write to hello.lantern@example.com.",
+  "lead": {
+    "fields": [
+      {
+        "id": "name",
+        "label": "Your name",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "mobile",
+        "label": "Mobile",
+        "type": "tel",
+        "required": true
+      },
+      {
+        "id": "email",
+        "label": "Email",
+        "type": "email",
+        "required": false
+      },
+      {
+        "id": "weekend",
+        "label": "Which weekend?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "guests",
+        "label": "How many guests?",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "note",
+        "label": "Anything Jo should know?",
+        "type": "textarea",
+        "required": false
+      }
+    ],
+    "confirmation": "Thanks. Jo will check the dates and text you back, usually by the evening. This is a demo, so nothing has actually been sent."
+  },
+  "judgeQuestions": [
+    "Is the weekend of the 14th free?",
+    "Can I bring my dog?",
+    "What is the capital of France?"
+  ]
+}

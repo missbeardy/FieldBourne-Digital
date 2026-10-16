@@ -13,13 +13,14 @@ export function Nav() {
           className="h-9 w-auto object-contain sm:h-10"
         />
         <span className="font-heading text-[1.15rem] font-extrabold tracking-tight text-teal whitespace-nowrap">
-          Field<span className="text-amber">bourne</span> Digital
+          Field<span className="text-[#9A5A1A]">bourne</span> Digital
         </span>
       </Link>
 
       <ul className="hidden items-center gap-8 list-none md:flex">
         <li><a href="/#how" className="text-sm font-medium text-mid no-underline hover:text-dark">How it works</a></li>
         <li><a href="/#beside" className="text-sm font-medium text-mid no-underline hover:text-dark">Beside your tools</a></li>
+        <li><NavLink to="/work" className={linkClass}>Work</NavLink></li>
         <li><NavLink to="/case-study/tvmagic" className={linkClass}>Case study</NavLink></li>
         <li><NavLink to="/about" className={linkClass}>About</NavLink></li>
         <li>

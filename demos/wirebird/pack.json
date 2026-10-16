@@ -1,0 +1,379 @@
+{
+  "business": {
+    "name": "Wirebird Electrical",
+    "ownerFirstName": "Cal",
+    "area": "Beaudesert and the Scenic Rim, Queensland"
+  },
+  "chips": [
+    "How much is a switchboard upgrade?",
+    "Do you do rural pumps?",
+    "Can you come out to Canungra?"
+  ],
+  "intents": [
+    {
+      "id": "greeting",
+      "keywords": [
+        "hello",
+        "hi",
+        "hey",
+        "gday",
+        "g day",
+        "morning",
+        "arvo"
+      ],
+      "answer": "G'day. I can tell you what Cal does, roughly what it costs and whether he comes out your way. Ask about a job, or say you want a quote."
+    },
+    {
+      "id": "quote",
+      "keywords": [
+        "quote",
+        "free quote",
+        "estimate",
+        "price",
+        "pricing",
+        "how much",
+        "cost",
+        "ballpark",
+        "book a quote"
+      ],
+      "answer": "Cal writes a quote before any work starts, and he can usually give you a ballpark from four answers. The four questions are just below. They take about a minute.",
+      "startLead": true
+    },
+    {
+      "id": "switchboard",
+      "keywords": [
+        "switchboard",
+        "fuse box",
+        "meter box",
+        "switch board",
+        "upgrade switchboard",
+        "old fuses",
+        "ceramic fuses",
+        "board upgrade",
+        "safety switch",
+        "safety switches",
+        "rcd"
+      ],
+      "answer": "Switchboard upgrades start from about $1,850: a new board, safety switches on every circuit, everything tested and certified. Older homes with ceramic fuses are the most common job. Cal needs to see it to quote firmly.",
+      "startLead": true
+    },
+    {
+      "id": "tripping",
+      "keywords": [
+        "tripping",
+        "trips",
+        "tripped",
+        "keeps tripping",
+        "blown",
+        "blowing",
+        "overload",
+        "power keeps going off",
+        "fault",
+        "flickering",
+        "flicker",
+        "dim",
+        "dimming",
+        "buzzing",
+        "humming",
+        "dead",
+        "not working",
+        "stopped working"
+      ],
+      "answer": "Tripping circuits and flickering lights are a fault-finding job, from about $190 for the first hour. Unplug whatever was running when it tripped and tell Cal which room it happens in. It helps him bring the right gear.",
+      "startLead": true
+    },
+    {
+      "id": "solar",
+      "keywords": [
+        "solar",
+        "solar ready",
+        "panels",
+        "inverter",
+        "battery",
+        "batteries",
+        "feed in",
+        "solar installer"
+      ],
+      "answer": "Cal does the electrical side of getting ready for solar: board space, isolators and cabling, from about $420. He does not install the panels. Your solar installer connects to a board that is ready for them.",
+      "startLead": true
+    },
+    {
+      "id": "pumps",
+      "keywords": [
+        "pump",
+        "pumps",
+        "bore",
+        "bores",
+        "dam",
+        "tank",
+        "tanks",
+        "irrigation",
+        "water pump",
+        "rural",
+        "pressure pump",
+        "controller"
+      ],
+      "answer": "Yes, rural pumps are a regular job: tank, dam and bore pumps, controllers and the wiring back to the shed. Fault finding starts from about $260. If the pump will not start, tell Cal what it does when you flick the switch.",
+      "startLead": true
+    },
+    {
+      "id": "smoke",
+      "keywords": [
+        "smoke",
+        "smoke alarm",
+        "smoke alarms",
+        "alarm",
+        "alarms",
+        "beeping",
+        "chirping",
+        "interconnected",
+        "rental",
+        "lease",
+        "landlord",
+        "tenant",
+        "agent",
+        "compliance",
+        "compliant",
+        "sale"
+      ],
+      "answer": "Smoke alarms are hardwired and interconnected, so when one sounds they all do. From about $95 per alarm fitted. Cal can also do the compliance check before a sale or a new lease.",
+      "startLead": true
+    },
+    {
+      "id": "area",
+      "keywords": [
+        "area",
+        "areas",
+        "where",
+        "travel",
+        "distance",
+        "scenic rim",
+        "beaudesert",
+        "canungra",
+        "boonah",
+        "kooralbyn",
+        "rathdowney",
+        "tamborine",
+        "aratula",
+        "kalbar",
+        "mount alford",
+        "come out",
+        "service area",
+        "suburb",
+        "town"
+      ],
+      "answer": "Cal is based in Beaudesert and works across the Scenic Rim: Boonah, Canungra, Kooralbyn, Rathdowney, Tamborine and the country between. Further out, ring and ask. He checks the day's route before saying no."
+    },
+    {
+      "id": "booking",
+      "keywords": [
+        "when",
+        "available",
+        "availability",
+        "soon",
+        "next week",
+        "this week",
+        "book",
+        "booking",
+        "appointment",
+        "schedule",
+        "time slot"
+      ],
+      "answer": "Cal usually has room within the week for quotes, and sooner for faults. Give us your suburb and what is going on, and he will ring back to lock in a time.",
+      "startLead": true
+    },
+    {
+      "id": "urgent",
+      "keywords": [
+        "urgent",
+        "emergency",
+        "power out",
+        "no power",
+        "blackout",
+        "burning",
+        "burning smell",
+        "sparks",
+        "sparking",
+        "smoke coming",
+        "shock",
+        "electric shock",
+        "hot",
+        "melted",
+        "after hours",
+        "weekend"
+      ],
+      "answer": "If there is fire, smoke, or someone has had a shock, call 000 first. If the power is out or a switch is hot to touch, turn off what you can at the board, then ring Cal on 0491 570 156 or use the form below and he will call you back.",
+      "startLead": true
+    },
+    {
+      "id": "apprentice",
+      "keywords": [
+        "apprentice",
+        "apprentice licensed",
+        "apprentice supervised",
+        "team",
+        "crew",
+        "staff",
+        "employee",
+        "who comes",
+        "two people",
+        "owner",
+        "cal"
+      ],
+      "answer": "It is Cal and one apprentice. Cal quotes the job and does the wiring. The apprentice works under Cal's licence and supervision, so you deal with the same person from the quote to the certificate."
+    },
+    {
+      "id": "licence",
+      "keywords": [
+        "licence",
+        "license",
+        "licensed",
+        "insured",
+        "insurance",
+        "qualified",
+        "certificate",
+        "certified",
+        "compliance certificate",
+        "ticket",
+        "registered"
+      ],
+      "answer": "Cal holds a Queensland electrical contractor licence, and the licence number is printed on every quote and certificate. Insurance details come with the quote if you need them for a landlord or a body corporate."
+    },
+    {
+      "id": "payment",
+      "keywords": [
+        "pay",
+        "payment",
+        "deposit",
+        "invoice",
+        "card",
+        "eftpos",
+        "bank transfer",
+        "afterpay",
+        "terms"
+      ],
+      "answer": "Small jobs are paid on completion. Bigger jobs, like a full switchboard, may have a deposit, and it is written on the quote before you agree to anything. You can pay by card or bank transfer."
+    },
+    {
+      "id": "renovation",
+      "keywords": [
+        "renovation",
+        "renovating",
+        "renovate",
+        "new build",
+        "new house",
+        "rewire",
+        "rewiring",
+        "power point",
+        "power points",
+        "powerpoint",
+        "powerpoints",
+        "downlights",
+        "lights",
+        "lighting",
+        "ceiling fan",
+        "fan",
+        "outlets",
+        "extra points"
+      ],
+      "answer": "Extra power points, downlights, ceiling fans and outdoor lighting are all everyday jobs, from about $140. For a full rewire or a new build, Cal quotes after a site visit so nothing is missed."
+    },
+    {
+      "id": "shed",
+      "keywords": [
+        "shed",
+        "workshop",
+        "sub board",
+        "subboard",
+        "three phase",
+        "3 phase",
+        "farm",
+        "paddock",
+        "granny flat",
+        "cabin",
+        "caravan",
+        "power to shed",
+        "trenching"
+      ],
+      "answer": "Sheds, workshops and granny flats are common out here. Cal can run power to a sub-board, add three-phase and sort the cable run. He will want to see the distance from the main board before pricing it."
+    },
+    {
+      "id": "ev",
+      "keywords": [
+        "ev",
+        "ev charger",
+        "electric car",
+        "car charger",
+        "charging",
+        "charger",
+        "tesla",
+        "wall connector"
+      ],
+      "answer": "Home EV chargers are a switchboard and cabling job. Cal checks your board can handle it, installs the circuit and fits the charger. Mention your car and where you park it when you send the details."
+    },
+    {
+      "id": "warranty",
+      "keywords": [
+        "warranty",
+        "guarantee",
+        "guaranteed",
+        "workmanship",
+        "comes back",
+        "problem after",
+        "redo"
+      ],
+      "answer": "Cal stands behind his workmanship. If something he installed is not right, ring him and he will come back and fix it. The details are written on the quote."
+    },
+    {
+      "id": "contact",
+      "keywords": [
+        "phone",
+        "call",
+        "ring",
+        "number",
+        "contact",
+        "email",
+        "text",
+        "sms",
+        "message",
+        "reach"
+      ],
+      "answer": "You can ring or text Cal on 0491 570 156, or email cal@example.com. If he is up a ladder he will call back as soon as he is down. Or skip the wait and send the four answers below."
+    }
+  ],
+  "fallback": "I am only set up for electrical questions, and that one is outside my patch. Cal would rather answer it himself, so leave your details below and he will ring you back.",
+  "lead": {
+    "fields": [
+      {
+        "id": "job",
+        "label": "What needs doing?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "suburb",
+        "label": "Which suburb or town?",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "timing",
+        "label": "How soon?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "nameMobile",
+        "label": "Your name and mobile",
+        "type": "text",
+        "required": true
+      }
+    ],
+    "confirmation": "Done. That enquiry is on its way to Cal's phone. He will ring you back, usually within the working day."
+  },
+  "judgeQuestions": [
+    "Can you fit smoke alarms for a rental?",
+    "Is your apprentice licensed?",
+    "Who won the footy last night?"
+  ]
+}

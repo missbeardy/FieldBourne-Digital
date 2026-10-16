@@ -7,6 +7,7 @@ import { FieldbournePage } from './pages/FieldbournePage';
 import { HomePage } from './pages/HomePage';
 import { PrivacyPage } from './pages/PrivacyPage';
 import { TermsPage } from './pages/TermsPage';
+import { WorkPage } from './pages/WorkPage';
 
 function ScrollManager() {
   const { pathname, hash } = useLocation();
@@ -40,6 +41,7 @@ export default function App() {
           <Route path="/tvmagic" element={<Navigate to="/case-study/tvmagic" replace />} />
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/terms" element={<TermsPage />} />
+          <Route path="/work" element={<WorkPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>

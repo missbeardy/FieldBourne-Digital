@@ -1,0 +1,79 @@
+// Usage: node scripts/work-shots.mjs  (run after npm run build)
+import { spawn } from 'node:child_process'
+import { mkdir } from 'node:fs/promises'
+import { dirname, join, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { chromium } from 'playwright'
+
+const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
+const PORT = 4173
+const ORIGIN = `http://localhost:${PORT}`
+const slugs = ['wirebird', 'sorrel-slate', 'lantern-gully']
+const outDir = join(root, 'public', 'work')
+
+async function waitForServer(path) {
+  const url = ORIGIN + path
+  for (let i = 0; i < 60; i++) {
+    try {
+      const r = await fetch(url)
+      if (r.ok) return
+    } catch {
+      /* not up yet */
+    }
+    await new Promise((r) => setTimeout(r, 500))
+  }
+  throw new Error(`preview server did not respond at ${url}`)
+}
+
+async function main() {
+  await mkdir(outDir, { recursive: true })
+
+  const vitePath = join(root, 'node_modules', 'vite', 'bin', 'vite.js')
+  const server = spawn(process.execPath, [vitePath, 'preview', '--port', String(PORT), '--strictPort'], {
+    cwd: root,
+    stdio: ['ignore', 'pipe', 'pipe'],
+  })
+  let serverLog = ''
+  server.stdout.on('data', (d) => (serverLog += d))
+  server.stderr.on('data', (d) => (serverLog += d))
+  const exited = new Promise((r) => server.on('exit', (c) => r(c)))
+
+  let browser
+  try {
+    await Promise.race([
+      waitForServer('/demos/wirebird/'),
+      exited.then((c) => {
+        throw new Error(`vite preview exited (${c}): ${serverLog.trim()}`)
+      }),
+    ])
+
+    browser = await chromium.launch()
+    const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } })
+    const page = await ctx.newPage()
+
+    for (const slug of slugs) {
+      await page.goto(`${ORIGIN}/demos/${slug}/`, { waitUntil: 'networkidle' })
+      await page.waitForTimeout(1500)
+      await page.screenshot({
+        path: join(outDir, `${slug}.jpg`),
+        type: 'jpeg',
+        quality: 78,
+      })
+      console.log(`Wrote public/work/${slug}.jpg`)
+    }
+
+    await ctx.close()
+  } finally {
+    if (browser) await browser.close().catch(() => {})
+    server.kill()
+    await Promise.race([exited, new Promise((r) => setTimeout(r, 3000))])
+  }
+}
+
+main().then(
+  () => process.exit(0),
+  (e) => {
+    console.error(e)
+    process.exit(1)
+  },
+)

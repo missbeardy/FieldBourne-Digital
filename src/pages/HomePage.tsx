@@ -99,6 +99,11 @@ export function HomePage() {
         </div>
         <FadeIn delay={0.15} y={24}>
           <Showcase />
+          <p className="mt-6 text-center text-sm">
+            <a href="/work" className="font-heading font-semibold text-teal no-underline hover:text-teal-hover">
+              See sites we&apos;ve built
+            </a>
+          </p>
         </FadeIn>
       </section>
 
