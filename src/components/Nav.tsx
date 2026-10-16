@@ -6,14 +6,17 @@ const linkClass = ({ isActive }: { isActive: boolean }) =>
 export function Nav() {
   return (
     <nav className="sticky top-0 z-50 flex h-16 items-center justify-between border-b border-grey bg-cream px-[5vw]">
-      <Link to="/" className="inline-flex items-center gap-2.5 no-underline" aria-label="FieldBourne Digital home">
+      <Link to="/" className="inline-flex shrink-0 items-center gap-2 no-underline sm:gap-2.5" aria-label="FieldBourne Digital home">
         <img
-          src="/logo-current.png"
+          src="/logo-current.webp"
           alt=""
-          className="h-9 w-auto object-contain sm:h-10"
+          width={40}
+          height={40}
+          className="h-9 w-9 shrink-0 object-contain sm:h-10 sm:w-10"
         />
-        <span className="font-heading text-[1.15rem] font-extrabold tracking-tight text-teal whitespace-nowrap">
-          Field<span className="text-[#9A5A1A]">bourne</span> Digital
+        <span aria-hidden="true" className="font-heading text-[1.05rem] font-extrabold tracking-tight text-teal whitespace-nowrap min-[400px]:text-[1.15rem]">
+          Field<span className="text-amber">bourne</span>
+          <span className="hidden min-[400px]:inline"> Digital</span>
         </span>
       </Link>
 
@@ -35,7 +38,7 @@ export function Nav() {
 
       <a
         href="/#contact"
-        className="rounded-md bg-teal px-4 py-1.5 text-sm font-bold text-white no-underline md:hidden"
+        className="ml-3 inline-flex min-h-11 shrink-0 items-center rounded-md bg-teal px-3 text-sm font-bold text-white no-underline md:hidden"
       >
         Book a free chat
       </a>

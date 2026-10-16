@@ -1,6 +1,6 @@
 // Usage: node scripts/work-shots.mjs  (run after npm run build)
 import { spawn } from 'node:child_process'
-import { mkdir } from 'node:fs/promises'
+import { mkdir, writeFile } from 'node:fs/promises'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { chromium } from 'playwright'
@@ -8,7 +8,13 @@ import { chromium } from 'playwright'
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const PORT = 4173
 const ORIGIN = `http://localhost:${PORT}`
-const slugs = ['wirebird', 'sorrel-slate', 'lantern-gully']
+// Clip heights end each shot on a clean edge, above the next section's first line.
+const shots = [
+  { slug: 'wirebird', height: 728 },
+  { slug: 'sorrel-slate', height: 720 },
+  { slug: 'lantern-gully', height: 830 },
+]
+const webpWidths = [640, 1280]
 const outDir = join(root, 'public', 'work')
 
 async function waitForServer(path) {
@@ -51,15 +57,41 @@ async function main() {
     const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } })
     const page = await ctx.newPage()
 
-    for (const slug of slugs) {
+    const encoder = await ctx.newPage()
+
+    for (const { slug, height } of shots) {
       await page.goto(`${ORIGIN}/demos/${slug}/`, { waitUntil: 'networkidle' })
       await page.waitForTimeout(1500)
+      const clip = { x: 0, y: 0, width: 1440, height }
       await page.screenshot({
         path: join(outDir, `${slug}.jpg`),
         type: 'jpeg',
         quality: 78,
+        clip,
       })
-      console.log(`Wrote public/work/${slug}.jpg`)
+      console.log(`Wrote public/work/${slug}.jpg (1440x${height})`)
+
+      // WebP at a few widths, resized in the browser canvas (no extra dependencies).
+      const png = (await page.screenshot({ type: 'png', clip })).toString('base64')
+      for (const w of webpWidths) {
+        const dataUrl = await encoder.evaluate(
+          async ({ png, w, height }) => {
+            const img = new Image()
+            img.src = 'data:image/png;base64,' + png
+            await img.decode()
+            const c = document.createElement('canvas')
+            c.width = w
+            c.height = Math.round((height * w) / 1440)
+            const x = c.getContext('2d')
+            x.imageSmoothingQuality = 'high'
+            x.drawImage(img, 0, 0, c.width, c.height)
+            return c.toDataURL('image/webp', 0.8)
+          },
+          { png, w, height },
+        )
+        await writeFile(join(outDir, `${slug}-${w}.webp`), Buffer.from(dataUrl.split(',')[1], 'base64'))
+        console.log(`Wrote public/work/${slug}-${w}.webp`)
+      }
     }
 
     await ctx.close()

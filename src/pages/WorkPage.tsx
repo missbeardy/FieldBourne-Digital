@@ -6,7 +6,10 @@ const demos = [
   {
     slug: 'wirebird',
     name: 'Wirebird Electrical',
-    blurb: 'Electrician in Beaudesert. Quotes start in a chat and land on the owner\'s phone.',
+    trade: 'Electrician, Beaudesert',
+    height: 728,
+    blurb: "Quotes start in a chat and land on the owner's phone.",
+    note: 'I built this one around the job docket Cal would hand over at the end of a day.',
     tryAsk: 'How much is a switchboard upgrade?',
     perf: 97,
     a11y: 100,
@@ -14,7 +17,10 @@ const demos = [
   {
     slug: 'sorrel-slate',
     name: 'Sorrel & Slate',
-    blurb: 'Cafe and function room in Boonah. The menu changes with the time of day.',
+    trade: 'Cafe and function room, Boonah',
+    height: 720,
+    blurb: 'The menu changes with the time of day, so the page is never out of date.',
+    note: 'Mel gets function enquiries with the date and head count already filled in.',
     tryAsk: '30 people, Saturday, 2pm?',
     perf: 99,
     a11y: 100,
@@ -22,7 +28,10 @@ const demos = [
   {
     slug: 'lantern-gully',
     name: 'Lantern Gully Cabins',
-    blurb: 'Three off-grid cabins under Mount Barney. Ask if a weekend is free.',
+    trade: 'Off-grid cabins, under Mount Barney',
+    height: 830,
+    blurb: 'Three cabins and one question guests always ask: is the weekend free?',
+    note: 'The page shifts from dawn to night, because that is what the gully does.',
     tryAsk: 'Is the weekend of the 14th free?',
     perf: 99,
     a11y: 100,
@@ -61,28 +70,52 @@ export function WorkPage() {
           {demos.map((demo, i) => {
             const card = (
               <article className="overflow-hidden rounded-2xl border border-grey bg-white">
-                <div className="grid gap-0 md:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)]">
-                  <img
-                    src={`/work/${demo.slug}.jpg`}
-                    width={1440}
-                    height={900}
-                    loading={i === 0 ? 'eager' : 'lazy'}
-                    decoding="async"
-                    alt={`Screenshot of the ${demo.name} demo site`}
-                    className="order-2 aspect-[8/5] h-auto w-full border-b border-grey object-cover object-top md:order-1 md:border-b-0 md:border-r"
-                  />
-                  <div className="order-1 flex flex-col justify-center gap-4 p-8 md:order-2 md:p-10">
+                <div
+                  className={`grid gap-0 md:items-stretch ${
+                    i % 2 === 0
+                      ? 'md:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)]'
+                      : 'md:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)]'
+                  }`}
+                >
+                  <div className={`bg-cream p-3 md:p-4 ${i % 2 === 0 ? 'md:order-1' : 'md:order-2'}`}>
+                    <img
+                      src={`/work/${demo.slug}.jpg`}
+                      srcSet={`/work/${demo.slug}-640.webp 640w, /work/${demo.slug}-1280.webp 1280w`}
+                      sizes="(min-width: 1152px) 616px, (min-width: 768px) 53vw, calc(90vw - 24px)"
+                      width={1440}
+                      height={demo.height}
+                      loading={i === 0 ? 'eager' : 'lazy'}
+                      fetchPriority={i === 0 ? 'high' : 'auto'}
+                      decoding={i === 0 ? 'sync' : 'async'}
+                      alt={`Screenshot of the ${demo.name} demo site`}
+                      className="h-auto w-full rounded-lg border border-grey shadow-[0_1px_2px_rgba(30,42,42,0.08)]"
+                    />
+                  </div>
+                  <div className={`flex flex-col justify-center gap-4 p-6 md:p-10 ${i % 2 === 0 ? 'md:order-2' : 'md:order-1'}`}>
+                    <p className="flex items-center gap-2 font-heading text-xs font-bold uppercase tracking-wider text-dark">
+                      <span aria-hidden="true" className="inline-block h-2 w-2 rounded-full bg-amber" />
+                      {demo.trade}
+                    </p>
                     <h2 className="font-heading text-2xl font-extrabold text-dark md:text-3xl">{demo.name}</h2>
-                    <p className="leading-relaxed text-dark">{demo.blurb}</p>
-                    <p className="text-sm text-dark">
+                    <p className="text-base leading-relaxed text-dark">{demo.blurb}</p>
+                    <p className="border-l-4 border-amber pl-4 text-base leading-relaxed text-dark">{demo.note}</p>
+                    <p className="text-base text-dark">
                       <span className="font-semibold">Try asking:</span> &ldquo;{demo.tryAsk}&rdquo;
                     </p>
-                    <p className="text-sm text-dark">
-                      Mobile Lighthouse: performance {demo.perf}, accessibility {demo.a11y}
-                    </p>
+                    <dl className="flex gap-3">
+                      <div className="rounded-lg bg-teal-lt px-4 py-2">
+                        <dt className="text-sm text-dark">Performance</dt>
+                        <dd className="font-heading text-3xl font-extrabold leading-none text-teal">{demo.perf}</dd>
+                      </div>
+                      <div className="rounded-lg bg-teal-lt px-4 py-2">
+                        <dt className="text-sm text-dark">Accessibility</dt>
+                        <dd className="font-heading text-3xl font-extrabold leading-none text-teal">{demo.a11y}</dd>
+                      </div>
+                    </dl>
+                    <p className="-mt-2 text-sm text-dark">Mobile Lighthouse scores for the demo.</p>
                     <a
                       href={`/demos/${demo.slug}/`}
-                      className="mt-2 inline-flex w-fit rounded-lg bg-teal px-5 py-2.5 font-heading text-sm font-bold text-white no-underline transition hover:bg-teal-hover"
+                      className="mt-2 inline-flex min-h-11 w-fit items-center rounded-lg bg-teal px-5 py-2.5 font-heading text-sm font-bold text-white no-underline transition hover:bg-teal-hover"
                     >
                       Open the demo
                     </a>

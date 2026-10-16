@@ -100,9 +100,9 @@ export function HomePage() {
         <FadeIn delay={0.15} y={24}>
           <Showcase />
           <p className="mt-6 text-center text-sm">
-            <a href="/work" className="font-heading font-semibold text-teal no-underline hover:text-teal-hover">
+            <Link to="/work" className="font-heading font-semibold text-teal no-underline hover:text-teal-hover">
               See sites we&apos;ve built
-            </a>
+            </Link>
           </p>
         </FadeIn>
       </section>

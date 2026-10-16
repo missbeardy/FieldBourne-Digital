@@ -184,6 +184,8 @@ async function captureViewport(browser, width, height, pack) {
     await page.waitForTimeout(400)
     await page.screenshot({ path: join(dir, `scroll-${i}.png`) })
   }
+  await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))
+  await page.waitForTimeout(500)
   await page.evaluate(() => window.scrollTo(0, 0))
   await page.waitForTimeout(300)
   await page.screenshot({ path: join(dir, 'full.png'), fullPage: true })
@@ -258,18 +260,6 @@ async function main() {
         output: 'json',
         logLevel: 'error',
         onlyCategories: ['performance', 'accessibility', 'best-practices', 'seo'],
-      }
-      // Studio SPA routes (e.g. /work) are judged on localhost preview; skip simulated mobile throttling so scores reflect the built site, not slow 4G emulation.
-      if (isWork) {
-        lhOptions.throttlingMethod = 'provided'
-        lhOptions.throttling = {
-          rttMs: 0,
-          throughputKbps: 0,
-          cpuSlowdownMultiplier: 1,
-          requestLatencyMs: 0,
-          downloadThroughputKbps: 0,
-          uploadThroughputKbps: 0,
-        }
       }
       const result = await lighthouse(pageUrl, lhOptions)
       await writeFile(join(outDir, 'lighthouse.json'), result.report)

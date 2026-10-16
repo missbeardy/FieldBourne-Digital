@@ -1,13 +1,14 @@
-import { useEffect } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { Footer } from './components/Footer';
 import { Nav } from './components/Nav';
-import { AboutPage } from './pages/AboutPage';
-import { FieldbournePage } from './pages/FieldbournePage';
 import { HomePage } from './pages/HomePage';
-import { PrivacyPage } from './pages/PrivacyPage';
-import { TermsPage } from './pages/TermsPage';
-import { WorkPage } from './pages/WorkPage';
+
+const AboutPage = lazy(() => import('./pages/AboutPage').then((m) => ({ default: m.AboutPage })));
+const FieldbournePage = lazy(() => import('./pages/FieldbournePage').then((m) => ({ default: m.FieldbournePage })));
+const PrivacyPage = lazy(() => import('./pages/PrivacyPage').then((m) => ({ default: m.PrivacyPage })));
+const TermsPage = lazy(() => import('./pages/TermsPage').then((m) => ({ default: m.TermsPage })));
+const WorkPage = lazy(() => import('./pages/WorkPage').then((m) => ({ default: m.WorkPage })));
 
 function ScrollManager() {
   const { pathname, hash } = useLocation();
@@ -32,6 +33,7 @@ export default function App() {
     <div className="min-h-screen bg-cream text-dark">
       <Nav />
       <ScrollManager />
+      <Suspense fallback={<div className="min-h-screen" />}>
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -46,6 +48,7 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
+      </Suspense>
     </div>
   );
 }

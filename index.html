@@ -18,12 +18,20 @@
     />
     <meta property="og:url" content="https://fieldbournedigital.com.au/" />
     <meta property="og:locale" content="en_AU" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preload" href="/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <script>
+      if (location.pathname === '/work' || location.pathname === '/work/') {
+        var l = document.createElement('link');
+        l.rel = 'preload';
+        l.as = 'image';
+        l.type = 'image/webp';
+        l.setAttribute('imagesrcset', '/work/wirebird-640.webp 640w, /work/wirebird-1280.webp 1280w');
+        l.setAttribute('imagesizes', '(min-width: 1152px) 616px, (min-width: 768px) 53vw, calc(90vw - 24px)');
+        l.setAttribute('fetchpriority', 'high');
+        document.head.appendChild(l);
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
