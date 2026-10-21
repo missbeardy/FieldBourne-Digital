@@ -10,7 +10,7 @@ const next = [
     `Within ${SITE_CONFIG.replyDays} business days`,
     'You get a one-page report in plain English and a quick mockup of your homepage. Yours to keep.',
   ],
-  ['Then it is up to you', "If you'd like help with any of it, we talk. If not, that's fine. No chasing, no pressure."],
+  ['Then it is up to you', "If you'd like help with any of it, ring me. If not, that's the end of it."],
 ] as const;
 
 export function WebsiteReviewPage() {

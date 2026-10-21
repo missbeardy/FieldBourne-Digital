@@ -6,7 +6,7 @@ import { usePageMeta } from '../hooks/usePageMeta';
 const before = [
   ['Website enquiries', 'The contact form became an email, then a text to Nick. He read each one and forwarded it to the right technician by hand.'],
   ['Missed calls', 'Voicemail lived on a desktop phone system. Someone had to listen, write it up and send it on.'],
-  ['Around 15 leads a day', 'Enough that sorting and handing out leads became a daily job of its own, on top of running the business.'],
+  ['Every day', 'Sorting and handing out leads became a daily job of its own, on top of running the business.'],
 ] as const;
 
 const built = [
@@ -16,15 +16,10 @@ const built = [
 ] as const;
 
 /*
-  PLACEHOLDERS: fill these with Nick before this page goes live, and keep his written OK.
-  Each one renders as a visible bracketed note until it is replaced.
+  Results and a quote from Nick go here once he has confirmed the figures and given his
+  written OK (a "What changed" section between "What I built" and the closing band).
+  Don't publish numbers he hasn't confirmed.
 */
-const results = [
-  '[Result 1: for example hours a week saved, confirmed by Nick]',
-  '[Result 2: for example leads assigned automatically each day]',
-  '[How long it has been running]',
-];
-const quote = '[Quote from Nick, in his words, one to three sentences]';
 
 export function CaseStudyPage() {
   usePageMeta(
@@ -70,19 +65,6 @@ export function CaseStudyPage() {
             Nick sees everyone's workload in one place. The technicians get their leads and bookings on their phones, between jobs, without hunting for a laptop.
           </p>
         </div>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-5 py-20 md:px-8">
-        <h2 className="text-[clamp(1.8rem,3.2vw,2.4rem)] text-dark">What changed</h2>
-        <ul className="measure mt-6 list-disc space-y-3 pl-5 text-lg leading-relaxed text-dark marker:text-teal">
-          {results.map((r) => (
-            <li key={r}>{r}</li>
-          ))}
-        </ul>
-        <blockquote className="m-0 mt-12 max-w-3xl">
-          <p className="font-heading text-[clamp(1.4rem,2.6vw,2rem)] leading-snug text-dark">“{quote}”</p>
-          <footer className="mt-4 text-mid">Nick, TV Magic South Brisbane</footer>
-        </blockquote>
       </section>
 
       <section className="bg-ridge-near">

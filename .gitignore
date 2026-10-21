@@ -26,3 +26,4 @@ judge-runs/
 # Impeccable working files (critique snapshots are kept)
 /.impeccable/live/
 /.impeccable/questions/
+/.impeccable/review/

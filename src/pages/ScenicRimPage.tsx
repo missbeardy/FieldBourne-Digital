@@ -27,7 +27,7 @@ export function ScenicRimPage() {
             Business out here works differently to the city. Customers are often locals who'd rather back someone nearby, or visitors planning a weekend from Brisbane on their phone. Mobile reception can be patchy. Word of mouth still does a lot of the work.
           </p>
           <p>
-            A good local website helps with all of that. It loads fast on a weak signal, says clearly where you are and when you're open, shows real photos and real reviews, and makes ringing or booking easy.
+            The site needs to load on a weak signal, say where you are and when you're open, show real photos, and make ringing or booking easy.
           </p>
           <p>
             Your domain and website stay in your name, and you deal with me directly. If something needs fixing, you ring me.

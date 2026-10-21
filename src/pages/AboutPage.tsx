@@ -30,7 +30,7 @@ export function AboutPage() {
             That's the whole idea. It starts with a free review of your website, and if you'd like help after that, I build the site, look after it, and take some of the repeat admin off your hands.
           </p>
           <p>
-            It's a small operation. I run FieldBourne alongside a day job, which keeps it small and keeps the prices fair. It also means you always deal with me, from the first look at your site to the last change.
+            It's a small operation, which keeps the prices fair. It also means you always deal with me, from the first look at your site to the last change.
           </p>
           <p>
             Your domain and website stay in your name. If you ever move on, you take everything with you.

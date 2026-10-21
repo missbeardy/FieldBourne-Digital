@@ -182,7 +182,7 @@ export function HomePage() {
           <div>
             <h2 className="text-[clamp(1.9rem,3.6vw,2.8rem)] text-dark">Working across the Scenic Rim</h2>
             <p className="measure mt-5 text-lg leading-relaxed text-mid">
-              I'm in Beaudesert. Most of my work is within an hour's drive, and further out across the Lockyer Valley, Ipswich and Logan.
+              I'm in Beaudesert. I work with businesses within about an hour's drive, and further out across the Lockyer Valley, Ipswich and Logan.
             </p>
             <p className="measure mt-4 text-lg leading-relaxed text-mid">
               Your domain and website stay in your name. You deal with me, not a call centre.

@@ -6,7 +6,7 @@ import { usePageMeta } from '../hooks/usePageMeta';
 const included = [
   'Works on a phone first, because that is where most people will see it',
   'One clear thing to do on every page: call, book or enquire',
-  'Google basics set up, including your town and service area',
+  'Set up so Google knows your town and the area you cover',
   'A privacy policy for any form on the site',
   'Your domain in your name, and your words and photos stay yours',
 ];
@@ -18,7 +18,7 @@ const hosting = [
   },
   {
     title: 'A fast site I host',
-    body: 'Quick to load, little that can go wrong, and nothing for you to update. Good for most small businesses.',
+    body: 'Quick to load, and little for you to look after. I make the small updates. Good for most small businesses.',
   },
   {
     title: 'WordPress on an Australian host',
@@ -129,11 +129,11 @@ export function ServicesPage() {
           <div>
             <h3 className="text-xl text-dark">How it starts</h3>
             <p className="mt-3 leading-relaxed text-mid">
-              A 45-minute chat about how your week actually runs, then a short write-up of what is worth automating and what isn't. If something is, we try it as a two-week pilot first.
+              A 45-minute chat about how your week actually runs, then a short write-up of what is worth automating and what isn't. If something is worth doing, I try it as a two-week pilot first.
             </p>
             <p className="mt-4 text-dark"><span className="font-semibold">Process audit $149</span>, taken off the job if you go ahead. Automation is quoted per job.</p>
             <p className="mt-4 leading-relaxed text-mid">
-              I use Make.com by default, Zapier when an app needs it, and custom code only for the heavy jobs. You own the accounts.
+              You own the accounts. I set the automations up in them, and I only write custom code when a ready-made tool can't do the job.
             </p>
           </div>
         </div>

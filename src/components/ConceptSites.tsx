@@ -106,11 +106,7 @@ export function ConceptSites({ compact = false }: { compact?: boolean }) {
             </div>
             <h2 className="mt-3 text-[clamp(1.8rem,3vw,2.4rem)] text-dark">{d.name}</h2>
             <p className="measure mt-3 text-lg leading-relaxed text-dark/85">{d.blurb}</p>
-            <blockquote className="measure m-0 mt-5 text-lg leading-relaxed text-mid">
-              <span className="font-heading text-teal" aria-hidden="true">“</span>
-              {d.note}
-              <span className="font-heading text-teal" aria-hidden="true">”</span>
-            </blockquote>
+            <p className="measure mt-5 text-lg leading-relaxed text-mid">{d.note}</p>
             <p className="mt-5 text-mid">
               <span className="font-semibold text-dark">Try asking:</span> “{d.tryAsk}”
             </p>
