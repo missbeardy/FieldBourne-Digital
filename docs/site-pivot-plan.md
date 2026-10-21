@@ -1,6 +1,6 @@
 # Site pivot plan
 
-Status: approved 21 October 2026. Nothing here is built yet.
+Status: approved 21 October 2026. Built and live on fieldbournedigital.com.au (commit afd77bd). Still open: the TV Magic results and quote, and the free review automation (section 3).
 Branch: `studio-pivot`. Nothing gets pushed to `main` (which deploys the live site) without Darren's OK.
 
 ## What changes, in one paragraph

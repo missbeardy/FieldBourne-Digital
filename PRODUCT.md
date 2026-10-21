@@ -39,13 +39,13 @@ One local person, Beaudesert based and Queensland raised, who reviews your websi
 
 - Name: FieldBourne Digital (capital B, always).
 - Colours: teal #1B6B6B, amber #E8943A, charcoal #1E2A2A, cream #F7F5F2. Kept by choice. Amber is not used for small text.
-- Logo: hill and sun mark, to be redrawn as a clean SVG in exact brand colours. The teal swoosh mark is retired.
-- Body font: Inter. Heading font: to be chosen (replacing Plus Jakarta Sans).
+- Logo: Mount Barney's two peaks with the amber sun behind the eastern shoulder, a clean SVG in `src/components/Logo.tsx` (also the favicon). The teal swoosh mark is retired.
+- Fonts: Familjen Grotesk for headings, Inter for body text.
 - Main call to action: "Get a free website review" (short: "Get a free review").
 
 ## Evidence on Hand
 
-- Three concept sites, labelled as invented businesses: Wirebird Electrical (`demos/wirebird`), Lantern Gully Cabins (`demos/lantern-gully`), Sorrel & Slate cafe (`demos/sorrel-slate`). Screenshots in `public/work/`.
+- Three concept sites, labelled as invented businesses: Wirebird Electrical (`demos/wirebird`), Lantern Gully Cabins (`demos/lantern-gully`), Sorrel & Slate cafe (`demos/sorrel-slate`). Screenshots in `public/images/work/`.
 - One real client: TV Magic South Brisbane, on a custom CRM Darren built (not a website). Quote and results are still to be confirmed with the client.
 - Real review PDFs and before/after images produced by the audit pipeline (`tools/audit/`).
 - None yet: website clients, testimonials, reviews, a photo of Darren. Do not invent any of them.

@@ -138,7 +138,7 @@ footer a { color: var(--teal); text-decoration:none; }
 ${report.closing ? `<p class="closing">${rich(report.closing)}</p>` : ''}
 <footer>
   <div><strong>${esc(studio.person)}</strong>, ${esc(studio.business)}, ${esc(studio.town)}<br>
-  <a href="mailto:${esc(studio.email)}">${esc(studio.email)}</a> &middot; <a href="https://${esc(studio.site)}">${esc(studio.site)}</a> &middot; ABN ${esc(studio.abn)}</div>
+  ${studio.phone ? `${esc(studio.phone)} &middot; ` : ''}<a href="mailto:${esc(studio.email)}">${esc(studio.email)}</a> &middot; <a href="https://${esc(studio.site)}">${esc(studio.site)}</a> &middot; ABN ${esc(studio.abn)}</div>
   <div class="fine">Measured on ${esc(report.date)} from the public website${report.googleAttribution ? ' and Google' : ''}. Scores are out of 10 and are a guide, not a guarantee. These notes are yours to use however you like.</div>
 </footer>
 </div></body></html>`

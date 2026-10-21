@@ -1,6 +1,6 @@
 ---
 name: client-proposal
-description: Write a FieldBourne Digital quote or proposal in AUD with GST, payment milestones, a monthly care plan, assumptions and exclusions, as a PDF (or DOCX on request), from a scope of work and Darren's price list. Use this whenever Darren wants to quote, price up, estimate, or send a proposal for a website, care plan or automation job, even if he just says "how much would I charge them" or "put together a quote".
+description: Write a FieldBourne Digital quote or proposal in AUD (GST handled from the price list, currently not registered so none charged), payment milestones, a monthly care plan, assumptions and exclusions, as a PDF (or DOCX on request), from a scope of work and Darren's price list. Use this whenever Darren wants to quote, price up, estimate, or send a proposal for a website, care plan or automation job, even if he just says "how much would I charge them" or "put together a quote".
 ---
 
 # Client proposal
@@ -40,7 +40,7 @@ Save it in the client's folder: `clients/<client>/` for a client, `prospects/<sl
   "client": { "business": "Lantern Gully Cabins", "contact": "Sam", "abn": "" },
   "summary": "Two or three plain sentences: what they get and why.",
   "items": [
-    { "description": "Five-page website", "detail": "Home, Cabins, Things to do, About, Contact", "qty": 1, "unitPriceExGst": 2400 }
+    { "description": "Small business site, up to 5 pages", "detail": "Home, Cabins, Things to do, About, Contact", "qty": 1, "unitPriceExGst": 1490 }
   ],
   "milestones": [
     { "name": "Deposit", "when": "To start", "percent": 50 },
@@ -48,15 +48,15 @@ Save it in the client's folder: `clients/<client>/` for a client, `prospects/<sl
   ],
   "carePlan": {
     "name": "Standard care plan",
-    "monthlyExGst": 79,
-    "minimumMonths": 6,
-    "includes": ["Hosting and backups", "Up to 30 minutes of changes a month"],
+    "monthlyExGst": 89,
+    "minimumMonths": 3,
+    "includes": ["Hosting and backups", "Up to 1 hour of changes a month"],
     "notIncluded": ["New pages", "Paid apps or plugins"]
   },
   "assumptions": ["You supply photos and opening hours by ..."],
   "exclusions": ["Domain registration fees, paid by you directly"],
   "hosting": "The domain and DNS stay in your name. ...",
-  "terms": "Invoices are due within 14 days."
+  "terms": "Invoices are due within 7 days."
 }
 ```
 

@@ -72,6 +72,7 @@ const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<
 const list = (arr) => (arr?.length ? `<ul>${arr.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>` : '')
 const fonts = pathToFileURL(join(repoRoot, 'public', 'fonts')).href
 const incl = q.gstRegistered ? 'inc. GST' : ''
+const exLabel = q.gstRegistered ? ' ex GST' : ''
 const validUntil = (() => {
   const d = new Date(q.date)
   if (isNaN(d)) return ''
@@ -111,17 +112,17 @@ ul { margin: 1mm 0 0; padding-left: 5mm; } li { margin: 0 0 1mm; }
 </style></head><body>
 <header>
   <div><div class="brand">Field<span>bourne</span> Digital</div>
-  <div class="studio">${esc(studio.person)}, ${esc(studio.town)}<br>${esc(studio.email)} &middot; ${esc(studio.site)}<br>ABN ${esc(studio.abn)}</div></div>
+  <div class="studio">${esc(studio.person)}, ${esc(studio.town)}<br>${studio.phone ? `${esc(studio.phone)} &middot; ` : ''}${esc(studio.email)} &middot; ${esc(studio.site)}<br>ABN ${esc(studio.abn)}</div></div>
   <div><h1>Quote</h1><div class="meta"><strong>Quote</strong> ${esc(q.quoteNumber)}<br><strong>Date</strong> ${dateText}<br><strong>Valid until</strong> ${validUntil}</div></div>
 </header>
 <div class="for"><strong>Prepared for</strong> ${esc(q.client?.business)}${q.client?.contact ? `, attention ${esc(q.client.contact)}` : ''}${q.client?.abn ? `<br>ABN ${esc(q.client.abn)}` : ''}</div>
 ${q.summary ? `<h2>What this covers</h2><p>${esc(q.summary)}</p>` : ''}
 <h2>The work</h2>
-<table><thead><tr><th>Item</th><th class="num">Qty</th><th class="num">Price ex GST</th><th class="num">Amount ex GST</th></tr></thead><tbody>
+<table><thead><tr><th>Item</th><th class="num">Qty</th><th class="num">Price${exLabel}</th><th class="num">Amount${exLabel}</th></tr></thead><tbody>
 ${lines.map((l) => `<tr><td class="desc">${esc(l.description)}${l.detail ? `<small>${esc(l.detail)}</small>` : ''}</td><td class="num">${l.qty}</td><td class="num">${money(cents(l.unitPriceExGst))}</td><td class="num">${money(l.lineEx)}</td></tr>`).join('')}
 </tbody></table>
 <table class="totals" style="width:60%; margin-left:auto; margin-top:2mm">
-<tr><td>Subtotal (ex GST)</td><td class="num">${money(subtotal)}</td></tr>
+${q.gstRegistered ? `<tr><td>Subtotal (ex GST)</td><td class="num">${money(subtotal)}</td></tr>` : ''}
 ${q.gstRegistered ? `<tr><td>GST (10%)</td><td class="num">${money(gst)}</td></tr>` : ''}
 <tr class="grand"><td>Total ${incl}</td><td class="num">${money(total)}</td></tr>
 </table>

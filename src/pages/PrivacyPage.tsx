@@ -58,7 +58,8 @@ export function PrivacyPage() {
               <p>Depending on how you deal with me, your information may be handled by:</p>
               <ul>
                 <li>Formspree, which receives the website review form</li>
-                <li>Google (Gmail), for email</li>
+                <li>Make, which copies review requests into a private Google Sheet so I can keep track of them</li>
+                <li>Google (Gmail and Google Sheets), for email and for keeping track of review requests</li>
                 <li>Twilio, for text messages and calls, where used</li>
                 <li>Supabase and Resend, for systems I build and run for clients, where used</li>
                 <li>OpenAI and Anthropic, AI tools I may use to help prepare reviews, summarise, or draft replies</li>
