@@ -21,7 +21,12 @@ const args = Object.fromEntries(rest.reduce((acc, a, i, all) => (a.startsWith('-
 const LOG = 'prospects/contact-log.csv'
 const DNC = 'prospects/do-not-contact.csv'
 const today = new Date().toISOString().slice(0, 10)
-const csv = (v) => `"${String(v ?? '').replace(/"/g, '""')}"`
+// Quote every value, and stop spreadsheet apps treating a value as a formula
+const csv = (v) => {
+  let s = String(v ?? '')
+  if (/^[=+\-@\t\r]/.test(s)) s = `'${s}`
+  return `"${s.replace(/"/g, '""')}"`
+}
 
 await mkdir('prospects', { recursive: true })
 if (!existsSync(LOG)) await writeFile(LOG, 'date_drafted,business,email,source_url,date_found,consent_basis,draft_path,status\n')
