@@ -4,3 +4,21 @@ dist/
 .DS_Store
 *.local
 judge-runs/
+
+# Secrets. Commit .env.example only.
+.env
+.env.*
+!.env.example
+
+# Business contact data and prospect work. Never commit.
+/prospects/
+
+# Real client working files. Only the template is tracked.
+/clients/*
+!/clients/_template/
+
+# Audit runs on our own site and demos
+/tools/audit/output/
+
+# Local Claude Code settings
+.claude/settings.local.json
