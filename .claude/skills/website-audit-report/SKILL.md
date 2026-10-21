@@ -41,6 +41,8 @@ Useful flags:
 - `--skip-site-scan` for a quick run, or if Unlighthouse fails. Say in the report notes that only the homepage was measured.
 - `--skip-places` if there is no API key yet. The GBP score then shows "Not checked".
 
+Also read `page-status.json` (what Google gets for each page address, without running the page's code) and the `examples` in `lighthouse.json` (the exact elements that failed a check), so the report names real problems instead of guessing.
+
 Google Places rules: only the `place_id` is ever written to disk (`place.json`). Don't copy ratings, review counts, hours or review text into any file. The plain findings in `results.json` ("Google reviews: 10 to 24") are what you work from. No scraping of Google Maps, LinkedIn or Facebook, ever.
 
 ## Step 2: Also apply the web-quality checks

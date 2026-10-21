@@ -31,7 +31,7 @@ const afterMobile = join(dir, 'mockup-mobile.png')
 const browser = await chromium.launch()
 try {
   for (const [w, h, path, mobile] of [[1440, 900, afterDesktop, false], [390, 844, afterMobile, true]]) {
-    const ctx = await browser.newContext({ viewport: { width: w, height: h }, isMobile: mobile, hasTouch: mobile })
+    const ctx = await browser.newContext({ viewport: { width: w, height: h }, isMobile: false, hasTouch: mobile })
     const page = await ctx.newPage()
     await page.goto(pathToFileURL(mockup).href, { waitUntil: 'networkidle' })
     await page.waitForTimeout(600)

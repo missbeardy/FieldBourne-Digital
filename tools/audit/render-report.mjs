@@ -45,7 +45,7 @@ if (problems.length) {
 }
 
 const band = (n) => (n === null || n === undefined ? 'na' : n >= 80 ? 'good' : n >= 50 ? 'ok' : 'poor')
-const outOf10 = (n) => (n === null || n === undefined ? 'Not checked' : `${Math.round(n / 10)}/10`)
+const outOf10 = (n) => (n === null || n === undefined ? 'Not checked' : `${Math.floor(n / 10)}/10`)
 
 const scoreRows = report.scores
   .map(

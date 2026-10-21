@@ -182,7 +182,10 @@ async function capture(browser, width, height, label) {
   const context = await browser.newContext({
     viewport: { width, height },
     deviceScaleFactor: 1,
-    isMobile: width < 768,
+    // isMobile emulation makes the layout taller than the screenshot, which hides
+    // call bars fixed to the bottom of the screen. A phone-sized window with touch
+    // and a phone user agent matches what a real phone shows.
+    isMobile: false,
     hasTouch: width < 768,
     userAgent: width < 768
       ? 'Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Mobile Safari/537.36'
@@ -195,6 +198,9 @@ async function capture(browser, width, height, label) {
   await page.waitForTimeout(1500)
   // Dismiss nothing, accept nothing: we screenshot what a visitor sees first.
   await page.screenshot({ path: join(shotsDir, `${label}-top.png`) })
+  // Measure the first screen now, before any scrolling: some sites only show a sticky
+  // call bar after the visitor scrolls, and that isn't what they see on arrival.
+  const onArrival = await page.evaluate(pageChecks, { town })
   // Scroll through once so lazy images load before the full-page shot.
   // Jump instantly: sites with smooth scrolling would otherwise still be moving when we measure
   await page.evaluate(async () => {
@@ -212,7 +218,16 @@ async function capture(browser, width, height, label) {
   const finalUrl = page.url()
   const status = response ? response.status() : null
   await context.close()
-  return { ...checks, ...(sticky || {}), consoleErrors, finalUrl, status }
+  return {
+    ...checks,
+    telInFirstScreen: onArrival.telInFirstScreen,
+    ctaInFirstScreen: onArrival.ctaInFirstScreen,
+    ctaTexts: onArrival.ctaTexts,
+    ...(sticky || {}),
+    consoleErrors,
+    finalUrl,
+    status,
+  }
 }
 
 // ---------- Lighthouse (homepage, mobile and desktop) ----------
@@ -241,7 +256,13 @@ async function runLighthouse(formFactor) {
       for (const ref of c.auditRefs) {
         const a = lhr.audits[ref.id]
         if (ref.weight > 0 && a && a.score !== null && a.score < 0.9) {
-          failing.push({ category: cat, id: a.id, title: a.title, displayValue: a.displayValue || '', weight: ref.weight })
+          // Keep a couple of example elements so the report can name what actually failed
+          const examples = (a.details?.items || [])
+            .map((it) => it.node?.snippet || it.node?.nodeLabel || null)
+            .filter(Boolean)
+            .slice(0, 3)
+            .map((x) => String(x).slice(0, 160))
+          failing.push({ category: cat, id: a.id, title: a.title, displayValue: a.displayValue || '', weight: ref.weight, examples })
         }
       }
     }
@@ -261,13 +282,26 @@ async function runLighthouse(formFactor) {
 // ---------- Unlighthouse site scan ----------
 
 async function runSiteScan() {
+  // Unlighthouse refuses to write into a folder holding files it didn't create,
+  // so the config lives in its own folder next to the (empty) output folder.
   const scanDir = join(outDir, '.unlighthouse')
-  await mkdir(scanDir, { recursive: true })
-  const cfgPath = join(scanDir, 'unlighthouse.config.mjs')
+  const cfgDir = join(outDir, '.unlighthouse-config')
+  await rm(scanDir, { recursive: true, force: true })
+  await mkdir(cfgDir, { recursive: true })
+  const cfgPath = join(cfgDir, 'unlighthouse.config.mjs')
+  // A site living under a sub-path (like /demos/wirebird/) is scanned inside that path only
+  const basePath = new URL(url).pathname.replace(/\/$/, '')
   await writeFile(
     cfgPath,
     `export default ${JSON.stringify({
-      scanner: { maxRoutes: maxPages, samples: 1, throttle: true, device: 'mobile' },
+      scanner: {
+        maxRoutes: maxPages,
+        samples: 1,
+        throttle: true,
+        device: 'mobile',
+      },
+      // Unlighthouse crawls from /, so a sub-path site is scanned by listing its address directly
+      ...(basePath ? { urls: [`${basePath}/`] } : {}),
       puppeteerOptions: { executablePath: chromium.executablePath() },
       chrome: { useSystem: false },
     }, null, 2)}\n`,
@@ -292,7 +326,8 @@ async function runSiteScan() {
       else if (e.name === 'ci-result.json') found.push(p)
     }
   }
-  await walk(scanDir)
+  if (existsSync(scanDir)) await walk(scanDir)
+  await rm(cfgDir, { recursive: true, force: true })
   if (!found.length) return { ok: false, exitCode: code, pages: [] }
   const rows = JSON.parse(await readFile(found[0], 'utf8'))
   const list = Array.isArray(rows) ? rows : rows.routes || []
@@ -386,13 +421,28 @@ async function fetchStatus(path) {
   }
 }
 
+// What a search engine gets for each page: the raw HTTP status, without running any JavaScript.
+// Single-page apps on simple hosts can look fine in a browser but answer 404 to Google.
+async function rawStatuses(paths) {
+  const out = []
+  for (const path of paths) {
+    try {
+      const r = await fetch(new URL(path, url), { redirect: 'manual', headers: { 'User-Agent': 'Mozilla/5.0 (compatible; FieldBourneAudit/1.0)' } })
+      out.push({ path, status: r.status, location: r.headers.get('location') || null })
+    } catch (e) {
+      out.push({ path, status: null, error: String(e) })
+    }
+  }
+  return out
+}
+
 // ---------- scoring ----------
 
 const clamp = (n) => Math.max(0, Math.min(100, Math.round(n)))
 const findings = []
 const add = (category, severity, finding) => findings.push({ category, severity, finding })
 
-function score({ desktop, mobile, lhMobile, lhDesktop, scan, robots, sitemap, places }) {
+function score({ desktop, mobile, lhMobile, lhDesktop, scan, robots, sitemap, places, statuses }) {
   const isHttps = url.startsWith('https:') && mobile.finalUrl.startsWith('https:')
 
   // Speed
@@ -400,7 +450,7 @@ function score({ desktop, mobile, lhMobile, lhDesktop, scan, robots, sitemap, pl
   const speed = clamp(scanPerf === null ? lhMobile.scores.performance : lhMobile.scores.performance * 0.6 + scanPerf * 0.4)
   add('speed', speed < 50 ? 'high' : speed < 80 ? 'medium' : 'low',
     `Homepage speed score on a phone is ${lhMobile.scores.performance}/100 (desktop ${lhDesktop.scores.performance}/100). Main content shows after ${lhMobile.metrics.lcp || 'unknown'}. Page weight ${lhMobile.metrics.pageWeight || 'unknown'}.`)
-  if (scanPerf !== null) add('speed', 'low', `Median phone speed across ${scan.pages.length} pages scanned: ${scanPerf}/100.`)
+  if (scanPerf !== null) add('speed', 'low', (scan.pages.length === 1 ? `Phone speed on the one page scanned: ${scanPerf}/100.` : `Median phone speed across ${scan.pages.length} pages scanned: ${scanPerf}/100.`))
 
   // Mobile
   let mob = 100
@@ -423,9 +473,16 @@ function score({ desktop, mobile, lhMobile, lhDesktop, scan, robots, sitemap, pl
   if (!desktop.metaDescription) { own -= 15; add('seo', 'medium', 'No search description, so Google picks its own snippet.') }
   if (desktop.h1s.length === 0) { own -= 15; add('seo', 'medium', 'No main heading (H1) on the homepage.') }
   else if (desktop.h1s.length > 1) { own -= 5; add('seo', 'low', `${desktop.h1s.length} main headings (H1) on the homepage. One is clearer.`) }
+  const broken = statuses.filter((s) => s.status >= 400)
+  const redirected = statuses.filter((s) => s.status >= 300 && s.status < 400)
+  if (broken.length) {
+    own -= Math.min(40, 10 + broken.length * 5)
+    add('seo', 'high', `${broken.length} of ${statuses.length} pages answer "not found" (${broken[0].status}) when Google asks for them directly, even though they look fine in a browser: ${broken.slice(0, 4).map((b) => b.path).join(', ')}${broken.length > 4 ? ' and more' : ''}. Google won't list those pages.`)
+  }
+  if (redirected.length) add('seo', 'low', `${redirected.length} page address${redirected.length === 1 ? '' : 'es'} redirect${redirected.length === 1 ? 's' : ''} somewhere else first: ${redirected.slice(0, 3).map((r) => r.path).join(', ')}.`)
   if (sitemap.status !== 200) { own -= 10; add('seo', 'medium', 'No sitemap.xml found, which helps Google find every page.') }
   if (robots.status === 200 && /Disallow:\s*\/\s*$/im.test(robots.body)) { own -= 30; add('seo', 'high', 'robots.txt blocks search engines from the whole site.') }
-  if (desktop.imgCount > 0 && desktop.imgAltCount / desktop.imgCount < 0.8) { own -= 10; add('seo', 'low', `${desktop.imgCount - desktop.imgAltCount} of ${desktop.imgCount} images have no description (alt text).`) }
+  if (desktop.imgCount > 0 && desktop.imgAltCount / desktop.imgCount < 0.8) { own -= 10; add('seo', 'low', `${desktop.imgCount - desktop.imgAltCount} of ${desktop.imgCount} image${desktop.imgCount === 1 ? '' : 's'} on the homepage ${desktop.imgCount - desktop.imgAltCount === 1 ? 'has' : 'have'} no description (alt text).`) }
   const seo = clamp((lhMobile.scores.seo + own) / 2)
 
   // Local SEO
@@ -462,7 +519,7 @@ function score({ desktop, mobile, lhMobile, lhDesktop, scan, robots, sitemap, pl
   // Accessibility
   const accessibility = lhMobile.scores.accessibility
   for (const f of lhMobile.failing.filter((f) => f.category === 'accessibility').slice(0, 4)) {
-    add('accessibility', 'medium', `Accessibility check failed: ${f.title}.`)
+    add('accessibility', 'medium', `Accessibility check failed: ${f.title.replace(/\.+$/, '')}.`)
   }
 
   // Trust signals
@@ -533,7 +590,10 @@ if (!args['skip-places']) {
   }
 }
 
-const scores = score({ desktop, mobile, lhMobile, lhDesktop, scan, robots, sitemap, places })
+const pathsToCheck = [...new Set([new URL(url).pathname, ...scan.pages.map((p) => p.path)])]
+const statuses = await rawStatuses(pathsToCheck)
+await writeFile(join(outDir, 'page-status.json'), JSON.stringify(statuses, null, 2))
+const scores = score({ desktop, mobile, lhMobile, lhDesktop, scan, robots, sitemap, places, statuses })
 const { _score, ...placesFindings } = places
 
 const results = {
