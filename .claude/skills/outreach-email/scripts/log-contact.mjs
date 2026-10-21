@@ -44,8 +44,9 @@ const domain = email.includes('@') ? email.split('@')[1] : email
 async function onDoNotContact() {
   const rows = (await readFile(DNC, 'utf8')).split(/\r?\n/).slice(1).filter(Boolean)
   return rows.some((r) => {
-    const entry = r.split(',')[1]?.replace(/"/g, '').trim().toLowerCase()
-    return entry && (entry === email || entry === domain || entry === `@${domain}`)
+    // Undo the CSV quoting and the formula guard, and drop any leading @, before comparing
+    const entry = r.split(',')[1]?.replace(/"/g, '').trim().replace(/^'/, '').replace(/^@/, '').toLowerCase()
+    return entry && (entry === email || entry === domain)
   })
 }
 
@@ -80,7 +81,9 @@ if (cmd === 'check') {
   await appendFile(LOG, row.map(csv).join(',') + '\n')
   console.log(`Logged ${email} to ${LOG}`)
 } else if (cmd === 'unsubscribe') {
-  await appendFile(DNC, [today, email, args.note || ''].map(csv).join(',') + '\n')
+  // Store a whole-business opt-out as the bare domain, so nothing needs escaping
+  const entry = isAddress ? email : email.replace(/^@/, '')
+  await appendFile(DNC, [today, entry, args.note || ''].map(csv).join(',') + '\n')
   console.log(`Added ${email} to ${DNC}`)
 } else {
   console.error('Command must be check, log or unsubscribe.')
