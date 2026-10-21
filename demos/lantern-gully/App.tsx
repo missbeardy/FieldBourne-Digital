@@ -127,7 +127,7 @@ export default function App() {
       <a className="skip" href="#main">Skip to content</a>
 
       <header className="top">
-        <DemoRibbon className="ribbon ribbon-top" />
+        <DemoRibbon className="ribbon ribbon-top" name="Lantern Gully Cabins" />
         <div className="bar wrap" ref={bar}>
           <a className="mark" href="#top" aria-label="Lantern Gully Cabins, back to the top">
             Lantern Gully <span>Cabins</span>
@@ -314,7 +314,7 @@ export default function App() {
 
       <footer className="foot">
         <div className="wrap foot-in">
-          <DemoRibbon className="ribbon ribbon-foot" />
+          <DemoRibbon className="ribbon ribbon-foot" name="Lantern Gully Cabins" />
           <p className="fine">Lantern Gully Cabins is a made-up business. The availability, prices, phone number and email on this page are samples.</p>
           <a className="textlink" href="#top">Back to the top</a>
         </div>

@@ -15,7 +15,7 @@ const shots = [
   { slug: 'lantern-gully', height: 830 },
 ]
 const webpWidths = [640, 1280]
-const outDir = join(root, 'public', 'work')
+const outDir = join(root, 'public', 'images', 'work')
 
 async function waitForServer(path) {
   const url = ORIGIN + path
@@ -69,7 +69,7 @@ async function main() {
         quality: 78,
         clip,
       })
-      console.log(`Wrote public/work/${slug}.jpg (1440x${height})`)
+      console.log(`Wrote public/images/work/${slug}.jpg (1440x${height})`)
 
       // WebP at a few widths, resized in the browser canvas (no extra dependencies).
       const png = (await page.screenshot({ type: 'png', clip })).toString('base64')
@@ -90,7 +90,7 @@ async function main() {
           { png, w, height },
         )
         await writeFile(join(outDir, `${slug}-${w}.webp`), Buffer.from(dataUrl.split(',')[1], 'base64'))
-        console.log(`Wrote public/work/${slug}-${w}.webp`)
+        console.log(`Wrote public/images/work/${slug}-${w}.webp`)
       }
     }
 

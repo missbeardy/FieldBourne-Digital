@@ -114,7 +114,7 @@ function Header() {
   const closeMenu = () => menuRef.current?.removeAttribute('open')
   return (
     <header className="top">
-      <DemoRibbon className="ribbon ribbon--top" />
+      <DemoRibbon className="ribbon ribbon--top" name="Wirebird Electrical" />
       <div className="bar wrap">
         <a className="brand" href="#top" aria-label="Wirebird Electrical, back to top">
           <BirdMark className="brand__mark" />
@@ -982,7 +982,7 @@ function Footer() {
           </li>
         </ul>
       </div>
-      <DemoRibbon className="ribbon ribbon--foot" />
+      <DemoRibbon className="ribbon ribbon--foot" name="Wirebird Electrical" />
     </footer>
   )
 }

@@ -101,7 +101,7 @@ export default function App() {
         Skip to the menu
       </a>
 
-      <DemoRibbon className="ribbon ribbon-top" />
+      <DemoRibbon className="ribbon ribbon-top" name="Sorrel &amp; Slate" />
 
       <header className="masthead">
         <a className="wordmark" href="#top" aria-label="Sorrel and Slate, back to the top">
@@ -325,7 +325,7 @@ export default function App() {
             Illustrations and layout drawn for this demo, with no photographs. Set in Libre Caslon, licensed under the SIL Open Font Licence.
           </p>
         </div>
-        <DemoRibbon className="ribbon ribbon-foot" />
+        <DemoRibbon className="ribbon ribbon-foot" name="Sorrel &amp; Slate" />
       </footer>
 
       <ChatLauncher open={chatOpen} tucked={askInView} onOpen={openChat} />

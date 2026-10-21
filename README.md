@@ -4,7 +4,7 @@ Marketing site for [fieldbournedigital.com.au](https://fieldbournedigital.com.au
 
 ## Stack
 
-Vite + React + TypeScript + Tailwind + Motion. Static build on GitHub Pages.
+Vite + React + TypeScript + Tailwind CSS v4. Every page is prerendered to real HTML at build time and served from GitHub Pages.
 
 ## Develop
 
@@ -22,7 +22,7 @@ npm run preview
 
 ## Brand
 
-See [`BRANDING.md`](BRANDING.md). Keep teal `#1B6B6B`, amber `#E8943A`, cream `#F7F5F2`, charcoal `#1E2A2A`.
+See [`BRANDING.md`](BRANDING.md) for voice, colours and the logo, and [`DESIGN.md`](DESIGN.md) for the visual system. Start with [`CLAUDE.md`](CLAUDE.md).
 
 ## Notes
 

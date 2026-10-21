@@ -1,83 +1,70 @@
-import { Link } from 'react-router-dom';
-import { FadeIn } from '../components/motion';
+import { LegalPage } from '../components/LegalPage';
 import { SITE_CONFIG } from '../config/site';
 import { usePageMeta } from '../hooks/usePageMeta';
 
-const sections = [
-  {
-    title: 'Services',
-    body: 'FieldBourne Digital provides lead-capture and follow-up software and related configuration, integration, and support services for trade businesses. Specific scope, pricing, and deliverables are agreed in writing before work begins.',
-  },
-  {
-    title: 'Pricing and payment',
-    body: 'Setup fees and monthly subscription rates are quoted during your consultation. Invoices are payable as agreed in your service agreement. We do not lock you into long-term contracts unless explicitly stated.',
-  },
-  {
-    title: 'Your data',
-    body: 'You retain ownership of your business data. We provide export capabilities and do not hold your data hostage. You are responsible for the accuracy of data you provide and for complying with applicable privacy laws regarding your customers.',
-  },
-  {
-    title: 'Availability',
-    body: 'We aim for high availability but do not guarantee uninterrupted service. Planned maintenance will be communicated where possible.',
-  },
-  {
-    title: 'Limitation of liability',
-    body: "To the extent permitted by Australian law, FieldBourne Digital's liability is limited to the fees paid for the relevant service period. We are not liable for indirect or consequential losses.",
-  },
-];
-
 export function TermsPage() {
   usePageMeta(
-    'Terms of Service | FieldBourne Digital',
-    'Terms of service for FieldBourne Digital software and related services for Australian trade businesses.',
+    'Terms of service | FieldBourne Digital',
+    'Terms for websites, care plans, automation and the free website review from FieldBourne Digital, Beaudesert.',
   );
 
   return (
-    <>
-      <section className="border-b border-grey/50 px-[5vw] py-16 md:py-20">
-        <div className="mx-auto max-w-3xl">
-          <FadeIn>
-            <div className="mb-4 inline-block rounded bg-amber-lt px-3 py-1 font-heading text-xs font-bold uppercase tracking-wider text-amber">
-              Legal
-            </div>
-            <h1 className="mb-3 font-heading text-[clamp(2.2rem,4vw,3rem)] font-extrabold tracking-tight text-dark">
-              Terms of Service
-            </h1>
-            <p className="text-sm text-mid">Last updated: June 2025</p>
-            <p className="mt-6 text-mid">
-              These terms apply to services provided by FieldBourne Digital (ABN {SITE_CONFIG.abn}). By using our website or engaging our services, you agree to these terms.
-            </p>
-          </FadeIn>
-        </div>
-      </section>
-
-      <section className="px-[5vw] py-12 md:py-16">
-        <div className="mx-auto flex max-w-3xl flex-col gap-4">
-          {sections.map((section) => (
-            <FadeIn key={section.title} className="rounded-xl border border-grey bg-white p-6 md:p-7">
-              <h2 className="mb-2 font-heading text-xl font-extrabold text-dark">{section.title}</h2>
-              <p className="text-sm leading-relaxed text-mid">{section.body}</p>
-            </FadeIn>
-          ))}
-
-          <FadeIn className="rounded-xl border border-grey bg-cream p-6 md:p-7">
-            <h2 className="mb-2 font-heading text-xl font-extrabold text-dark">Contact</h2>
-            <p className="text-sm leading-relaxed text-mid">
-              Questions about these terms:{' '}
-              <a href={`mailto:${SITE_CONFIG.contactEmail}`} className="font-semibold text-teal no-underline hover:text-teal-hover">
-                {SITE_CONFIG.contactEmail}
-              </a>
-            </p>
-            <p className="mt-3 text-sm text-mid">
-              See also our{' '}
-              <Link to="/privacy" className="font-semibold text-teal no-underline hover:text-teal-hover">
-                Privacy Policy
-              </Link>
-              .
-            </p>
-          </FadeIn>
-        </div>
-      </section>
-    </>
+    <LegalPage
+      title="Terms of service"
+      updated="21 October 2026"
+      other={{ to: '/privacy', label: 'privacy policy' }}
+      intro={
+        <p className="m-0">
+          These terms apply to the website, the free website review, and the services provided by FieldBourne Digital (ABN {SITE_CONFIG.abn}). Each job also gets a written quote, and where the quote and these terms differ, the quote wins.
+        </p>
+      }
+      sections={[
+        {
+          title: 'The free website review',
+          body: (
+            <p>The review is free, with no obligation. It's my honest opinion of your website based on what I can see publicly, plus a quick concept mockup. The mockup is a sketch for you to look at, not a finished site, and I won't publish it.</p>
+          ),
+        },
+        {
+          title: 'Websites, care plans and automation',
+          body: (
+            <p>Before any paid work starts, you get a written quote with the scope, price, milestones, what I'm assuming, and what isn't included. Work starts once you've accepted the quote and paid the deposit.</p>
+          ),
+        },
+        {
+          title: 'Prices and payment',
+          body: (
+            <>
+              <p>Prices are in Australian dollars. FieldBourne Digital is not registered for GST, so no GST is charged.</p>
+              <p>Unless the quote says otherwise, 50% is due to start and the rest at launch, before the site goes live on your domain. Invoices are due within 7 days. Care plans are billed monthly in advance and run month to month after the first 3 months.</p>
+            </>
+          ),
+        },
+        {
+          title: 'What you own',
+          body: (
+            <p>Your domain is registered in your name. Once paid for, the website's content, design and code made for you are yours, along with your words, photos and data. If you move on, I'll hand over the files and any logins I hold, and remove my own access.</p>
+          ),
+        },
+        {
+          title: 'Your part',
+          body: (
+            <p>You're responsible for the accuracy of the content you supply, for having the right to use any photos or material you give me, and for your own legal obligations to your customers, such as privacy and licensing.</p>
+          ),
+        },
+        {
+          title: 'Availability',
+          body: (
+            <p>I aim to keep sites and systems running, but can't promise they'll never be interrupted. I'll give notice of planned work where I can.</p>
+          ),
+        },
+        {
+          title: 'Limitation of liability',
+          body: (
+            <p>To the extent Australian law allows, my liability is limited to the fees you paid for the relevant service, and I'm not liable for indirect or consequential losses. Nothing in these terms limits your rights under the Australian Consumer Law.</p>
+          ),
+        },
+      ]}
+    />
   );
 }

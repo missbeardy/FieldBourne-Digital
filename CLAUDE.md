@@ -42,11 +42,11 @@ These apply to everything you produce: site copy, docs, emails, reports, proposa
 
 ## Brand guide
 
-- `BRANDING.md` at the repo root. Read it before any copy or voice change.
-- Sections 4 to 8 (voice, banned words, colours, copy patterns, self-check) are current.
-- Sections 1 to 3 still describe the old CRM product. Use the business context above instead until they are rewritten.
-- Brand colours live in `src/index.css` `@theme`. Teal `#1B6B6B`, amber `#E8943A`, charcoal `#1E2A2A`, cream `#F7F5F2`. Don't invent new primaries.
-- Fonts: Plus Jakarta Sans for headings, Inter for body.
+- `BRANDING.md` at the repo root: voice, banned words, colours, logo and copy patterns. Read it before any copy or voice change.
+- `PRODUCT.md`: product truth for design work. `DESIGN.md`: the visual system (ridgeline world, tokens, components, motion).
+- Brand colours live in `src/index.css` `@theme`. Teal `#1B6B6B`, amber `#E8943A`, charcoal `#1E2A2A`, cream `#F7F5F2`. Don't invent new primaries. Amber is never used for small text.
+- Fonts: Familjen Grotesk for headings, Inter for body.
+- The name is always FieldBourne Digital (capital B). The logo is the Mount Barney mark in `src/components/Logo.tsx`.
 
 ## Demo sites
 

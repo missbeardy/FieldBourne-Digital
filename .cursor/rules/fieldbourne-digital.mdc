@@ -1,29 +1,24 @@
 ---
-description: FieldBourne Digital marketing site — structure, brand, and build conventions
+description: FieldBourne Digital marketing site: read CLAUDE.md first
 alwaysApply: true
 ---
 
 # FieldBourne Digital marketing site
 
-Read `BRANDING.md` before any copy changes, then `AGENTS.md` and `README.md`.
-
-## What this repo is
-
-Vite + React + TypeScript + Tailwind marketing site. Deployed via GitHub Pages from `dist/`. Product app lives in [tv-magic-companion](https://github.com/missbeardy/tv-magic-companion) — link only, do not embed app code here.
+`CLAUDE.md` in the repo root is the main instruction file: business context, writing rules, outreach compliance and guardrails. Read it first, then `BRANDING.md` (copy and voice), `PRODUCT.md` and `DESIGN.md` (design). If this file conflicts with `CLAUDE.md`, follow `CLAUDE.md`.
 
 ## Key files
 
-- `src/config/site.ts` — `formEndpoint`, `tvmagicAppUrl`, `contactEmail`, `siteUrl`
-- `src/index.css` — brand tokens in `@theme` (exact FieldBourne hex values)
-- `src/pages/` — Home, About, Fieldbourne case study, legal
-- `src/components/motion.tsx` — FadeIn / Stagger with reduced-motion support
-- `legacy/` — previous static HTML site (reference only)
+- `src/config/site.ts`: form endpoint, phone, email, ABN, CRM app link, towns
+- `src/index.css`: brand tokens in `@theme`
+- `src/components/Ridgelines.tsx`: the Scenic Rim landscape and its scroll motion
+- `src/pages/`: Home, Website review, Services, Pricing, Concept sites, Case study, Scenic Rim, About, legal
+- `scripts/prerender.mjs`: saves every route as real HTML at build time; add new routes to `ROUTES` in `src/App.tsx`
 
 ## When editing
 
-- Keep brand colours exact: teal `#1B6B6B`, amber `#E8943A`, cream `#F7F5F2`, charcoal `#1E2A2A`.
-- Use `site.ts` for external URLs; avoid hard-coding contact email or app URLs.
-- Follow `BRANDING.md` for voice, banned words, and the Section 8 self-check.
-- Never use em dashes in site copy. Use commas, full stops, or colons instead.
-- Australian English, trade-business tone, no generic SaaS jargon.
-- Prefer intentional Motion moments over decorative noise; always respect `prefers-reduced-motion`.
+- Australian English. No em dashes. Nothing from the banned list in `BRANDING.md` section 5.
+- Keep brand colours exact. Amber is for fills and marks, never small text.
+- Use `site.ts` for contact details and URLs; don't hard-code them.
+- One authored motion moment (the ridgelines). Always respect `prefers-reduced-motion`.
+- Never push to `main` without Darren's OK: it deploys the live site.

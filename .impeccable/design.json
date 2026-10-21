@@ -1,0 +1,500 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-21T04:54:22.163Z",
+  "title": "Design System: FieldBourne Digital",
+  "extensions": {
+    "colorMeta": {
+      "teal": {
+        "role": "primary",
+        "displayName": "Lookout Teal",
+        "canonical": "oklch(48.2% 0.074 195.0)",
+        "tonalRamp": [
+          "oklch(15% 0.069 195.0)",
+          "oklch(26% 0.074 195.0)",
+          "oklch(37% 0.074 195.0)",
+          "oklch(48% 0.074 195.0)",
+          "oklch(60% 0.074 195.0)",
+          "oklch(72% 0.074 195.0)",
+          "oklch(84% 0.067 195.0)",
+          "oklch(95% 0.059 195.0)"
+        ]
+      },
+      "teal-hover": {
+        "role": "primary",
+        "displayName": "Shaded Teal",
+        "canonical": "oklch(41.7% 0.063 195.0)",
+        "tonalRamp": [
+          "oklch(15% 0.063 195.0)",
+          "oklch(26% 0.063 195.0)",
+          "oklch(37% 0.063 195.0)",
+          "oklch(48% 0.063 195.0)",
+          "oklch(60% 0.063 195.0)",
+          "oklch(72% 0.063 195.0)",
+          "oklch(84% 0.057 195.0)",
+          "oklch(95% 0.050 195.0)"
+        ]
+      },
+      "amber": {
+        "role": "secondary",
+        "displayName": "Morning Sun",
+        "canonical": "oklch(73.7% 0.143 63.6)",
+        "tonalRamp": [
+          "oklch(15% 0.079 63.6)",
+          "oklch(26% 0.095 63.6)",
+          "oklch(37% 0.111 63.6)",
+          "oklch(48% 0.126 63.6)",
+          "oklch(60% 0.143 63.6)",
+          "oklch(72% 0.143 63.6)",
+          "oklch(84% 0.143 63.6)",
+          "oklch(95% 0.133 63.6)"
+        ]
+      },
+      "amber-hover": {
+        "role": "secondary",
+        "displayName": "Late Sun",
+        "canonical": "oklch(69.2% 0.145 61.4)",
+        "tonalRamp": [
+          "oklch(15% 0.087 61.4)",
+          "oklch(26% 0.102 61.4)",
+          "oklch(37% 0.118 61.4)",
+          "oklch(48% 0.134 61.4)",
+          "oklch(60% 0.145 61.4)",
+          "oklch(72% 0.145 61.4)",
+          "oklch(84% 0.144 61.4)",
+          "oklch(95% 0.128 61.4)"
+        ]
+      },
+      "dark": {
+        "role": "neutral",
+        "displayName": "Charcoal",
+        "canonical": "oklch(27.4% 0.016 196.2)",
+        "tonalRamp": [
+          "oklch(15% 0.016 196.2)",
+          "oklch(26% 0.016 196.2)",
+          "oklch(37% 0.016 196.2)",
+          "oklch(48% 0.016 196.2)",
+          "oklch(60% 0.016 196.2)",
+          "oklch(72% 0.016 196.2)",
+          "oklch(84% 0.016 196.2)",
+          "oklch(95% 0.016 196.2)"
+        ]
+      },
+      "mid": {
+        "role": "neutral",
+        "displayName": "Gum Shade",
+        "canonical": "oklch(48.4% 0.017 180.1)",
+        "tonalRamp": [
+          "oklch(15% 0.017 180.1)",
+          "oklch(26% 0.017 180.1)",
+          "oklch(37% 0.017 180.1)",
+          "oklch(48% 0.017 180.1)",
+          "oklch(60% 0.017 180.1)",
+          "oklch(72% 0.017 180.1)",
+          "oklch(84% 0.017 180.1)",
+          "oklch(95% 0.017 180.1)"
+        ]
+      },
+      "cream": {
+        "role": "neutral",
+        "displayName": "Cream",
+        "canonical": "oklch(97.1% 0.005 78.3)",
+        "tonalRamp": [
+          "oklch(15% 0.005 78.3)",
+          "oklch(26% 0.005 78.3)",
+          "oklch(37% 0.005 78.3)",
+          "oklch(48% 0.005 78.3)",
+          "oklch(60% 0.005 78.3)",
+          "oklch(72% 0.005 78.3)",
+          "oklch(84% 0.005 78.3)",
+          "oklch(95% 0.005 78.3)"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "Paper White",
+        "canonical": "oklch(100.0% 0.000 89.9)",
+        "tonalRamp": [
+          "oklch(15% 0.000 89.9)",
+          "oklch(26% 0.000 89.9)",
+          "oklch(37% 0.000 89.9)",
+          "oklch(48% 0.000 89.9)",
+          "oklch(60% 0.000 89.9)",
+          "oklch(72% 0.000 89.9)",
+          "oklch(84% 0.000 89.9)",
+          "oklch(95% 0.000 89.9)"
+        ]
+      },
+      "sky": {
+        "role": "neutral",
+        "displayName": "Morning Sky",
+        "canonical": "oklch(95.9% 0.007 151.9)",
+        "tonalRamp": [
+          "oklch(15% 0.007 151.9)",
+          "oklch(26% 0.007 151.9)",
+          "oklch(37% 0.007 151.9)",
+          "oklch(48% 0.007 151.9)",
+          "oklch(60% 0.007 151.9)",
+          "oklch(72% 0.007 151.9)",
+          "oklch(84% 0.007 151.9)",
+          "oklch(95% 0.007 151.9)"
+        ]
+      },
+      "mist": {
+        "role": "neutral",
+        "displayName": "Valley Mist",
+        "canonical": "oklch(93.4% 0.012 170.3)",
+        "tonalRamp": [
+          "oklch(15% 0.012 170.3)",
+          "oklch(26% 0.012 170.3)",
+          "oklch(37% 0.012 170.3)",
+          "oklch(48% 0.012 170.3)",
+          "oklch(60% 0.012 170.3)",
+          "oklch(72% 0.012 170.3)",
+          "oklch(84% 0.012 170.3)",
+          "oklch(95% 0.012 170.3)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Fence Line",
+        "canonical": "oklch(89.3% 0.015 169.2)",
+        "tonalRamp": [
+          "oklch(15% 0.015 169.2)",
+          "oklch(26% 0.015 169.2)",
+          "oklch(37% 0.015 169.2)",
+          "oklch(48% 0.015 169.2)",
+          "oklch(60% 0.015 169.2)",
+          "oklch(72% 0.015 169.2)",
+          "oklch(84% 0.015 169.2)",
+          "oklch(95% 0.015 169.2)"
+        ]
+      },
+      "ridge-far": {
+        "role": "neutral",
+        "displayName": "Far Range",
+        "canonical": "oklch(87.9% 0.022 174.9)",
+        "tonalRamp": [
+          "oklch(15% 0.022 174.9)",
+          "oklch(26% 0.022 174.9)",
+          "oklch(37% 0.022 174.9)",
+          "oklch(48% 0.022 174.9)",
+          "oklch(60% 0.022 174.9)",
+          "oklch(72% 0.022 174.9)",
+          "oklch(84% 0.022 174.9)",
+          "oklch(95% 0.022 174.9)"
+        ]
+      },
+      "ridge-2": {
+        "role": "neutral",
+        "displayName": "Barney Haze",
+        "canonical": "oklch(77.7% 0.038 179.4)",
+        "tonalRamp": [
+          "oklch(15% 0.034 179.4)",
+          "oklch(26% 0.038 179.4)",
+          "oklch(37% 0.038 179.4)",
+          "oklch(48% 0.038 179.4)",
+          "oklch(60% 0.038 179.4)",
+          "oklch(72% 0.038 179.4)",
+          "oklch(84% 0.038 179.4)",
+          "oklch(95% 0.038 179.4)"
+        ]
+      },
+      "ridge-3": {
+        "role": "neutral",
+        "displayName": "Foothill Sage",
+        "canonical": "oklch(65.8% 0.051 184.3)",
+        "tonalRamp": [
+          "oklch(15% 0.045 184.3)",
+          "oklch(26% 0.051 184.3)",
+          "oklch(37% 0.051 184.3)",
+          "oklch(48% 0.051 184.3)",
+          "oklch(60% 0.051 184.3)",
+          "oklch(72% 0.051 184.3)",
+          "oklch(84% 0.051 184.3)",
+          "oklch(95% 0.051 184.3)"
+        ]
+      },
+      "ridge-near": {
+        "role": "neutral",
+        "displayName": "Paddock Deep",
+        "canonical": "oklch(34.8% 0.034 187.0)",
+        "tonalRamp": [
+          "oklch(15% 0.034 187.0)",
+          "oklch(26% 0.034 187.0)",
+          "oklch(37% 0.034 187.0)",
+          "oklch(48% 0.034 187.0)",
+          "oklch(60% 0.034 187.0)",
+          "oklch(72% 0.034 187.0)",
+          "oklch(84% 0.034 187.0)",
+          "oklch(95% 0.034 187.0)"
+        ]
+      },
+      "on-deep": {
+        "role": "neutral",
+        "displayName": "Lit Mist",
+        "canonical": "oklch(91.8% 0.014 167.2)",
+        "tonalRamp": [
+          "oklch(15% 0.014 167.2)",
+          "oklch(26% 0.014 167.2)",
+          "oklch(37% 0.014 167.2)",
+          "oklch(48% 0.014 167.2)",
+          "oklch(60% 0.014 167.2)",
+          "oklch(72% 0.014 167.2)",
+          "oklch(84% 0.014 167.2)",
+          "oklch(95% 0.014 167.2)"
+        ]
+      },
+      "on-deep-soft": {
+        "role": "neutral",
+        "displayName": "Shadowed Mist",
+        "canonical": "oklch(82.5% 0.024 172.7)",
+        "tonalRamp": [
+          "oklch(15% 0.024 172.7)",
+          "oklch(26% 0.024 172.7)",
+          "oklch(37% 0.024 172.7)",
+          "oklch(48% 0.024 172.7)",
+          "oklch(60% 0.024 172.7)",
+          "oklch(72% 0.024 172.7)",
+          "oklch(84% 0.024 172.7)",
+          "oklch(95% 0.024 172.7)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Homepage hero heading only, about 15ch wide."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section h2s; Charcoal on light ground, Cream on deep."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "h3s in lists and steps, small h2s for price groups and legal sections."
+      },
+      "body-lead": {
+        "displayName": "Lead",
+        "purpose": "The paragraph under a heading, at 66ch."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text at 66ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Form labels, nav links, quiet links. Never uppercase."
+      },
+      "small": {
+        "displayName": "Small",
+        "purpose": "Captions, help text, footer bar, concept site metadata."
+      }
+    },
+    "shadows": [
+      {
+        "name": "resting-print",
+        "value": "0 16px 36px -26px rgba(30,42,42,0.55)",
+        "purpose": "Compact concept site screenshots on the homepage."
+      },
+      {
+        "name": "form-panel",
+        "value": "0 18px 40px -28px rgba(30,42,42,0.45)",
+        "purpose": "The white review form and its sent state."
+      },
+      {
+        "name": "feature-print",
+        "value": "0 22px 50px -30px rgba(30,42,42,0.55)",
+        "purpose": "Full-size concept site screenshots on the concept sites page."
+      },
+      {
+        "name": "paper-on-deep",
+        "value": "0 30px 60px -30px rgba(0,0,0,0.6)",
+        "purpose": "The sample review page on Paddock Deep."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-settle",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Button fill and press transitions, 180ms."
+      },
+      {
+        "name": "press",
+        "value": "translateY(1px)",
+        "purpose": "Button active state."
+      },
+      {
+        "name": "lift",
+        "value": "translateY(-4px), 300ms ease-out",
+        "purpose": "Compact concept site screenshot on hover."
+      },
+      {
+        "name": "faq-toggle",
+        "value": "rotate(45deg), 200ms",
+        "purpose": "The FAQ plus turns to a cross when open."
+      },
+      {
+        "name": "ridgeline-parallax",
+        "value": "translateY = scrolled px x lag (range 0.5, sun 0.2, barney 0.38, foothills 0.24, near 0.1, paddock 0); translateX = -progress x drift (6, 0, 14, 24, 36, 0 px)",
+        "purpose": "The one authored motion moment: far ridges sink behind the near hills and the sun climbs. Transform only, one rAF per frame, only while the hero is on screen, none under prefers-reduced-motion."
+      },
+      {
+        "name": "focus-ring",
+        "value": "3px solid outline, 3px offset, 6px radius; teal #1B6B6B on light ground (5.74:1 on cream), amber #E8943A inside .on-deep (4.65:1 on #24403D)",
+        "purpose": "Global :focus-visible for every focusable element."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "transition and animation durations 0.01ms; smooth scroll off; landscape static",
+        "purpose": "prefers-reduced-motion: reduce."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one main action on light ground: teal fill, cream text.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Get my free review</a>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;min-height:3rem;padding:0.85rem 1.5rem;border:0;border-radius:0.65rem;font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-weight:600;font-size:1.0625rem;line-height:1.2;text-decoration:none;white-space:nowrap;cursor:pointer;transition:background-color 180ms cubic-bezier(0.22,1,0.36,1),transform 180ms cubic-bezier(0.22,1,0.36,1);background:var(--color-teal,#1B6B6B);color:var(--color-cream,#F7F5F2);} .ds-btn-primary:hover{background:var(--color-teal-hover,#155757);} .ds-btn-primary:active{transform:translateY(1px);} .ds-btn-primary:focus-visible{outline:3px solid var(--color-teal,#1B6B6B);outline-offset:3px;}"
+    },
+    {
+      "name": "Sun Button",
+      "kind": "button",
+      "refersTo": "button-sun",
+      "description": "The main action on Paddock Deep only: amber fill, charcoal text.",
+      "html": "<div class=\"ds-deep\"><a class=\"ds-btn-sun\" href=\"#\">Get my free review</a></div>",
+      "css": ".ds-deep{background:var(--color-ridge-near,#24403D);padding:32px;} .ds-btn-sun{display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;min-height:3rem;padding:0.85rem 1.5rem;border:0;border-radius:0.65rem;font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-weight:600;font-size:1.0625rem;line-height:1.2;text-decoration:none;white-space:nowrap;cursor:pointer;transition:background-color 180ms cubic-bezier(0.22,1,0.36,1),transform 180ms cubic-bezier(0.22,1,0.36,1);background:var(--color-amber,#E8943A);color:var(--color-dark,#1E2A2A);} .ds-btn-sun:hover{background:var(--color-amber-hover,#DB8429);} .ds-btn-sun:active{transform:translateY(1px);} .ds-btn-sun:focus-visible{outline:3px solid var(--color-amber,#E8943A);outline-offset:3px;}"
+    },
+    {
+      "name": "Quiet Link",
+      "kind": "custom",
+      "refersTo": "link-quiet",
+      "description": "The quiet alternative beside the primary action, with an amber underline.",
+      "html": "<div class=\"ds-row\"><a class=\"ds-btn-primary\" href=\"#\">Get my free review</a><a class=\"ds-link-quiet\" href=\"#\">Or call 0451 177 893</a></div>",
+      "css": ".ds-row{display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px;} .ds-btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;min-height:3rem;padding:0.85rem 1.5rem;border:0;border-radius:0.65rem;font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-weight:600;font-size:1.0625rem;line-height:1.2;text-decoration:none;white-space:nowrap;cursor:pointer;transition:background-color 180ms cubic-bezier(0.22,1,0.36,1),transform 180ms cubic-bezier(0.22,1,0.36,1);background:var(--color-teal,#1B6B6B);color:var(--color-cream,#F7F5F2);} .ds-link-quiet{color:var(--color-teal,#1B6B6B);font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-weight:600;text-decoration:none;border-bottom:2px solid rgb(232 148 58 / 0.65);padding-bottom:1px;white-space:nowrap;} .ds-link-quiet:hover{border-bottom-color:var(--color-amber,#E8943A);} .ds-link-quiet:focus-visible{outline:3px solid var(--color-teal,#1B6B6B);outline-offset:3px;border-radius:6px;}"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "A labelled field from the review form.",
+      "html": "<label class=\"ds-label\" for=\"ds-town\">Town</label><input class=\"ds-input\" id=\"ds-town\" placeholder=\"e.g. Beaudesert\">",
+      "css": ".ds-label{display:block;margin-bottom:6px;font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-size:0.95rem;font-weight:600;color:var(--color-dark,#1E2A2A);} .ds-input{width:100%;max-width:360px;border:1px solid var(--color-line,#D3DFDA);border-radius:0.6rem;background:#fff;padding:12px 14px;font:400 1rem Inter,ui-sans-serif,system-ui,sans-serif;color:var(--color-dark,#1E2A2A);caret-color:var(--color-teal,#1B6B6B);outline:none;transition:border-color 150ms,box-shadow 150ms;} .ds-input::placeholder{color:var(--color-mid,#55625F);} .ds-input:focus{border-color:var(--color-teal,#1B6B6B);box-shadow:0 0 0 2px rgb(27 107 107 / 0.2);} .ds-input:disabled{background:var(--color-sky,#EEF3EF);color:var(--color-mid,#55625F);}"
+    },
+    {
+      "name": "Navigation Bar",
+      "kind": "nav",
+      "refersTo": "nav-bar",
+      "description": "Sticky cream bar: logo, quiet links, one compact teal button.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-logo\"><svg viewBox=\"0 0 40 28\" width=\"40\" height=\"28\" aria-hidden=\"true\"><circle cx=\"30.5\" cy=\"11.5\" r=\"6.2\" fill=\"#E8943A\"/><path fill=\"#1B6B6B\" d=\"M1 27 C6 23.6 9.6 21.4 13 17.8 C15.2 15.4 16.6 11.6 18.4 9 C19.4 7.6 20.6 7.7 21.3 9.1 C21.8 10.1 22.5 10.3 23.2 9.2 C24.1 7.7 25.5 7.6 26.4 9.2 C28.2 12.6 31.6 18.6 39 23 L39 27 Z\"/></svg>FieldBourne Digital</span><ul class=\"ds-nav-links\"><li><a href=\"#\">Services</a></li><li><a href=\"#\" aria-current=\"page\">Pricing</a></li><li><a href=\"#\">Concept sites</a></li><li><a href=\"#\">About</a></li><li><a class=\"ds-nav-cta\" href=\"#\">Get a free review</a></li></ul></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px;padding:0 32px;background:rgb(247 245 242 / 0.92);backdrop-filter:blur(6px);border-bottom:1px solid rgb(211 223 218 / 0.7);} .ds-logo{display:inline-flex;align-items:center;gap:10px;font-family:'Familjen Grotesk',ui-sans-serif,system-ui,sans-serif;font-weight:700;font-size:1.15rem;letter-spacing:-0.01em;color:var(--color-dark,#1E2A2A);white-space:nowrap;} .ds-nav-links{display:flex;align-items:center;gap:28px;list-style:none;margin:0;padding:0;} .ds-nav-links a{font:400 0.95rem Inter,ui-sans-serif,system-ui,sans-serif;color:var(--color-mid,#55625F);text-decoration:none;transition:color 150ms;} .ds-nav-links a:hover{color:var(--color-dark,#1E2A2A);} .ds-nav-links a[aria-current]{color:var(--color-dark,#1E2A2A);font-weight:600;} .ds-nav-links a.ds-nav-cta{display:inline-flex;padding:10px 16px;border-radius:0.65rem;background:var(--color-teal,#1B6B6B);color:var(--color-cream,#F7F5F2);font-weight:600;} .ds-nav-links a.ds-nav-cta:hover{background:var(--color-teal-hover,#155757);} .ds-nav a:focus-visible{outline:3px solid var(--color-teal,#1B6B6B);outline-offset:3px;border-radius:6px;}"
+    },
+    {
+      "name": "Concept Badge",
+      "kind": "chip",
+      "refersTo": "concept-badge",
+      "description": "The label every invented concept site carries.",
+      "html": "<span class=\"ds-badge\">Concept site</span>",
+      "css": ".ds-badge{display:inline-flex;align-items:center;border-radius:9999px;background:var(--color-mist,#E2ECE8);padding:4px 10px;font:600 0.8rem Inter,ui-sans-serif,system-ui,sans-serif;color:var(--color-teal,#1B6B6B);}"
+    },
+    {
+      "name": "Form Panel",
+      "kind": "card",
+      "refersTo": "form-panel",
+      "description": "The one white container on the site: the review form on Paddock Deep.",
+      "html": "<div class=\"ds-deep\"><div class=\"ds-panel\"><h3>Thanks, Sam. It's on my list.</h3><p>I'll email the review and mockup within 2 business days.</p></div></div>",
+      "css": ".ds-deep{background:var(--color-ridge-near,#24403D);padding:40px 24px;} .ds-panel{max-width:520px;border-radius:1rem;background:#fff;padding:36px;box-shadow:0 18px 40px -28px rgba(30,42,42,0.45);} .ds-panel h3{margin:0 0 12px;font:700 1.5rem/1.08 'Familjen Grotesk',ui-sans-serif,system-ui,sans-serif;letter-spacing:-0.02em;color:var(--color-dark,#1E2A2A);} .ds-panel p{margin:0;font:400 1rem/1.625 Inter,ui-sans-serif,system-ui,sans-serif;color:var(--color-mid,#55625F);}"
+    },
+    {
+      "name": "Ridgelines",
+      "kind": "custom",
+      "refersTo": "ridgelines",
+      "description": "The Scenic Rim landscape in haze order under the morning sky, shown still.",
+      "html": "<div class=\"ds-ridge\"><svg viewBox=\"0 0 1600 300\" preserveAspectRatio=\"xMidYMax slice\" aria-hidden=\"true\"><path d=\"M0 150 C80 140 150 146 230 128 C300 112 340 120 400 104 C430 96 445 70 460 66 C474 62 482 84 500 92 C560 110 640 96 720 104 C800 112 860 92 940 98 C1020 104 1090 88 1170 94 C1260 100 1330 84 1420 92 C1500 99 1560 92 1600 90 L1600 300 L0 300 Z\" fill=\"#C9DCD6\"/><circle cx=\"1150\" cy=\"112\" r=\"40\" fill=\"#E8943A\"/><path d=\"M0 190 C80 184 160 176 230 160 C270 150 300 124 330 118 C355 113 372 132 400 150 C470 186 600 182 700 176 C800 170 870 160 930 120 C960 98 985 66 1005 52 C1020 42 1034 46 1044 62 C1052 74 1062 74 1072 60 C1084 44 1100 42 1112 58 C1150 104 1210 150 1290 164 C1330 170 1360 160 1380 148 L1396 116 C1420 110 1450 110 1474 114 L1490 146 C1520 160 1570 166 1600 166 L1600 300 L0 300 Z\" fill=\"#9DBFB7\"/><path d=\"M0 222 C150 200 290 214 420 196 C540 180 640 204 770 194 C900 184 1000 206 1130 192 C1250 180 1360 202 1480 192 C1540 188 1580 190 1600 190 L1600 300 L0 300 Z\" fill=\"#6E9C95\"/><path d=\"M0 246 C190 226 360 246 560 228 C760 210 900 238 1080 226 C1260 214 1430 236 1600 222 L1600 300 L0 300 Z\" fill=\"#1B6B6B\"/><path d=\"M0 282 C260 270 520 282 820 270 C1100 260 1360 276 1600 266 L1600 300 L0 300 Z\" fill=\"#24403D\"/></svg></div>",
+      "css": ".ds-ridge{position:relative;height:200px;background:linear-gradient(180deg,#F7F5F2 0%,#EEF3EF 48%,#E2ECE8 100%);overflow:hidden;} .ds-ridge svg{position:absolute;inset:0;display:block;width:100%;height:100%;}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Morning Lookout",
+    "overview": "The site is what a local sees standing at a Scenic Rim lookout early in the day: a pale cream sky fading into mist, the real skyline (Main Range with Mount Cordeaux's spike, Mount Maroon, Mount Barney's two peaks, flat-topped Mount Lindesay) stepping from hazy far ridges to a deep near paddock, and an amber sun sitting behind Barney's eastern shoulder. Everything else on the page is calm, plain and left-aligned, so the landscape and one clear action carry the first screen.\n\nDensity is low and the voice is a person, not a product. Sections are bands of ground colour (cream, sky, mist, deep ridge) rather than boxed cards, and they meet the deep ground along a still ridgeline instead of a hard rule. The one authored motion moment is the hero: as you scroll, the far ridges lag and sink behind the near hills and the sun climbs out from behind Barney. With reduced motion, the landscape is a still picture. Copy and voice rules live in `BRANDING.md`; this file is visual only.\n\nThe direction rejects the SaaS card-grid template outright: no eyebrow kickers over headings, no rows of feature cards as page structure, no stock gradients or glows.",
+    "keyCharacteristics": [
+      "The real Scenic Rim skyline, drawn once (`RIDGES` paths) and reused as hero, page intro and section edge.",
+      "Teal-tinted haze ramp from far ridge to near paddock; brand teal is the nearest green hill.",
+      "Familjen Grotesk headings, tight and balanced; Inter body at a 66ch reading measure.",
+      "One primary action per screen, with \"Or call 0451 177 893\" as the quiet amber-underlined alternative.",
+      "Flat ground bands; soft, low shadows only on things you could pick up (screenshots, the form, the review page)."
+    ],
+    "rules": [
+      {
+        "name": "The Sun Is Not Ink Rule",
+        "body": "Amber is never text, at any size. It is the sun, an underline, the focus ring on deep ground, or a filled button carrying Charcoal text. Amber on cream measures 2.2:1; it cannot carry words.",
+        "section": "colors"
+      },
+      {
+        "name": "The Teal Light, Amber Deep Rule",
+        "body": "The primary button is teal on light ground and amber on Paddock Deep. Never both on one screen.",
+        "section": "colors"
+      },
+      {
+        "name": "The Haze Order Rule",
+        "body": "Landscape layers always step lighter with distance: Far Range, Barney Haze, Foothill Sage, Lookout Teal, Paddock Deep. Never reorder them or introduce a hue outside the teal family into the hills.",
+        "section": "colors"
+      },
+      {
+        "name": "The No Kicker Rule",
+        "body": "Headings stand alone. There is no small uppercase line above a heading, anywhere.",
+        "section": "typography"
+      },
+      {
+        "name": "The Heading Numeral Rule",
+        "body": "When a number is the point (step numbers, Lighthouse scores), it is set in Familjen Grotesk in Lookout Teal, large, with no circle or badge around it.",
+        "section": "typography"
+      },
+      {
+        "name": "The Bands Not Boxes Rule",
+        "body": "Page structure is ground colour, not cards. A section changes by changing its background band; content inside a band sits directly on it.",
+        "section": "layout"
+      },
+      {
+        "name": "The Ridgeline Seam Rule",
+        "body": "Where light ground meets Paddock Deep above the form, the join is the still ridgeline (`RidgeEdge`), never a straight edge or a wave divider. Inner pages open on the sky gradient with a low still range along the bottom (`PageIntro`).",
+        "section": "layout"
+      },
+      {
+        "name": "The Picked-Up Objects Rule",
+        "body": "Only things you could lift off the page get a shadow. Text blocks, bands, nav and buttons are flat.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** keep one primary action per screen, with \"Or call 0451 177 893\" as the quiet link beside or below it.",
+      "**Do** use the teal button on light ground and the amber button only on Paddock Deep.",
+      "**Do** build new sections as full-bleed ground bands (cream, Morning Sky, Valley Mist, Paddock Deep) with content directly on the band.",
+      "**Do** reuse the `RIDGES` paths for any new landscape moment, in haze order, and keep them still unless they are the hero.",
+      "**Do** honour `prefers-reduced-motion`: the landscape is static and transitions collapse.",
+      "**Do** keep running text to 66ch and secondary text in Gum Shade (never lighter on light ground).",
+      "**Do** label every concept site with the Concept Badge."
+    ],
+    "donts": [
+      "**Don't** set amber as text at any size, including links, prices or numerals.",
+      "**Don't** put a small uppercase kicker or eyebrow line above any heading.",
+      "**Don't** structure a page as rows of cards; the only white container is the review form.",
+      "**Don't** add a second authored motion moment; the scrolling ridgelines are the one.",
+      "**Don't** add shadows to text blocks, bands, nav or buttons.",
+      "**Don't** reorder the haze ramp or bring a non-teal hue into the hills.",
+      "**Don't** invent new primaries; the four brand colours (teal, amber, charcoal, cream) are fixed."
+    ]
+  }
+}

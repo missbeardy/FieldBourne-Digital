@@ -1,47 +1,109 @@
-import { Link, NavLink } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
+import { SITE_CONFIG } from '../config/site';
+import { Logo } from './Logo';
 
-const linkClass = ({ isActive }: { isActive: boolean }) =>
-  `text-sm font-medium transition-colors ${isActive ? 'text-dark' : 'text-mid hover:text-dark'}`;
+export const NAV_LINKS = [
+  { to: '/services', label: 'Services' },
+  { to: '/pricing', label: 'Pricing' },
+  { to: '/work', label: 'Concept sites' },
+  { to: '/about', label: 'About' },
+] as const;
+
+export function PhoneIcon({ className = 'h-5 w-5' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M5.2 3.5h3.1l1.6 4.2-2.1 1.4a11.5 11.5 0 0 0 5.1 5.1l1.4-2.1 4.2 1.6v3.1a1.9 1.9 0 0 1-2.1 1.9A15.6 15.6 0 0 1 3.3 5.6a1.9 1.9 0 0 1 1.9-2.1Z" />
+    </svg>
+  );
+}
+
+const desktopLink = ({ isActive }: { isActive: boolean }) =>
+  `text-[0.95rem] no-underline transition-colors ${isActive ? 'text-dark font-semibold' : 'text-mid hover:text-dark'}`;
 
 export function Nav() {
+  const [open, setOpen] = useState(false);
+  const { pathname } = useLocation();
+
+  useEffect(() => setOpen(false), [pathname]);
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false);
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [open]);
+
   return (
-    <nav className="sticky top-0 z-50 flex h-16 items-center justify-between border-b border-grey bg-cream px-[5vw]">
-      <Link to="/" className="inline-flex shrink-0 items-center gap-2 no-underline sm:gap-2.5" aria-label="FieldBourne Digital home">
-        <img
-          src="/logo-current.webp"
-          alt=""
-          width={40}
-          height={40}
-          className="h-9 w-9 shrink-0 object-contain sm:h-10 sm:w-10"
-        />
-        <span aria-hidden="true" className="font-heading text-[1.05rem] font-extrabold tracking-tight text-teal whitespace-nowrap min-[400px]:text-[1.15rem]">
-          Field<span className="text-amber">bourne</span>
-          <span className="hidden min-[400px]:inline"> Digital</span>
-        </span>
-      </Link>
+    <header className="sticky top-0 z-50 border-b border-line/70 bg-cream/92 backdrop-blur-[6px]">
+      <nav aria-label="Main" className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 md:px-8">
+        <Link to="/" className="no-underline" aria-label="FieldBourne Digital, home">
+          <Logo />
+        </Link>
 
-      <ul className="hidden items-center gap-8 list-none md:flex">
-        <li><a href="/#how" className="text-sm font-medium text-mid no-underline hover:text-dark">How it works</a></li>
-        <li><a href="/#beside" className="text-sm font-medium text-mid no-underline hover:text-dark">Beside your tools</a></li>
-        <li><NavLink to="/work" className={linkClass}>Work</NavLink></li>
-        <li><NavLink to="/case-study/tvmagic" className={linkClass}>Case study</NavLink></li>
-        <li><NavLink to="/about" className={linkClass}>About</NavLink></li>
-        <li>
+        <ul className="hidden list-none items-center gap-7 md:flex">
+          {NAV_LINKS.map((l) => (
+            <li key={l.to}>
+              <NavLink to={l.to} className={desktopLink}>
+                {l.label}
+              </NavLink>
+            </li>
+          ))}
+          <li>
+            <Link to="/website-review" className="btn btn-primary !min-h-0 !py-2.5 !px-4 !text-[0.95rem]">
+              Get a free review
+            </Link>
+          </li>
+        </ul>
+
+        <div className="flex items-center gap-1 md:hidden">
           <a
-            href="/#contact"
-            className="rounded-md bg-teal px-5 py-2 text-sm font-semibold text-white no-underline transition-colors hover:bg-teal-hover"
+            href={SITE_CONFIG.phoneHref}
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full text-teal"
+            aria-label={`Call Darren on ${SITE_CONFIG.phoneDisplay}`}
           >
-            Book a free chat
+            <PhoneIcon />
           </a>
-        </li>
-      </ul>
+          <button
+            type="button"
+            className="inline-flex h-11 items-center gap-2 rounded-full px-3 text-[0.95rem] font-semibold text-dark"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            onClick={() => setOpen((v) => !v)}
+          >
+            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true">
+              {open ? <path d="M6 6l12 12M18 6 6 18" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
+            </svg>
+            Menu
+          </button>
+        </div>
+      </nav>
 
-      <a
-        href="/#contact"
-        className="ml-3 inline-flex min-h-11 shrink-0 items-center rounded-md bg-teal px-3 text-sm font-bold text-white no-underline md:hidden"
-      >
-        Book a free chat
-      </a>
-    </nav>
+      <div id="mobile-menu" hidden={!open} className="border-t border-line/70 bg-cream md:hidden">
+        <ul className="mx-auto flex max-w-6xl list-none flex-col px-5 py-3">
+          {NAV_LINKS.map((l) => (
+            <li key={l.to}>
+              <NavLink
+                to={l.to}
+                className={({ isActive }) =>
+                  `block py-3 text-lg no-underline ${isActive ? 'font-semibold text-dark' : 'text-dark'}`
+                }
+              >
+                {l.label}
+              </NavLink>
+            </li>
+          ))}
+          <li className="pt-3 pb-2">
+            <Link to="/website-review" className="btn btn-primary w-full">
+              Get a free review
+            </Link>
+          </li>
+          <li className="pb-2 text-center">
+            <a href={SITE_CONFIG.phoneHref} className="link-quiet">
+              Or call {SITE_CONFIG.phoneDisplay}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </header>
   );
 }

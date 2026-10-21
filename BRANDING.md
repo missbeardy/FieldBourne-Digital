@@ -1,20 +1,20 @@
-# FieldBourne Digital — Brand Reference
+# FieldBourne Digital: brand reference
 
-**Purpose of this file:** the single source of truth for voice, tone, colour, and copy rules across all FieldBourne Digital and product (FieldBourne Companion, future verticals) content. Any human writer or LLM drafting copy for the website, app UI, emails, social, or sales should read this first.
-
----
-
-## 1. Who We Are (in one breath)
-
-FieldBourne Digital builds modular job-management software for Australian trade businesses — leads, scheduling, and follow-ups, configured around how a trade actually works, connected to the tools they already use. We are not a generic CRM and not a bespoke dev shop. One platform, many trades, built from proven modules.
-
-**FieldBourne Companion** is Product 1. The same platform, configured for TV aerial/satellite franchise businesses. It is our proof, not our ceiling. (Legacy name: TVMagic Companion. Do not use on the marketing site.)
+**Purpose of this file:** the single source of truth for voice, tone, colour, logo and copy rules for FieldBourne Digital. Any human writer or LLM drafting copy for the website, reviews, emails, quotes or social should read this first. Visual system details (spacing, components, motion) live in `DESIGN.md`.
 
 ---
 
-## 2. Brand Goal
+## 1. Who we are (in one breath)
 
-Every piece of copy should move a busy, skeptical trade business owner one step closer to **booking a free chat**, by sounding like a person who has actually watched tradies duct-tape spreadsheets, text messages, and a calendar together, and built something better. Never like a SaaS company that has never held a drill.
+FieldBourne Digital is Darren, a one-person local web studio in Beaudesert, Queensland. He reviews small businesses' websites for free, builds and looks after websites, and sets up automations that take repeat admin off their hands. The domain and website always stay in the client's name.
+
+TV Magic South Brisbane is the one real client so far, running on a custom CRM Darren built (FieldBourne Companion). It is proof of automation and custom software, not of website work. The concept sites in `/demos` are invented businesses and are always labelled that way.
+
+---
+
+## 2. Brand goal
+
+Every piece of copy should move a busy, wary local business owner one step closer to **asking for a free website review**, by sounding like someone from the area who knows what they're doing and will tell it straight. Never like a city agency or a software company.
 
 **The job of the copy is to be believed, not to be impressive.**
 
@@ -22,104 +22,103 @@ Every piece of copy should move a busy, skeptical trade business owner one step 
 
 ## 3. Audience
 
-- Solo tradies and small trade teams (1–10 people): TV aerial, electrical, plumbing, solar, HVAC, general field service
-- Franchise head offices needing multi-site visibility without franchisees seeing each other's data
-- Time-poor, low tech-tolerance, skeptical of software sales pitches, currently juggling 3+ disconnected tools
-- They don't want to be sold to. They want someone to say "yeah, that's annoying, here's how we fix it" and then actually show them.
+- Small local businesses and solo operators: tradies, cafes, farm stays, shops, makers, clinics. Scenic Rim first, then Lockyer Valley, Ipswich, Logan and Greater Brisbane.
+- Often older, time-poor, and burnt before by web people who overcharged or disappeared.
+- Mostly reading on a phone, sometimes outdoors, sometimes on a weak signal.
+- They like to back a local. A face, a town and a phone number earn more trust than any badge.
 
 ---
 
-## 4. Voice & Tone
+## 4. Voice and tone
 
-**We sound like:** a tradie-turned-builder explaining something useful to another tradie over a coffee. Direct, warm, plain-spoken, quietly confident. Short sentences. Real numbers and real scenarios over abstract claims.
+**We sound like:** a local who builds websites, explaining something useful over the counter. Direct, warm, plain-spoken, quietly confident. Short sentences. Real examples over abstract claims. First person: "I", not "we".
 
-**We do NOT sound like:** a SaaS pitch deck, a corporate consultancy, or a hype-bro. No exclamation-mark energy. No pretending this is more exciting than it is — job management software is useful, not thrilling, and the copy shouldn't oversell that.
+**We do NOT sound like:** a SaaS pitch deck, a corporate consultancy, or a hype merchant. No exclamation-mark energy. No pretending a website is more exciting than it is.
 
 ### Tone pillars
-1. **Honest over impressive** — if a claim can't be backed by something real (a live client, a number, a feature that exists today), don't make it.
-2. **Specific over abstract.** "missed call on Tuesday, text on Saturday, email at midnight" beats "capture every lead."
-3. **Second person, present tense** — talk *to* the reader about *their* day, not about the product in the abstract.
-4. **Confident, not pushy** — state what it does plainly; let the reader decide. No false urgency, no fake scarcity.
-5. **Plain language** — no jargon. If a word wouldn't be said out loud on a job site, don't write it. "Configured" is borderline; use sparingly.
+1. **Honest over impressive.** If a claim can't be backed by something real, don't make it.
+2. **Specific over abstract.** "There's no call button on the first screen of a phone" beats "the mobile experience could be improved".
+3. **Second person, present tense.** Talk to the reader about their business and their customers.
+4. **Confident, not pushy.** State what it does plainly and let the reader decide. No false urgency, no fake scarcity.
+5. **Plain language.** If a word wouldn't be said at the farm gate or on a job site, don't write it. Explain any technical idea by what it does.
 
 ---
 
-## 5. The "Don'ts" — Words & Patterns to Avoid
+## 5. The don'ts: words and patterns to avoid
 
 **Banned punctuation:**
-- **Em dashes (—)** in any customer-facing copy. Use a comma, full stop, colon, or split into two sentences instead.
+- **Em dashes** in any customer-facing copy. Use a comma, full stop, colon, or split into two sentences. Avoid en dashes as punctuation too.
 
-**Banned words/phrases (SaaS jargon, hype, or false urgency):**
+**Banned words and phrases (jargon, hype, or false urgency):**
 - "Revolutionize," "game-changer," "disrupt," "unlock," "supercharge," "10x"
 - "Leverage" (as a verb), "seamless," "synergy," "best-in-class," "cutting-edge"
-- "Solution" used as a noun for the product itself ("our solution helps you…")
-- "Empower," "elevate," "streamline" — overused SaaS filler, says nothing concrete
-- Exclamation marks in headlines or body copy (fine, very sparingly, in casual micro-copy only)
+- "Solution" used as a noun for what we sell ("our solution helps you...")
+- "Empower," "elevate," "streamline": overused filler that says nothing concrete
+- Exclamation marks in headlines or body copy
 - Fake urgency: "Limited spots," "Act now," "Don't miss out"
-- Vague superlatives with no proof behind them: "the best," "the easiest," "the most powerful"
-- Em-dash-stacked corporate cadence ("Powerful. Flexible. Scalable."). Three-word fragment lists read like a stock photo caption
+- Vague superlatives with no proof: "the best," "the easiest," "the most powerful"
+- Three-word fragment lists ("Fast. Local. Affordable.") that read like a stock photo caption
 
 **Structural don'ts:**
-- Don't open with the product name or company name — open with the reader's problem or outcome
-- Don't stack two CTAs with no differentiation in the same viewport
-- Don't claim multi-client traction we don't have yet. We have one live client (a TV aerial franchise on FieldBourne Companion). Say so, specifically, until that's no longer true. "Loved by trades businesses" with one client is a lie of implication.
-- Don't hide the live-client proof (the showcase widget / case study) behind generic trust badges — specificity is the moat while the client list is short
-- Don't use stock "tech support" tone ("Our team is here to help!") — Darren personally responds; say that instead
+- Don't open with the company name. Open with the reader's outcome or problem.
+- Don't put two different calls to action side by side in the same screen. One main action ("Get a free website review"), with "Or call 0451 177 893" as the quiet alternative.
+- Don't put a small capitalised label above a heading. Let the heading speak.
+- Don't claim clients, results or reviews we don't have. One real client, three concept sites. Say so.
+- Never present a concept site as a client.
+- Don't use stock support tone ("Our team is here to help!"). Darren answers his own phone; say that instead.
 
 ---
 
-## 6. Colours
+## 6. Colours, type and logo
 
-Source of truth: `assets/styles.css` `:root` variables. Never hardcode hex values in components — always reference these tokens (or the org-config equivalent for white-label tenants).
+Source of truth: `src/index.css` `@theme`. Never hardcode new colours in components.
 
 | Token | Hex | Use |
 |---|---|---|
-| `--teal` | `#1B6B6B` | Primary brand colour — logo, primary buttons, links, headline accents |
-| `--teal` (hover) | `#155757` | Hover/active state for teal elements |
-| `--teal-lt` | `#EAF3F3` | Light teal background tint (cards, highlights) |
-| `--amber` | `#E8943A` | Accent colour — "bourne" in wordmark, eyebrows, badges, secondary emphasis |
-| `--amber-lt` | `#FDF3E8` | Light amber background tint (eyebrow pills) |
-| `--dark` | `#1E2A2A` | Primary text colour, headings |
-| `--mid` | `#6B7A7A` | Secondary/body text, subheadings |
-| `--grey` | `#C4BDB4` | Borders, dividers, low-emphasis trust text |
-| `--bg` | `#F7F5F2` | Page background (warm cream, not white) |
-| `--white` | `#FFFFFF` | Cards, button text on dark/teal backgrounds |
+| `teal` | `#1B6B6B` | Primary brand colour: logo hill, primary buttons, links |
+| `teal-hover` | `#155757` | Hover state for teal |
+| `amber` | `#E8943A` | **Fills and marks only**: the sun, the main button on dark ground, underlines. Never small text (it fails contrast) |
+| `dark` | `#1E2A2A` | Headings and main text |
+| `mid` | `#55625F` | Secondary text (darkened from #6B7A7A so it passes contrast) |
+| `cream` | `#F7F5F2` | Page background |
+| `sky`, `mist` | `#EEF3EF`, `#E2ECE8` | Quiet section grounds, the morning sky |
+| `ridge-far` to `ridge-near` | `#C9DCD6` to `#24403D` | The Scenic Rim layers, farthest to nearest; `ridge-near` is the deep section and footer ground |
 
 **Fonts:**
-- Headings: Plus Jakarta Sans, weight 700–800
-- Body: Inter, weight 400–500
+- Headings: Familjen Grotesk, weight 600 to 700
+- Body: Inter, weight 400 to 600
 
-**Note: this is the FieldBourne Digital parent brand palette.** FieldBourne Companion (the product app) may use org-specific theming via org-config. Do not mix parent-site teal/amber with product tenant palettes unless intentional for a demo.
-
----
-
-## 7. Proven Copy Patterns (steal these structures)
-
-These patterns are already working in live copy — reuse the *structure*, not necessarily the exact words, for new sections/products.
-
-- **Headline pattern:** `[Action]. Not [the painful alternative].` → *"Run your jobs. Not your inbox."*
-- **Eyebrow pattern:** short, lowercase-feel category label above a heading → *"Job management for trade businesses"*
-- **Pain section opener:** *"Sound familiar?"* — invites self-recognition before pitching anything
-- **Proof over claim:** show a live, specific number/scenario (3 new leads today, 12 open jobs) rather than a generic feature list
-- **Founder voice, first person, unpolished:** *"I'd rather show you it working than talk at you about features."*
-- **Friction-reducer micro-copy:** *"No credit card. We respond within one business day."* — specific, not vague reassurance
-- **CTA verb:** "Book a free chat" for consultative sales. "Join waitlist" for self-serve coming soon. Never "Book a demo" or "Get started."
-- **Hero secondary CTA:** "See the live board" scrolls to `#showcase`. Case study links use "Read the case study".
-- **Pricing frame:** Do not publish dollar amounts on the marketing site. Allude to a one-time implementation fee plus flat monthly subscription, quoted on the free chat. Foundational Client = premium build at entry rate for early clients.
-- **Contact form:** Name + phone required. Email and message optional. Trade type via tap buttons, not dropdown. Submit stays "Send message" (Darren follows up by email).
+**Logo:**
+- The mark is Mount Barney's two peaks in teal with the amber sun rising behind the eastern shoulder. Source: `src/components/Logo.tsx`. The favicon (`public/favicon.svg`) is the same mark.
+- Always shown next to the typed name "FieldBourne Digital". Never the old raster lockup, never the old teal swoosh.
+- On dark ground the hill switches to `#9DBFB7` so it stays visible. The sun stays amber.
+- The name is always **FieldBourne Digital**, capital B.
 
 ---
 
-## 8. Quick Self-Check Before Publishing Any Copy
+## 7. Proven copy patterns
 
-Ask of every new section or line:
-1. Would Darren actually say this out loud to a tradie? If not, rewrite it.
-2. Is every claim backed by something real (a live client, a number, an existing feature)?
-3. Does it talk about the reader's day, or about the product's features in the abstract?
-4. Did I use any em dash? (Never in customer-facing copy.)
-5. Did I use any word from the banned list in Section 5?
-6. Are the colours/fonts pulled from the tokens in Section 6, not hardcoded or guessed?
+- **Main heading:** "Websites for local businesses, from someone local."
+- **Local line:** "Beaudesert based and Queensland raised. I know the area, and I know how your customers talk."
+- **Main call to action:** "Get a free website review" (short: "Get a free review", in a button: "Get my free review"). Never "Book a demo", "Get started" or "Book a free chat".
+- **Secondary action:** "Or call 0451 177 893" as a quiet text link.
+- **Proof over claim:** show the real thing, such as a real review page, a concept site, or the TV Magic story, rather than adjectives.
+- **Founder voice, first person:** "I'd rather show you that than make claims."
+- **Reassurance that is specific:** "Within 2 business days. Free, and no obligation." "Your domain stays in your name."
+- **Prices are published** as starting prices from `docs/pricing.md`, with "No GST charged" stated plainly.
+- **Review form:** labelled fields, an unticked consent box for the review emails, and an optional box for tips. Say what happens next and when.
 
 ---
 
-*Last updated: June 2026. Update this file whenever brand voice, colours, or core positioning change — this is the reference for all future copy, human or LLM-generated.*
+## 8. Quick self-check before publishing any copy
+
+1. Would Darren say this out loud to a local business owner? If not, rewrite it.
+2. Is every claim backed by something real?
+3. Does it talk about the reader's business and customers, or about us?
+4. Any em dash? (Never in customer-facing copy.)
+5. Any word from the banned list in section 5?
+6. Are colours and fonts from section 6, with amber never used for small text?
+
+---
+
+*Last updated: October 2026, for the studio pivot. Update this file whenever voice, colours or positioning change.*
