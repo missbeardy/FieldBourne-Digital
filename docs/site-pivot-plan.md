@@ -235,6 +235,41 @@ You're right that it isn't a website build, and the page shouldn't pretend it is
 - Beaudesert, Boonah and Tamborine Mountain chambers of commerce, and the Scenic Rim Regional Council business directory. Good for referrals as well as being found.
 - Same name, phone and email everywhere.
 
+## 8b. Look and feel (from the impeccable critique, 21 October 2026)
+
+The critique scored the current site 15/32: calm and quick, but built from the most common SaaS template parts, and less crafted than the concept sites. Full report: `.impeccable/critique/`. Decisions made by Darren:
+
+**Direction: borrow the concept sites' craft.** The studio site should prove it can make a business feel like itself, the way Wirebird's job docket and Lantern Gully's contour map do. So:
+- Real local imagery instead of a fake dashboard. The first screen shows something only FieldBourne can show: a real review PDF page and a before/after.
+- One or two solid teal or charcoal sections, and fewer bordered white cards on cream.
+- A small amount of material texture or detail tied to the work (for example the review laid out like a printed page), used in one place, not everywhere.
+- Drop the template habits: the capitalised badge above every heading, the two-colour headline, "01 to 04" number labels, the coloured bar beside quotes.
+
+**Colours: keep all four hexes, change how they're used.**
+- Amber is for fills and marks only (the sun, rules, highlights), never small text. It fails contrast as text (2.2:1).
+- Darken the mid grey from `#6B7A7A` to about `#55625F` so body text passes.
+- Remove the near-invisible pale grey text.
+
+**Logo: redraw the hill and sun.**
+- A clean SVG in exact brand teal and amber, ideally drawn from a real local ridgeline (Mount Barney or the Main Range).
+- The mark alone in the nav, beside a typed wordmark. The same mark as the favicon. Retire the teal swoosh.
+- One spelling everywhere: **FieldBourne Digital** (confirmed by Darren).
+- Write the logo and colour-use rules into `BRANDING.md`.
+
+**Fonts: new heading font, keep Inter for body text.** Present 2 or 3 options with real samples before choosing. Starting candidates, all free to self-host:
+- Young Serif: warm, like a country-town printed sign
+- Archivo: sturdy, like farm equipment lettering
+- Familjen Grotesk: friendly, a little quirky
+
+**Photo of Darren: not yet.** Design around a local landscape image for now, with a clearly marked spot to swap in a photo later. A real photo is still the biggest single trust gain available.
+
+**Also from the critique:**
+- A compact menu on phones (there is none today), with tap-to-call in the header.
+- Form fields with visible labels, a success message that says what happens next and when, and an email link plus phone number if sending fails.
+- No duplicate call-to-action buttons in the same screen.
+
+**Impeccable steps for the build, in order:** `init` (writes `PRODUCT.md` from `CLAUDE.md`), `shape` (homepage and review form, including font samples), `distill`, `adapt`, `harden`, `typeset`, then `polish` and `document`. Rerun `critique` at the end to compare with 15/32.
+
 ## 9. Housekeeping that goes with the pivot
 
 - `BRANDING.md`: rewrite sections 1 to 3 (who we are, goal, audience) for the local studio, and change the CTA rule to "Get a free website review". Voice rules stay.
@@ -246,7 +281,7 @@ You're right that it isn't a website build, and the page shouldn't pretend it is
 
 ## 10. Order of work and time
 
-At 5 to 10 hours a week, about 3 weeks.
+At 5 to 10 hours a week, about 4 weeks.
 
 | # | Work | Rough hours |
 |---|---|---|
@@ -255,7 +290,8 @@ At 5 to 10 hours a week, about 3 weeks.
 | 3 | Services and pricing pages | 3 to 4 |
 | 4 | Concept sites page, demo ribbon wording, TV Magic page reframed with placeholders | 2 to 3 |
 | 5 | `/scenic-rim` page, JSON-LD, sitemap, About rewrite, `BRANDING.md` | 3 to 4 |
-| 6 | Check every page: build, Lighthouse, phone screenshots, run our own audit skill on it, no em dashes, no banned words | 1 to 2 |
+| 6 | Look and feel (section 8b): logo redraw, heading font, colour use, phone menu, form labels | 5 to 7 |
+| 7 | Check every page: build, Lighthouse, phone screenshots, run our own audit skill and impeccable critique on it, no em dashes, no banned words | 1 to 2 |
 
 Then Darren reviews on a local preview. Nothing is pushed until he says so. The free review automation (section 3) is a separate small project after this.
 

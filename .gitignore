@@ -22,3 +22,6 @@ judge-runs/
 
 # Local Claude Code settings
 .claude/settings.local.json
+
+# Impeccable working files (critique snapshots are kept)
+/.impeccable/live/
