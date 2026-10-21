@@ -11,10 +11,10 @@ Read this before doing any work in this repo. When this file and another doc dis
   1. Scenic Rim
   2. Lockyer Valley and Ipswich
   3. Logan and Greater Brisbane
-- **Starting niches:**
-  - farm stays and agritourism
-  - trades
-  - allied health
+- **Who it's for:** small local businesses and solo operators, and the locals who want to back them. Keep site copy general rather than built around one industry. Trades, accommodation and local food are useful examples (they match the concept sites), not the only audience.
+- **Local angle:** Darren is Beaudesert based and Queensland raised. He knows the area and how locals talk.
+- **Contact:** phone 0451 177 893, email admin@fieldbournedigital.com.au. Free reviews go back within 2 business days.
+- **Pricing:** `docs/pricing.md`. Not registered for GST, so no GST is charged.
 
 ### Offer ladder
 
@@ -52,13 +52,13 @@ These apply to everything you produce: site copy, docs, emails, reports, proposa
 
 The sites in `/demos` are invented brands. On the website they must always be clearly labelled as concept work, never presented as clients or as real businesses.
 
-| Folder | Brand | Niche |
+| Folder | Brand | Type of business |
 |---|---|---|
 | `demos/wirebird` | Wirebird Electrical, Beaudesert | Trades |
-| `demos/lantern-gully` | Lantern Gully Cabins, Rathdowney | Farm stays and agritourism |
-| `demos/sorrel-slate` | Sorrel & Slate cafe, Boonah | Local food (closest fit: agritourism) |
+| `demos/lantern-gully` | Lantern Gully Cabins, Rathdowney | Accommodation |
+| `demos/sorrel-slate` | Sorrel & Slate cafe, Boonah | Food |
 
-There is no allied health demo yet.
+TV Magic South Brisbane is a real client, but of the FieldBourne CRM (custom software, tier 3), not a website build. Show it as an automation and custom software example, never as website work.
 
 ## Outreach compliance
 
