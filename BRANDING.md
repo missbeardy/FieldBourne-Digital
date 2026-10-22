@@ -14,7 +14,14 @@ TV Magic South Brisbane is the one real client so far, running on a custom CRM D
 
 ## 2. Brand goal
 
-Every piece of copy should move a busy, wary local business owner one step closer to **asking for a free website review**, by sounding like someone from the area who knows what they're doing and will tell it straight. Never like a city agency or a software company.
+Every piece of copy should move a busy, wary local business owner one step closer to a free first step, by sounding like someone from the area who knows what they're doing and will tell it straight. Never like a city agency or a software company.
+
+There are two free first steps, one for each kind of problem:
+
+- **Website problems:** a free website review.
+- **Admin and systems problems:** a free admin check, a 20-minute phone call about how the week runs. The paid process audit ($149) comes after it.
+
+Website pages lead to the review. Business systems and automation pages lead to the admin check. The home page offers both, in separate sections.
 
 **The job of the copy is to be believed, not to be impressive.**
 
@@ -42,6 +49,9 @@ Every piece of copy should move a busy, wary local business owner one step close
 4. **Confident, not pushy.** State what it does plainly and let the reader decide. No false urgency, no fake scarcity.
 5. **Plain language.** If a word wouldn't be said at the farm gate or on a job site, don't write it. Explain any technical idea by what it does.
 
+### Formality
+Plain, but not chatty. Headings and buttons are whole, clear phrases with no slang ("Talk to me about your business", not "Say g'day"). Local colour ("round here", "the lot") belongs in body copy on the website pages only. Business systems pages sit a notch more formal again: they should read like a well-written quote from a good tradesperson.
+
 ---
 
 ## 5. The don'ts: words and patterns to avoid
@@ -61,7 +71,7 @@ Every piece of copy should move a busy, wary local business owner one step close
 
 **Structural don'ts:**
 - Don't open with the company name. Open with the reader's outcome or problem.
-- Don't put two different calls to action side by side in the same screen. One main action ("Get a free website review"), with "Or call 0451 177 893" as the quiet alternative.
+- Don't put two different calls to action side by side in the hero or in one section. Each section has one main action matched to its service (the website review or the admin check), with "Or call 0451 177 893" as the quiet alternative. The one exception is a "two doors" section that sets out both problems as separate, equal choices.
 - Don't put a small capitalised label above a heading. Let the heading speak.
 - Don't claim clients, results or reviews we don't have. One real client, three concept sites. Say so.
 - Never present a concept site as a client.
@@ -100,7 +110,9 @@ Source of truth: `src/index.css` `@theme`. Never hardcode new colours in compone
 
 - **Main heading:** "Websites for local businesses, from someone local."
 - **Local line:** "Beaudesert based and Queensland raised. I know the area, and I know how your customers talk."
-- **Main call to action:** "Get a free website review" (short: "Get a free review", in a button: "Get my free review"). Never "Book a demo", "Get started" or "Book a free chat".
+- **Website call to action:** "Get a free website review" (short: "Get a free review", in a button: "Get my free review").
+- **Business systems call to action:** "Book a free admin check" (in a button: "Book my free admin check"). Describe it as a 20-minute phone call about how your week runs, with no obligation. The paid next step is "Book a process audit".
+- Never "Book a demo" or "Get started".
 - **Secondary action:** "Or call 0451 177 893" as a quiet text link.
 - **Proof over claim:** show the real thing, such as a real review page, a concept site, or the TV Magic story, rather than adjectives.
 - **Founder voice, first person:** "I'd rather show you that than make claims."

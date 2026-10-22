@@ -10,7 +10,7 @@ export function Footer() {
         <div>
           <Logo tone="light" />
           <p className="mt-4 max-w-xs leading-relaxed text-on-deep-soft">
-            A small local web studio in Beaudesert, working across the Scenic Rim, Lockyer Valley and Ipswich.
+            A local studio in Beaudesert for websites and business systems, working across the Scenic Rim, Lockyer Valley, Ipswich, Logan and Greater Brisbane.
           </p>
         </div>
 

@@ -16,10 +16,15 @@ const built = [
 ] as const;
 
 /*
-  Results and a quote from Nick go here once he has confirmed the figures and given his
-  written OK (a "What changed" section between "What I built" and the closing band).
-  Don't publish numbers he hasn't confirmed.
+  Figures from Darren, October 2026. Nick's written OK is needed before this goes to main.
+  The same figures appear on the services and business systems pages. A quote from Nick can
+  go under these once he gives one.
 */
+const changed = [
+  ['About 14 hours a week back', 'Nick used to spend around 14 hours a week sorting leads and booking them in. The system does that now.'],
+  ['No more ringing round', 'Nick used to call each technician to find out when they were free. Now the app sees everyone\'s calendar and books the job into a free slot.'],
+  ['Missed calls get answered', 'The business was missing up to 15 calls a week. Now every missed call gets a text straight away, then a call back.'],
+] as const;
 
 export function CaseStudyPage() {
   usePageMeta(
@@ -67,18 +72,30 @@ export function CaseStudyPage() {
         </div>
       </section>
 
+      <section className="mx-auto max-w-6xl px-5 py-20 md:px-8">
+        <h2 className="text-[clamp(1.8rem,3.2vw,2.4rem)] text-dark">What changed</h2>
+        <div className="mt-8 grid gap-10 md:grid-cols-3">
+          {changed.map(([t, b]) => (
+            <div key={t}>
+              <h3 className="text-xl text-dark">{t}</h3>
+              <p className="mt-2 leading-relaxed text-mid">{b}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       <section className="bg-ridge-near">
         <RidgeEdge />
         <div className="on-deep mx-auto grid max-w-6xl gap-8 px-5 pt-8 pb-20 md:grid-cols-[1.3fr_1fr] md:px-8">
           <div>
-            <h2 className="text-[clamp(1.8rem,3.2vw,2.4rem)] text-cream">Got admin that eats your evenings?</h2>
+            <h2 className="text-[clamp(1.8rem,3.2vw,2.4rem)] text-cream">Want to know what your business could hand off?</h2>
             <p className="measure mt-4 text-lg leading-relaxed text-on-deep">
-              Most businesses don't need a system like this. Many need one or two jobs to look after themselves. A process audit finds which.
+              Most businesses don't need a system like this. Many need one or two jobs to run on their own. Start with a free admin check: 20 minutes on the phone about how your week runs.
             </p>
           </div>
           <div className="flex flex-col items-start justify-center gap-5">
-            <Link to="/website-review" className="btn btn-sun">Get a free review</Link>
-            <Link to="/services" className="link-quiet">About automation and process audits</Link>
+            <Link to="/business-systems#admin-check" className="btn btn-sun">Book my free admin check</Link>
+            <Link to="/business-systems" className="link-quiet">About business systems</Link>
           </div>
         </div>
       </section>

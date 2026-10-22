@@ -11,6 +11,9 @@ export const SITE_CONFIG = {
   replyDays: 2,
   /** Bump when the consent wording on the review form changes, so each submission records what was agreed to. */
   consentVersion: 'consent-v1-2026-10',
+  /** Same idea for the admin check form. The "admin-check" prefix also keeps these out of the review queue. */
+  adminCheckConsentVersion: 'admin-check-consent-v1-2026-10',
+  adminCheckMinutes: 20,
 } as const;
 
 /** "What kind of business?" options on the free review form. */

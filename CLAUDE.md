@@ -18,7 +18,7 @@ Read this before doing any work in this repo. When this file and another doc dis
 
 ### Offer ladder
 
-1. **Free website review** with a quick mockup of improvements. This is the main call to action.
+1. **Free first step.** For websites: a free website review with a quick mockup of improvements. For automation and business systems: a free admin check, a 20-minute phone call. Each page leads to the one that matches its service (see `BRANDING.md`).
 2. **Website build plus a monthly care plan.**
 3. **Automation and AI assistants.** Make.com by default. Zapier only when an app has no Make support. Custom code only for heavy or complex logic. The FieldBourne CRM and the tradie bundle live in this tier.
 

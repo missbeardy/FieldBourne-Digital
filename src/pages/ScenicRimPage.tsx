@@ -6,14 +6,14 @@ import { usePageMeta } from '../hooks/usePageMeta';
 
 export function ScenicRimPage() {
   usePageMeta(
-    'Websites for Scenic Rim businesses | FieldBourne Digital, Beaudesert',
+    'Web design in Beaudesert and the Scenic Rim | FieldBourne Digital',
     'Local web design for small businesses in Beaudesert, Boonah, Tamborine Mountain, Canungra, Kalbar, Rathdowney and across the Scenic Rim. Free website review.',
   );
 
   return (
     <>
       <PageIntro
-        title="Websites for Scenic Rim businesses"
+        title="Web design and business systems in the Scenic Rim"
         lead={
           <p className="m-0">
             I'm based in Beaudesert and work with small businesses right across the Scenic Rim, from the tradie in Canungra to the cabins out past Rathdowney.
@@ -28,6 +28,9 @@ export function ScenicRimPage() {
           </p>
           <p>
             The site needs to load on a weak signal, say where you are and when you're open, show real photos, and make ringing or booking easy.
+          </p>
+          <p>
+            Plenty of businesses out here also run on a phone, a notebook and late nights. I help with that side too: enquiries that get an answer, booking reminders, and quotes that get followed up. <Link to="/business-systems" className="text-teal">About business systems</Link>.
           </p>
           <p>
             Your domain and website stay in your name, and you deal with me directly. If something needs fixing, you ring me.

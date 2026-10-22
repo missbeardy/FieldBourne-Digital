@@ -36,17 +36,17 @@ const automations = [
 
 export function ServicesPage() {
   usePageMeta(
-    'Websites, care plans and automation | FieldBourne Digital',
-    'Websites for small local businesses, monthly care plans, and automation that takes repeat admin off your plate. From Darren at FieldBourne Digital in Beaudesert.',
+    'Web design, care plans and business automation | FieldBourne Digital',
+    'Websites for small local businesses, monthly care plans, and business systems that take repeat admin off your plate. From Darren at FieldBourne Digital in Beaudesert.',
   );
 
   return (
     <>
       <PageIntro
-        title="Websites, looking after them, and less admin"
+        title="Websites, care plans and business systems"
         lead={
           <p className="m-0">
-            Everything starts with the free website review. From there, most people want a better website, someone to look after it, or a hand with the repeat jobs that eat their evenings.
+            There are two ways to start. If it's your website, start with a free website review. If it's the admin behind the business, start with a free admin check.
           </p>
         }
       />
@@ -129,12 +129,13 @@ export function ServicesPage() {
           <div>
             <h3 className="text-xl text-dark">How it starts</h3>
             <p className="mt-3 leading-relaxed text-mid">
-              A 45-minute chat about how your week actually runs, then a short write-up of what is worth automating and what isn't. If something is worth doing, I try it as a two-week pilot first.
+              A free 20-minute admin check on the phone. If there's something worth fixing, a 45-minute process audit and a short written plan of what is worth automating and what isn't. Then I try it as a two-week pilot first.
             </p>
-            <p className="mt-4 text-dark"><span className="font-semibold">Process audit $149</span>, taken off the job if you go ahead. Automation is quoted per job.</p>
+            <p className="mt-4 text-dark"><span className="font-semibold">Admin check free. Process audit $149</span>, taken off the job if you go ahead. Pilots usually $390 to $990.</p>
             <p className="mt-4 leading-relaxed text-mid">
               You own the accounts. I set the automations up in them, and I only write custom code when a ready-made tool can't do the job.
             </p>
+            <Link to="/business-systems" className="link-quiet mt-5 inline-block">More about business systems</Link>
           </div>
         </div>
       </section>
@@ -145,15 +146,15 @@ export function ServicesPage() {
           <div>
             <h2 className="text-[clamp(1.8rem,3.2vw,2.4rem)] text-cream">When off-the-shelf tools don't fit</h2>
             <p className="measure mt-4 text-lg leading-relaxed text-on-deep">
-              Sometimes a business needs its own system. TV Magic South Brisbane runs on a CRM I built that catches every enquiry, from calls, texts and email, and sends it to the right technician.
+              Sometimes a business needs its own system. TV Magic South Brisbane runs on a CRM I built that catches every enquiry, from calls, texts and email, and books it in with the right technician. It saves the owner about 14 hours a week.
             </p>
             <p className="measure mt-4 leading-relaxed text-on-deep-soft">
               For trade businesses that need a proper front door for leads and jobs, the same system is available as a tradie bundle. Quoted per business.
             </p>
           </div>
           <div className="flex flex-col items-start justify-center gap-5">
+            <Link to="/business-systems#admin-check" className="btn btn-sun">Book my free admin check</Link>
             <Link to="/case-study/tvmagic" className="link-quiet">Read the TV Magic story</Link>
-            <Link to="/website-review" className="btn btn-sun">Get a free review</Link>
           </div>
         </div>
       </section>

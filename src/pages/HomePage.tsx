@@ -18,9 +18,9 @@ const steps = [
     price: 'Sites from $790. Care from $49 a month.',
   },
   {
-    title: 'Automation',
-    body: 'Take the repeat admin off your plate: enquiries, bookings, reminders and follow-ups that look after themselves.',
-    price: 'Quoted per job',
+    title: 'Less admin',
+    body: 'Take the repeat admin off your plate: enquiries, bookings, reminders and follow-ups that look after themselves. You don\'t need a new website for this.',
+    price: 'Free admin check. Process audit $149. Pilots usually $390 to $990.',
   },
 ] as const;
 
@@ -42,6 +42,10 @@ const faqs = [
     a: "Often a few changes do most of the good. The review tells you which, honestly, and I'll say so if your site is fine as it is.",
   },
   {
+    q: 'Do I need a new website to get help with admin?',
+    a: 'No. Plenty of businesses have a website that is fine. The free admin check is a 20-minute phone call about how your week runs, not about your website.',
+  },
+  {
     q: 'How long does it take?',
     a: 'The review comes back within 2 business days. A one-page site takes one to two weeks, and a small business site two to three.',
   },
@@ -49,8 +53,8 @@ const faqs = [
 
 export function HomePage() {
   usePageMeta(
-    'Local websites for small businesses | FieldBourne Digital, Beaudesert',
-    'Websites for local businesses, from someone local. Get a free plain-English review of your website and a quick mockup within 2 business days. Beaudesert, Scenic Rim.',
+    'Web design and business automation for local businesses | FieldBourne Digital, Beaudesert',
+    'Websites and business systems for small local businesses, from Darren in Beaudesert. Get a free website review and mockup within 2 business days, or a free admin check.',
   );
 
   return (
@@ -133,7 +137,7 @@ export function HomePage() {
         </h2>
         <div className="mt-8 grid gap-8 md:grid-cols-2">
           <p className="measure text-lg leading-relaxed text-mid">
-            Tradies, cafes, farm stays, shops, makers, clinics, the lot. If locals look you up before they ring or walk in, your website is doing a job, and it should do it well.
+            Tradies, cafes, farm stays, shops, makers and clinics. If locals look you up before they ring or walk in, your website is doing a job, and it should do it well. And if you're answering enquiries, chasing quotes and sending reminders at night, a system can do that job instead.
           </p>
           <p className="measure text-lg leading-relaxed text-mid">
             People round here like to back local. Your website is usually where they check you out first. It should make that easy: who you are, where you are, and how to get hold of you.
@@ -159,6 +163,7 @@ export function HomePage() {
           </ol>
           <p className="mt-10">
             <Link to="/services" className="link-quiet">What's included</Link>
+            <Link to="/business-systems" className="link-quiet ml-6">About business systems</Link>
             <Link to="/pricing" className="link-quiet ml-6">See all prices</Link>
           </p>
         </div>

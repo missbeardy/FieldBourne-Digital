@@ -4,9 +4,9 @@ import { BUSINESS_TYPES, SITE_CONFIG } from '../config/site';
 
 type Status = 'idle' | 'sending' | 'sent' | 'error';
 
-const field =
+export const field =
   'w-full rounded-[0.6rem] border border-line bg-white px-3.5 py-3 text-base text-dark outline-none transition-colors placeholder:text-mid focus:border-teal focus:ring-2 focus:ring-teal/20';
-const label = 'mb-1.5 block text-[0.95rem] font-semibold text-dark';
+export const label = 'mb-1.5 block text-[0.95rem] font-semibold text-dark';
 
 /**
  * The free website review request. Ticking the first box is express consent to email

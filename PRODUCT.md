@@ -46,7 +46,7 @@ One local person, Beaudesert based and Queensland raised, who reviews your websi
 ## Evidence on Hand
 
 - Three concept sites, labelled as invented businesses: Wirebird Electrical (`demos/wirebird`), Lantern Gully Cabins (`demos/lantern-gully`), Sorrel & Slate cafe (`demos/sorrel-slate`). Screenshots in `public/images/work/`.
-- One real client: TV Magic South Brisbane, on a custom CRM Darren built (not a website). Quote and results are still to be confirmed with the client.
+- One real client: TV Magic South Brisbane, on a custom CRM Darren built (not a website). Results from Darren (October 2026): about 14 hours a week no longer spent sorting and booking leads, jobs booked straight into technicians' calendars, and up to 15 missed calls a week now get a text and a call back. Nick's written OK on these figures, and a quote, are still to come.
 - Real review PDFs and before/after images produced by the audit pipeline (`tools/audit/`).
 - None yet: website clients, testimonials, reviews, a photo of Darren. Do not invent any of them.
 

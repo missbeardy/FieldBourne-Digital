@@ -7,13 +7,13 @@ import { usePageMeta } from '../hooks/usePageMeta';
 export function AboutPage() {
   usePageMeta(
     'About Darren | FieldBourne Digital, Beaudesert',
-    'FieldBourne Digital is Darren, a Beaudesert-based, Queensland-raised web builder making websites for small local businesses across the Scenic Rim.',
+    'Darren runs FieldBourne Digital from Beaudesert: websites, care plans, and automation and business systems for small businesses across the Scenic Rim and Greater Brisbane.',
   );
 
   return (
     <>
       <PageIntro
-        title="I'm Darren. FieldBourne Digital is me."
+        title="I'm Darren. I build websites and business systems."
         lead={
           <p className="m-0">
             Beaudesert based and Queensland raised. I build websites and small automations for local businesses, and I answer my own phone.
@@ -75,7 +75,7 @@ export function AboutPage() {
       </section>
 
       <section className="mx-auto max-w-4xl px-5 py-20 text-center md:px-8">
-        <h2 className="text-[clamp(1.7rem,3vw,2.2rem)] text-dark">Say g'day</h2>
+        <h2 className="text-[clamp(1.7rem,3vw,2.2rem)] text-dark">Talk to me about your business</h2>
         <p className="mx-auto mt-3 max-w-[46ch] text-lg leading-relaxed text-mid">
           Start with a free review, or just give me a ring on <a href={SITE_CONFIG.phoneHref} className="text-teal">{SITE_CONFIG.phoneDisplay}</a>.
         </p>

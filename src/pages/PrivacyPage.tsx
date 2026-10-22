@@ -5,7 +5,7 @@ import { usePageMeta } from '../hooks/usePageMeta';
 export function PrivacyPage() {
   usePageMeta(
     'Privacy policy | FieldBourne Digital',
-    'How FieldBourne Digital collects, uses and stores personal information through this website, the free website review form, and its services.',
+    'How FieldBourne Digital collects, uses and stores personal information through this website, the free website review and admin check forms, and its services.',
   );
 
   return (
@@ -15,7 +15,7 @@ export function PrivacyPage() {
       other={{ to: '/terms', label: 'terms of service' }}
       intro={
         <p className="m-0">
-          FieldBourne Digital (ABN {SITE_CONFIG.abn}) is a small web studio run by Darren in Beaudesert, Queensland. This policy explains how I collect, use, store and share personal information when you visit {SITE_CONFIG.siteUrl.replace('https://', '')}, ask for a free website review, or deal with me about my services. I follow the Australian Privacy Principles.
+          FieldBourne Digital (ABN {SITE_CONFIG.abn}) is a small web studio run by Darren in Beaudesert, Queensland. This policy explains how I collect, use, store and share personal information when you visit {SITE_CONFIG.siteUrl.replace('https://', '')}, ask for a free website review or admin check, or deal with me about my services. I follow the Australian Privacy Principles.
         </p>
       }
       sections={[
@@ -24,6 +24,7 @@ export function PrivacyPage() {
           body: (
             <>
               <p>When you ask for a free website review, I collect your name, business name, website address, town, type of business, email address, and, if you give them, your phone number and any notes.</p>
+              <p>When you book a free admin check, I collect your name, business name, town, type of business, phone number, email address, the best time to ring, and, if you give them, any notes about your week.</p>
               <p>I also record which consent boxes you ticked, the version of the consent wording, the page you sent it from, and the time, so there is a record of what you agreed to.</p>
               <p>If you contact me by phone or email, I keep what you send.</p>
               <p>This website does not use analytics, advertising or tracking cookies.</p>
@@ -40,7 +41,7 @@ export function PrivacyPage() {
           title: 'How I use it',
           body: (
             <>
-              <p>To prepare your website review, send it to you, and follow up about it. To answer enquiries, quote, provide my services, and keep the business and tax records the law requires.</p>
+              <p>To prepare your website review, send it to you, and follow up about it. To ring you for your admin check and follow up about it. To answer enquiries, quote, provide my services, and keep the business and tax records the law requires.</p>
               <p>I only send you marketing email, such as occasional tips, if you ticked the box to get them. I never sell your personal information.</p>
             </>
           ),
@@ -57,8 +58,8 @@ export function PrivacyPage() {
             <>
               <p>Depending on how you deal with me, your information may be handled by:</p>
               <ul>
-                <li>Formspree, which receives the website review form</li>
-                <li>Make, which copies review requests into a private Google Sheet so I can keep track of them</li>
+                <li>Formspree, which receives the website review and admin check forms</li>
+                <li>Make, which copies review and admin check requests into a private Google Sheet so I can keep track of them</li>
                 <li>Google (Gmail and Google Sheets), for email and for keeping track of review requests</li>
                 <li>Twilio, for text messages and calls, where used</li>
                 <li>Supabase and Resend, for systems I build and run for clients, where used</li>

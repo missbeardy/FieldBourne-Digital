@@ -9,6 +9,7 @@ const page = <K extends string>(load: () => Promise<Record<K, React.ComponentTyp
 
 const WebsiteReviewPage = page(() => import('./pages/WebsiteReviewPage'), 'WebsiteReviewPage');
 const ServicesPage = page(() => import('./pages/ServicesPage'), 'ServicesPage');
+const BusinessSystemsPage = page(() => import('./pages/BusinessSystemsPage'), 'BusinessSystemsPage');
 const PricingPage = page(() => import('./pages/PricingPage'), 'PricingPage');
 const WorkPage = page(() => import('./pages/WorkPage'), 'WorkPage');
 const CaseStudyPage = page(() => import('./pages/CaseStudyPage'), 'CaseStudyPage');
@@ -22,6 +23,7 @@ export const ROUTES = [
   '/',
   '/website-review',
   '/services',
+  '/business-systems',
   '/pricing',
   '/work',
   '/case-study/tvmagic',
@@ -35,14 +37,21 @@ function ScrollManager() {
   const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    if (hash) {
-      const el = document.getElementById(hash.slice(1));
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        return;
-      }
+    if (!hash) {
+      window.scrollTo(0, 0);
+      return;
     }
-    window.scrollTo(0, 0);
+    // Lazy pages render a moment after the route changes, so wait briefly for the target to exist.
+    let frame = 0;
+    let tries = 0;
+    const find = () => {
+      const el = document.getElementById(hash.slice(1));
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      else if (++tries < 120) frame = requestAnimationFrame(find);
+      else window.scrollTo(0, 0);
+    };
+    find();
+    return () => cancelAnimationFrame(frame);
   }, [pathname, hash]);
 
   return null;
@@ -62,6 +71,8 @@ export default function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/website-review" element={<WebsiteReviewPage />} />
             <Route path="/services" element={<ServicesPage />} />
+            <Route path="/business-systems" element={<BusinessSystemsPage />} />
+            <Route path="/automation" element={<Navigate to="/business-systems" replace />} />
             <Route path="/pricing" element={<PricingPage />} />
             <Route path="/work" element={<WorkPage />} />
             <Route path="/case-study/tvmagic" element={<CaseStudyPage />} />

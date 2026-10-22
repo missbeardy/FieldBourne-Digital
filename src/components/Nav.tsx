@@ -5,8 +5,9 @@ import { Logo } from './Logo';
 
 export const NAV_LINKS = [
   { to: '/services', label: 'Services' },
+  { to: '/business-systems', label: 'Business systems' },
   { to: '/pricing', label: 'Pricing' },
-  { to: '/work', label: 'Concept sites' },
+  { to: '/work', label: 'Work' },
   { to: '/about', label: 'About' },
 ] as const;
 
@@ -40,7 +41,7 @@ export function Nav() {
           <Logo />
         </Link>
 
-        <ul className="hidden list-none items-center gap-7 md:flex">
+        <ul className="hidden list-none items-center gap-7 lg:flex">
           {NAV_LINKS.map((l) => (
             <li key={l.to}>
               <NavLink to={l.to} className={desktopLink}>
@@ -55,7 +56,7 @@ export function Nav() {
           </li>
         </ul>
 
-        <div className="flex items-center gap-1 md:hidden">
+        <div className="flex items-center gap-1 lg:hidden">
           <a
             href={SITE_CONFIG.phoneHref}
             className="inline-flex h-11 w-11 items-center justify-center rounded-full text-teal"
@@ -78,7 +79,7 @@ export function Nav() {
         </div>
       </nav>
 
-      <div id="mobile-menu" hidden={!open} className="border-t border-line/70 bg-cream md:hidden">
+      <div id="mobile-menu" hidden={!open} className="border-t border-line/70 bg-cream lg:hidden">
         <ul className="mx-auto flex max-w-6xl list-none flex-col px-5 py-3">
           {NAV_LINKS.map((l) => (
             <li key={l.to}>

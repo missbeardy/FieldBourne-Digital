@@ -115,6 +115,8 @@ if (cmd === 'import') {
     const email = (r.email || '').toLowerCase()
     const business = r.business || ''
     if (!email || !business) continue
+    // Admin check requests share the form endpoint and sheet, but they're phone calls, not reviews
+    if (r.requestType === 'admin-check' || /^admin-check/.test(r.consentVersion || '')) continue
     // Same person, business and submission time is the same request, however often the sheet is read
     const id = createHash('sha256').update(`${email}|${business.toLowerCase()}|${r.submittedAt || ''}`).digest('hex').slice(0, 10)
     if (known.has(id)) continue

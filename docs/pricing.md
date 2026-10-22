@@ -48,6 +48,7 @@ Month to month after the first 3 months. Unused change time doesn't roll over.
 
 | Item | Price | Notes |
 |---|---|---|
+| Free admin check (20-minute phone call) | Free | The first step for automation and business systems. Leads to the process audit if there's something worth fixing |
 | Process audit (45 minutes plus write-up) | $149 | Taken off the price of the pilot if they go ahead |
 | Automation pilot | Quoted per job, from $390 | Make.com by default. Most two-week pilots land between $390 and $990 |
 | Ongoing automation support | from $49 a month | Monitoring, fixes when an app changes, small tweaks |

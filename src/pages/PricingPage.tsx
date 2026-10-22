@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { PageIntro } from '../components/PageIntro';
+import { SITE_CONFIG } from '../config/site';
 import { usePageMeta } from '../hooks/usePageMeta';
 
 type Row = { item: string; detail?: string; price: string };
@@ -28,10 +29,13 @@ const groups: { title: string; rows: Row[] }[] = [
     ],
   },
   {
-    title: 'Automation',
+    title: 'Business systems and automation',
     rows: [
-      { item: 'Process audit', detail: '45-minute chat and a write-up. Taken off the job if you go ahead', price: '$149' },
-      { item: 'Automation', detail: 'Most two-week pilots land between $390 and $990', price: 'Quoted per job' },
+      { item: 'Admin check', detail: 'A 20-minute phone call about how your week runs', price: 'Free' },
+      { item: 'Process audit', detail: '45 minutes and a written plan. Taken off the job if you go ahead', price: '$149' },
+      { item: 'Automation pilot', detail: 'Most two-week pilots land between $390 and $990', price: 'Quoted per job' },
+      { item: 'Ongoing support', detail: 'Monitoring, fixes when an app changes, small tweaks', price: 'from $49 a month' },
+      { item: 'Custom job and lead system', detail: 'The system behind TV Magic, for trades that have outgrown the basics', price: 'Quoted per business' },
     ],
   },
   {
@@ -47,7 +51,7 @@ const groups: { title: string; rows: Row[] }[] = [
 export function PricingPage() {
   usePageMeta(
     'Prices | FieldBourne Digital, Beaudesert',
-    'Starting prices for websites, care plans and automation for small local businesses. The website review is free. No GST charged.',
+    'Starting prices for websites, care plans and business automation for small local businesses. The website review and admin check are free. No GST charged.',
   );
 
   return (
@@ -56,7 +60,7 @@ export function PricingPage() {
         title="Prices"
         lead={
           <p className="m-0">
-            Starting prices, kept fair because it's just me, with no office or sales team to pay for. Every job gets a written quote before any work starts.
+            Starting prices for every service. You deal with me directly, with no office or sales team to pay for, and every job gets a written quote before work starts.
           </p>
         }
       />
@@ -97,9 +101,14 @@ export function PricingPage() {
       </section>
 
       <section className="mx-auto max-w-4xl px-5 py-16 text-center md:px-8">
-        <h2 className="text-[clamp(1.7rem,3vw,2.2rem)] text-dark">Not sure what you need?</h2>
-        <p className="mx-auto mt-3 max-w-[46ch] text-lg leading-relaxed text-mid">The free review tells you, before you spend anything.</p>
-        <Link to="/website-review" className="btn btn-primary mt-7">Get a free review</Link>
+        <h2 className="text-[clamp(1.7rem,3vw,2.2rem)] text-dark">Not sure where to start?</h2>
+        <p className="mx-auto mt-3 max-w-[46ch] text-lg leading-relaxed text-mid">
+          Ring me on <a href={SITE_CONFIG.phoneHref} className="text-teal">{SITE_CONFIG.phoneDisplay}</a> and I'll tell you which free first step makes sense, or whether you need either.
+        </p>
+        <div className="mt-7 flex flex-wrap items-center justify-center gap-x-6 gap-y-4">
+          <Link to="/website-review" className="btn btn-primary">Get a free website review</Link>
+          <Link to="/business-systems#admin-check" className="link-quiet">Or book a free admin check</Link>
+        </div>
       </section>
     </>
   );
