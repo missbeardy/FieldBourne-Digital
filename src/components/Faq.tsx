@@ -1,9 +1,20 @@
+import { JsonLd } from './JsonLd';
+
 type Item = { readonly q: string; readonly a: string };
 
-/** Plain question and answer list. Native details/summary, so it works without JavaScript and with a keyboard. */
+/**
+ * Plain question and answer list. Native details/summary, so it works without JavaScript and with a keyboard.
+ * Also emits FAQPage structured data, which AI answer tools and search engines read.
+ */
 export function Faq({ items }: { items: readonly Item[] }) {
   return (
     <div className="mt-8 border-t border-line">
+      <JsonLd
+        data={{
+          '@type': 'FAQPage',
+          mainEntity: items.map((item) => ({ '@type': 'Question', name: item.q, acceptedAnswer: { '@type': 'Answer', text: item.a } })),
+        }}
+      />
       {items.map((item) => (
         <details key={item.q} className="group border-b border-line">
           <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-5 text-left text-lg font-semibold text-dark [&::-webkit-details-marker]:hidden">

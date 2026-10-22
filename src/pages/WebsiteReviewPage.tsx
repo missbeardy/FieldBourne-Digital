@@ -1,6 +1,7 @@
 import { PageIntro } from '../components/PageIntro';
 import { ReviewForm } from '../components/ReviewForm';
 import { SITE_CONFIG } from '../config/site';
+import { ServiceLd } from '../components/JsonLd';
 import { usePageMeta } from '../hooks/usePageMeta';
 
 const next = [
@@ -21,6 +22,7 @@ export function WebsiteReviewPage() {
 
   return (
     <>
+      <ServiceLd name="Free website review" type="Website review" path="/website-review" description="A free plain-English review of a business website with a quick mockup of improvements, sent within 2 business days." />
       <PageIntro
         title="Get a free review of your website"
         lead={

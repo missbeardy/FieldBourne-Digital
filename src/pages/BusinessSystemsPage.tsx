@@ -4,6 +4,7 @@ import { Faq } from '../components/Faq';
 import { PageIntro } from '../components/PageIntro';
 import { RidgeEdge } from '../components/Ridgelines';
 import { SITE_CONFIG } from '../config/site';
+import { ServiceLd } from '../components/JsonLd';
 import { usePageMeta } from '../hooks/usePageMeta';
 
 const values = [
@@ -69,6 +70,7 @@ export function BusinessSystemsPage() {
 
   return (
     <>
+      <ServiceLd name="Business systems and automation for small businesses" type="Business process automation" path="/business-systems" description="A free admin check, then a written plan and small tested automations for enquiries, quotes, bookings and invoices." />
       <PageIntro
         title="Spend less of your week on admin."
         lead={

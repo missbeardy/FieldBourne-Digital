@@ -5,6 +5,8 @@ export const SITE_CONFIG = {
   phoneDisplay: '0451 177 893',
   phoneHref: 'tel:+61451177893',
   siteUrl: 'https://fieldbournedigital.com.au',
+  /** Google Analytics 4 measurement ID (G-...). Empty means no analytics loads, and the privacy page says so. */
+  gaId: '',
   clientVideoYoutubeId: 'NpEaa2P7qZI',
   clientVideoFirstName: 'Nick',
   abn: '22 324 219 568',

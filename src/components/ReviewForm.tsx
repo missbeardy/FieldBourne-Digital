@@ -1,5 +1,6 @@
-import { useId, useState, type FormEvent } from 'react';
+import { useId, useRef, useState, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
+import { track, visitSource } from '../analytics';
 import { BUSINESS_TYPES, SITE_CONFIG } from '../config/site';
 
 type Status = 'idle' | 'sending' | 'sent' | 'error';
@@ -15,6 +16,7 @@ export const label = 'mb-1.5 block text-[0.95rem] font-semibold text-dark';
 export function ReviewForm({ id = 'review-form' }: { id?: string }) {
   const uid = useId();
   const [status, setStatus] = useState<Status>('idle');
+  const started = useRef(false);
   const [noSite, setNoSite] = useState(false);
   const [sentTo, setSentTo] = useState<{ name: string; email: string } | null>(null);
 
@@ -39,6 +41,7 @@ export function ReviewForm({ id = 'review-form' }: { id?: string }) {
       consentTips: data.get('consentTips') ? 'yes' : 'no',
       consentVersion: SITE_CONFIG.consentVersion,
       page: window.location.href,
+      source: visitSource(),
       submittedAt: new Date().toISOString(),
       _gotcha: get('_gotcha'),
     };
@@ -52,11 +55,13 @@ export function ReviewForm({ id = 'review-form' }: { id?: string }) {
       });
       if (!res.ok) throw new Error(`Form returned ${res.status}`);
       setSentTo({ name: payload.name.split(' ')[0], email: payload.email });
+      track('generate_lead', { form_type: 'website_review' });
       setStatus('sent');
       form.reset();
       setNoSite(false);
     } catch {
       // Keep what they typed so nothing is lost; offer two other ways to reach Darren.
+      track('form_error', { form_type: 'website_review' });
       setStatus('error');
     }
   }
@@ -77,6 +82,11 @@ export function ReviewForm({ id = 'review-form' }: { id?: string }) {
     <form
       id={id}
       onSubmit={onSubmit}
+      onFocus={() => {
+        if (started.current) return;
+        started.current = true;
+        track('form_start', { form_type: 'website_review' });
+      }}
       noValidate={false}
       className="rounded-2xl bg-white p-6 shadow-[0_18px_40px_-28px_rgba(30,42,42,0.45)] md:p-9"
     >

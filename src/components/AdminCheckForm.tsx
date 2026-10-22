@@ -1,5 +1,6 @@
-import { useId, useState, type FormEvent } from 'react';
+import { useId, useRef, useState, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
+import { track, visitSource } from '../analytics';
 import { BUSINESS_TYPES, SITE_CONFIG } from '../config/site';
 import { field, label } from './ReviewForm';
 
@@ -15,6 +16,7 @@ const CALL_TIMES = ['Weekday morning', 'Weekday afternoon', 'Weekday evening', '
 export function AdminCheckForm({ id = 'admin-check-form' }: { id?: string }) {
   const uid = useId();
   const [status, setStatus] = useState<Status>('idle');
+  const started = useRef(false);
   const [sentTo, setSentTo] = useState<string | null>(null);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
@@ -39,6 +41,7 @@ export function AdminCheckForm({ id = 'admin-check-form' }: { id?: string }) {
       consentTips: data.get('consentTips') ? 'yes' : 'no',
       consentVersion: SITE_CONFIG.adminCheckConsentVersion,
       page: window.location.href,
+      source: visitSource(),
       submittedAt: new Date().toISOString(),
       _gotcha: get('_gotcha'),
     };
@@ -52,10 +55,12 @@ export function AdminCheckForm({ id = 'admin-check-form' }: { id?: string }) {
       });
       if (!res.ok) throw new Error(`Form returned ${res.status}`);
       setSentTo(payload.name.split(' ')[0]);
+      track('generate_lead', { form_type: 'admin_check' });
       setStatus('sent');
       form.reset();
     } catch {
       // Keep what they typed so nothing is lost; offer two other ways to reach Darren.
+      track('form_error', { form_type: 'admin_check' });
       setStatus('error');
     }
   }
@@ -76,6 +81,11 @@ export function AdminCheckForm({ id = 'admin-check-form' }: { id?: string }) {
     <form
       id={id}
       onSubmit={onSubmit}
+      onFocus={() => {
+        if (started.current) return;
+        started.current = true;
+        track('form_start', { form_type: 'admin_check' });
+      }}
       className="rounded-2xl bg-white p-6 shadow-[0_18px_40px_-28px_rgba(30,42,42,0.45)] md:p-9"
     >
       <div className="grid gap-5 md:grid-cols-2">

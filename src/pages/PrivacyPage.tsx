@@ -11,7 +11,7 @@ export function PrivacyPage() {
   return (
     <LegalPage
       title="Privacy policy"
-      updated="21 October 2026"
+      updated="22 October 2026"
       other={{ to: '/terms', label: 'terms of service' }}
       intro={
         <p className="m-0">
@@ -27,7 +27,12 @@ export function PrivacyPage() {
               <p>When you book a free admin check, I collect your name, business name, town, type of business, phone number, email address, the best time to ring, and, if you give them, any notes about your week.</p>
               <p>I also record which consent boxes you ticked, the version of the consent wording, the page you sent it from, and the time, so there is a record of what you agreed to.</p>
               <p>If you contact me by phone or email, I keep what you send.</p>
-              <p>This website does not use analytics, advertising or tracking cookies.</p>
+              <p>The forms also record how you found this website (for example a Google search, or typing the address in) and the first page you landed on, so I know what's working.</p>
+              {SITE_CONFIG.gaId ? (
+                <p>This website uses Google Analytics to count visits and see which pages and buttons get used, such as how many people tap to ring me or send a form. It may set cookies. It doesn't tell me who you are. It does not use advertising cookies.</p>
+              ) : (
+                <p>This website does not use analytics, advertising or tracking cookies.</p>
+              )}
             </>
           ),
         },
@@ -60,7 +65,7 @@ export function PrivacyPage() {
               <ul>
                 <li>Formspree, which receives the website review and admin check forms</li>
                 <li>Make, which copies review and admin check requests into a private Google Sheet so I can keep track of them</li>
-                <li>Google (Gmail and Google Sheets), for email and for keeping track of review requests</li>
+                <li>Google (Gmail and Google Sheets), for email and for keeping track of review requests{SITE_CONFIG.gaId ? ', and Google Analytics, for counting visits to this website' : ''}</li>
                 <li>Twilio, for text messages and calls, where used</li>
                 <li>Supabase and Resend, for systems I build and run for clients, where used</li>
                 <li>OpenAI and Anthropic, AI tools I may use to help prepare reviews, summarise, or draft replies</li>

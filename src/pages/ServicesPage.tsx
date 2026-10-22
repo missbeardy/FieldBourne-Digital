@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { PageIntro } from '../components/PageIntro';
 import { RidgeEdge } from '../components/Ridgelines';
+import { ServiceLd } from '../components/JsonLd';
 import { usePageMeta } from '../hooks/usePageMeta';
 
 const included = [
@@ -42,6 +43,8 @@ export function ServicesPage() {
 
   return (
     <>
+      <ServiceLd name="Websites for small local businesses" type="Web design" path="/services" description="Websites built for small local businesses, phone first, with the domain in the business's own name." />
+      <ServiceLd name="Website care plans" type="Website maintenance" path="/services" description="A monthly care plan with hosting, backups, a monthly check that forms and bookings still work, and small changes like new hours or a price update." />
       <PageIntro
         title="Websites, care plans and business systems"
         lead={

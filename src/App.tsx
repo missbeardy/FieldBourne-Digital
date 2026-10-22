@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import { initAnalytics, trackPageView, visitSource } from './analytics';
 import { Footer } from './components/Footer';
 import { Nav } from './components/Nav';
 import { HomePage } from './pages/HomePage';
@@ -57,6 +58,24 @@ function ScrollManager() {
   return null;
 }
 
+/** Loads analytics once (only if a measurement ID is set) and records which way each visit came in. */
+function AnalyticsManager() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    initAnalytics();
+    visitSource();
+  }, []);
+
+  useEffect(() => {
+    // Wait a beat so the page's own title is set before the view is recorded.
+    const t = window.setTimeout(() => trackPageView(pathname), 50);
+    return () => window.clearTimeout(t);
+  }, [pathname]);
+
+  return null;
+}
+
 export default function App() {
   return (
     <div className="flex min-h-screen flex-col bg-cream text-dark">
@@ -65,6 +84,7 @@ export default function App() {
       </a>
       <Nav />
       <ScrollManager />
+      <AnalyticsManager />
       <main id="main" className="flex-1">
         <Suspense fallback={<div className="min-h-[60vh]" />}>
           <Routes>
