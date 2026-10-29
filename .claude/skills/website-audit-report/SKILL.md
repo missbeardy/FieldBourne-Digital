@@ -41,7 +41,7 @@ Useful flags:
 - `--skip-site-scan` for a quick run, or if Unlighthouse fails. Say in the report notes that only the homepage was measured.
 - `--skip-places` if there is no API key yet. The GBP score then shows "Not checked".
 
-If the site turns the audit browser away ("Access Denied", a bot check, any 4xx), the pipeline stops with exit code 4 and writes `blocked.json` instead of scores. If the address doesn't exist or doesn't answer, it stops with exit code 5 and writes `unreachable.json`. Either way, don't write a report and don't guess a different address. Tell Darren what happened; he can check the address with the customer or look at the site by hand.
+If the site turns the audit browser away ("Access Denied", a bot check, any 4xx), the pipeline stops with exit code 4 and writes `blocked.json` instead of scores. If the address doesn't exist or doesn't answer, it stops with exit code 5 and writes `unreachable.json`. If the address isn't a public website (a bare IP number, a local network name, an unusual port, or a name or redirect that points inside a private network), it stops with exit code 6 and writes `not-public.json` without opening it. Either way, don't write a report and don't guess a different address. Tell Darren what happened; he can check the address with the customer or look at the site by hand.
 
 Also read `page-status.json` (what Google gets for each page address, without running the page's code) and the `examples` in `lighthouse.json` (the exact elements that failed a check), so the report names real problems instead of guessing.
 

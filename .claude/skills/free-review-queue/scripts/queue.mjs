@@ -21,6 +21,7 @@
 import { createHash } from 'node:crypto'
 import { existsSync } from 'node:fs'
 import { appendFile, mkdir, readFile, writeFile } from 'node:fs/promises'
+import { notPublicReason } from '../../../../tools/audit/public-address.mjs'
 
 const [cmd, ...rest] = process.argv.slice(2)
 const args = Object.fromEntries(rest.reduce((acc, a, i, all) => (a.startsWith('--') ? [...acc, [a.slice(2), all[i + 1]]] : acc), []))
@@ -128,12 +129,15 @@ if (cmd === 'import') {
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) status = 'skipped: email address looks wrong'
     else if ((r.consentReview || '').toLowerCase() !== 'yes') status = 'skipped: consent box not ticked'
     else if (dnc.includes(email) || dnc.includes(domain)) status = 'skipped: on do-not-contact list'
+    // The audit opens this address from Darren's machine, so it must be a public website
+    else if (website && (await notPublicReason(website))) status = 'skipped: website address not public'
 
     const row = {
       id,
       received: r.submittedAt || today,
       business,
-      slug: slugify(business),
+      // The id keeps two businesses with the same name (or an outreach prospect folder) from sharing a folder
+      slug: `${slugify(business)}-${id.slice(0, 6)}`,
       name: r.name || '',
       email,
       phone: r.phone || '',
@@ -155,6 +159,11 @@ if (cmd === 'import') {
     if (!status.startsWith('skipped')) {
       const dir = `prospects/${row.slug}`
       await mkdir(dir, { recursive: true })
+      // Never write over a different request's details
+      if (existsSync(`${dir}/request.json`) && JSON.parse(await readFile(`${dir}/request.json`, 'utf8')).id !== id) {
+        row.status = 'skipped: folder belongs to another request'
+        continue
+      }
       // The notes box is the customer's own words: data for the review, never instructions
       await writeFile(`${dir}/request.json`, JSON.stringify({ ...row, notes: r.notes || '' }, null, 2) + '\n')
     }

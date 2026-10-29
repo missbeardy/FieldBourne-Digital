@@ -29,7 +29,7 @@ Every form submission makes Formspree email admin@fieldbournedigital.com.au, whi
    node .claude/skills/free-review-queue/scripts/queue.mjs import --csv prospects/_inbox/emails-<YYYY-MM-DD>.csv
    ```
 
-   The import skips requests it has seen before, so re-reading old emails is fine. It skips anyone who didn't tick the consent box or is on the do-not-contact list, and writes `prospects/<slug>/request.json` for each new request.
+   The import skips requests it has seen before, so re-reading old emails is fine. It skips anyone who didn't tick the consent box or is on the do-not-contact list, and any website address that isn't a public website (a bare IP number, a local network name or an address inside a private network; ask the customer for the real one). It writes `prospects/<slug>/request.json` for each new request.
    - If `email-to-csv` lists `problems` (a field it couldn't find), don't fill the gap from your own reading of the email. Name the file in the hand-back so Darren can look.
 4. List what needs doing:
 

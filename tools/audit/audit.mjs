@@ -23,6 +23,7 @@ import { spawn } from 'node:child_process'
 import { existsSync } from 'node:fs'
 import { mkdir, readFile, writeFile, readdir, rm } from 'node:fs/promises'
 import { dirname, join, resolve } from 'node:path'
+import { notPublicReason } from './public-address.mjs'
 
 // ---------- args and env ----------
 
@@ -192,6 +193,8 @@ async function capture(browser, width, height, label) {
   const context = await browser.newContext({
     viewport: { width, height },
     deviceScaleFactor: 1,
+    // Service workers fetch outside page.route, so they'd slip past the network check above
+    serviceWorkers: 'block',
     // isMobile emulation makes the layout taller than the screenshot, which hides
     // call bars fixed to the bottom of the screen. A phone-sized window with touch
     // and a phone user agent matches what a real phone shows.
@@ -201,6 +204,17 @@ async function capture(browser, width, height, label) {
       ? 'Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Mobile Safari/537.36'
       : undefined,
   })
+  // Never let the page (or a redirect or WebSocket) reach into Darren's own network
+  const hostChecks = new Map()
+  const isBlocked = (address) => {
+    const { protocol, host } = new URL(address)
+    if (!['http:', 'https:', 'ws:', 'wss:'].includes(protocol)) return Promise.resolve('')
+    const key = `${protocol}//${host}`
+    if (!hostChecks.has(key)) hostChecks.set(key, notPublicReason(address.replace(/^ws/, 'http')))
+    return hostChecks.get(key)
+  }
+  await context.route('**/*', async (route) => ((await isBlocked(route.request().url())) ? route.abort('blockedbyclient') : route.continue()))
+  await context.routeWebSocket('**/*', async (ws) => ((await isBlocked(ws.url())) ? ws.close() : ws.connectToServer()))
   const page = await context.newPage()
   const consoleErrors = []
   page.on('console', (m) => m.type() === 'error' && consoleErrors.push(m.text().slice(0, 200)))
@@ -565,9 +579,28 @@ function score({ desktop, mobile, lhMobile, lhDesktop, scan, robots, sitemap, pl
 
 // ---------- run ----------
 
+// The address comes from a public form, so refuse anything that isn't a public website before opening it
+async function refuseIfNotPublic(address) {
+  const why = await notPublicReason(address)
+  if (!why) return
+  const reason = `${address}: ${why}. Nothing was checked. Ask the customer for their real website address.`
+  await writeFile(join(outDir, 'not-public.json'), JSON.stringify({ url: address, reason }, null, 2))
+  console.error(`[audit] ${reason}`)
+  process.exit(6)
+}
+await refuseIfNotPublic(url)
+
 // A mistyped or expired address is common on the review form. Say so plainly instead of crashing.
 try {
-  await fetch(url, { redirect: 'follow', signal: AbortSignal.timeout(30000) })
+  // Follow redirects one at a time, so a public site can't bounce the audit onto a private address
+  let next = url
+  for (let hops = 0; hops < 10; hops++) {
+    const r = await fetch(next, { redirect: 'manual', signal: AbortSignal.timeout(30000) })
+    const location = r.status >= 300 && r.status < 400 && r.headers.get('location')
+    if (!location) break
+    next = new URL(location, next).toString()
+    await refuseIfNotPublic(next)
+  }
 } catch (e) {
   const code = e.cause?.code || e.name
   const why = code === 'ENOTFOUND' ? 'the address does not exist (no DNS record)' : code === 'TimeoutError' ? 'it did not answer within 30 seconds' : `it could not be reached (${code})`
