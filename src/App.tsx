@@ -5,8 +5,18 @@ import { Footer } from './components/Footer';
 import { Nav } from './components/Nav';
 import { HomePage } from './pages/HomePage';
 
-const page = <K extends string>(load: () => Promise<Record<K, React.ComponentType>>, name: K) =>
-  lazy(() => load().then((m) => ({ default: m[name] })));
+/**
+ * A lazy-loaded page. Once its code has loaded (see preloadRoute) it renders straight away
+ * instead of suspending, so the first render never swaps the prerendered page for a blank one.
+ */
+const page = <K extends string>(load: () => Promise<Record<K, React.ComponentType>>, name: K) => {
+  let Loaded: React.ComponentType | undefined;
+  const preload = () => load().then((m): React.ComponentType => (Loaded = m[name]));
+  const Lazy = lazy(() => preload().then((c) => ({ default: c })));
+  const Page = () => (Loaded ? <Loaded /> : <Lazy />);
+  Page.preload = preload;
+  return Page;
+};
 
 const WebsiteReviewPage = page(() => import('./pages/WebsiteReviewPage'), 'WebsiteReviewPage');
 const ServicesPage = page(() => import('./pages/ServicesPage'), 'ServicesPage');
@@ -18,6 +28,25 @@ const ScenicRimPage = page(() => import('./pages/ScenicRimPage'), 'ScenicRimPage
 const AboutPage = page(() => import('./pages/AboutPage'), 'AboutPage');
 const PrivacyPage = page(() => import('./pages/PrivacyPage'), 'PrivacyPage');
 const TermsPage = page(() => import('./pages/TermsPage'), 'TermsPage');
+
+const LAZY_PAGES: Record<string, { preload: () => Promise<unknown> }> = {
+  '/website-review': WebsiteReviewPage,
+  '/services': ServicesPage,
+  '/business-systems': BusinessSystemsPage,
+  '/pricing': PricingPage,
+  '/work': WorkPage,
+  '/case-study/tvmagic': CaseStudyPage,
+  '/scenic-rim': ScenicRimPage,
+  '/about': AboutPage,
+  '/privacy': PrivacyPage,
+  '/terms': TermsPage,
+};
+
+/** Loads the code for the page at this path, if it is a lazy one. main.tsx waits on this before the first render. */
+export function preloadRoute(pathname: string) {
+  const path = pathname.replace(/\/+$/, '').replace(/\.html$/, '') || '/';
+  return LAZY_PAGES[path]?.preload() ?? Promise.resolve();
+}
 
 /** Every real route. scripts/prerender.mjs reads this list to write one HTML file per page. */
 export const ROUTES = [
