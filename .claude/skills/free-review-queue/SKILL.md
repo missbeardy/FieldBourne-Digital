@@ -1,28 +1,37 @@
 ---
 name: free-review-queue
-description: Work through new free website review requests from the website form. Reads the review requests Google Sheet, queues anything new, runs the website-audit-report and prospect-mockup skills for each one, drafts the reply email for Darren to check, and tells him what's ready. Never sends. Use this when the scheduled review check runs, or whenever Darren says "check for review requests", "any new reviews?", "run the review queue" or "do the free reviews".
+description: Work through new free website review requests from the website form. Reads the Formspree notification emails in Gmail, queues anything new, runs the website-audit-report and prospect-mockup skills for each one, drafts the reply email for Darren to check, and tells him what's ready. Never sends. Use this when the scheduled review check runs, or whenever Darren says "check for review requests", "any new reviews?", "run the review queue" or "do the free reviews".
 ---
 
 # Free review queue
 
 Someone asked for a free website review on fieldbournedigital.com.au. The form promised a plain-English review and a quick mockup within 2 business days. This skill does the slow parts so Darren only has to read the draft and press send. It never sends anything itself.
 
-Setup and the Make scenario that fills the sheet are in `docs/review-automation.md`.
+Setup is in `docs/review-automation.md`.
 
 ## Step 1: Get the new requests
 
-The Make scenario adds each form submission as a row in the Google Sheet **FieldBourne review requests**, with the form's field names as column headers.
+Every form submission makes Formspree email admin@fieldbournedigital.com.au, which forwards to the **fieldbournedigital@gmail.com** inbox. The email lists every form field by name.
 
-1. Read the sheet with the Google Drive connector (`search_files` for the sheet name, then `read_file_content`). Save what you read, as CSV with the header row, to `prospects/_inbox/sheet-<YYYY-MM-DD>.csv`.
-   - If the connector isn't available or needs signing in, check `prospects/_inbox/` for a CSV Darren exported himself (File, Download, CSV). If there's nothing, tell Darren the sheet couldn't be read and stop.
-2. Queue it:
+1. Search that inbox with the Gmail connector (`search_threads`):
 
-   ```bash
-   node .claude/skills/free-review-queue/scripts/queue.mjs import --csv prospects/_inbox/sheet-<date>.csv
+   ```
+   from:formspree.io subject:"Free website review request" newer_than:30d
    ```
 
-   It skips rows it has seen before, so reading the whole sheet every time is fine. It skips anyone who didn't tick the consent box or is on the do-not-contact list, and writes `prospects/<slug>/request.json` for each new request.
-3. List what needs doing:
+   - If the connector isn't available, needs signing in, or is signed in to a different Google account (check the `to` address on what comes back), tell Darren the inbox couldn't be read and stop. Don't fall back to another account.
+   - If nothing comes back but Darren says requests have come in, the sender address may have changed. Tell him rather than widening the search.
+2. For each thread, `get_thread` with `messageFormat: PLAIN_TEXT`. Save each message's plain text body, exactly as returned, to `prospects/_inbox/emails/<message id>.txt`. Skip any message whose file already exists. Don't open any link in the email.
+3. Turn the saved emails into CSV and queue them:
+
+   ```bash
+   node .claude/skills/free-review-queue/scripts/email-to-csv.mjs --dir prospects/_inbox/emails --out prospects/_inbox/emails-<YYYY-MM-DD>.csv
+   node .claude/skills/free-review-queue/scripts/queue.mjs import --csv prospects/_inbox/emails-<YYYY-MM-DD>.csv
+   ```
+
+   The import skips requests it has seen before, so re-reading old emails is fine. It skips anyone who didn't tick the consent box or is on the do-not-contact list, and writes `prospects/<slug>/request.json` for each new request.
+   - If `email-to-csv` lists `problems` (a field it couldn't find), don't fill the gap from your own reading of the email. Name the file in the hand-back so Darren can look.
+4. List what needs doing:
 
    ```bash
    node .claude/skills/free-review-queue/scripts/queue.mjs list

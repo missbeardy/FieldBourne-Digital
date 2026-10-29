@@ -33,7 +33,7 @@ What the site does for search, AI answer tools and measurement, and what still n
 3. **Bing Webmaster Tools.** Import from Search Console. It feeds ChatGPT search and Copilot.
 4. **Google Business Profile.** Set up as a service-area business in Beaudesert. Use this as the website link: `https://fieldbournedigital.com.au/?utm_source=google&utm_medium=organic&utm_campaign=gbp`. Then add the profile URL as `sameAs` in the business schema in `index.html`.
 5. **Directories and LinkedIn.** Same name, phone and area everywhere. Add each profile URL to `sameAs`.
-6. **Make scenario.** Map the new `source` field to a column in the review requests Google Sheet, or it won't be kept.
+6. **Review queue.** Nothing to do. The `source` field comes through in the Formspree email and is kept in `prospects/review-queue.csv`.
 
 ## Monthly report
 
@@ -42,4 +42,4 @@ A free Looker Studio dashboard covering:
 - **GA4:** visits, forms sent and phone taps, by source.
 - **Search Console:** searches, impressions and clicks.
 - **Google Business Profile:** calls and website clicks.
-- **Review requests Google Sheet:** the `source` column, to see which channels bring in review requests and paid work.
+- **Review queue (`prospects/review-queue.csv`):** the `source` column, to see which channels bring in review requests and paid work.

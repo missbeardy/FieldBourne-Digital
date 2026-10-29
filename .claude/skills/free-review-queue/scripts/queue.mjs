@@ -1,11 +1,11 @@
 // Keeps the queue of free website review requests that come in from the website form.
 //
 // Usage (from the repo root):
-//   node .claude/skills/free-review-queue/scripts/queue.mjs import --csv <sheet export.csv>
+//   node .claude/skills/free-review-queue/scripts/queue.mjs import --csv <requests.csv>
 //   node .claude/skills/free-review-queue/scripts/queue.mjs list [--status new]
 //   node .claude/skills/free-review-queue/scripts/queue.mjs mark --id <id> --status "<status>" [--draft <path>]
 //
-// The CSV is the Google Sheet the Make scenario fills, with the form's field names as headers
+// The CSV comes from email-to-csv.mjs (the Formspree notification emails), with the form's field names as headers
 // (submittedAt, name, business, website, town, businessType, email, phone, notes,
 // consentReview, consentTips, consentVersion, page). Extra columns are ignored.
 //
@@ -28,7 +28,7 @@ const args = Object.fromEntries(rest.reduce((acc, a, i, all) => (a.startsWith('-
 const QUEUE = 'prospects/review-queue.csv'
 const LOG = 'prospects/contact-log.csv'
 const DNC = 'prospects/do-not-contact.csv'
-const COLUMNS = ['id', 'received', 'business', 'slug', 'name', 'email', 'phone', 'website', 'town', 'business_type', 'consent_review', 'consent_tips', 'consent_version', 'page', 'status', 'draft_path', 'updated']
+const COLUMNS = ['id', 'received', 'business', 'slug', 'name', 'email', 'phone', 'website', 'town', 'business_type', 'consent_review', 'consent_tips', 'consent_version', 'page', 'source', 'status', 'draft_path', 'updated']
 const today = new Date().toISOString().slice(0, 10)
 
 // Quote every value, and stop spreadsheet apps treating a value as a formula
@@ -102,7 +102,7 @@ await mkdir('prospects', { recursive: true })
 
 if (cmd === 'import') {
   if (!args.csv || !existsSync(args.csv)) {
-    console.error('Pass --csv <file>: the review requests sheet saved as CSV.')
+    console.error('Pass --csv <file>: the review requests CSV from email-to-csv.mjs.')
     process.exit(1)
   }
   const incoming = toObjects(await readFile(args.csv, 'utf8'))
@@ -144,6 +144,7 @@ if (cmd === 'import') {
       consent_tips: r.consentTips || '',
       consent_version: r.consentVersion || '',
       page: r.page || '',
+      source: r.source || '',
       status,
       draft_path: '',
       updated: today,

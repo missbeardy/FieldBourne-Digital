@@ -565,6 +565,18 @@ function score({ desktop, mobile, lhMobile, lhDesktop, scan, robots, sitemap, pl
 
 // ---------- run ----------
 
+// A mistyped or expired address is common on the review form. Say so plainly instead of crashing.
+try {
+  await fetch(url, { redirect: 'follow', signal: AbortSignal.timeout(30000) })
+} catch (e) {
+  const code = e.cause?.code || e.name
+  const why = code === 'ENOTFOUND' ? 'the address does not exist (no DNS record)' : code === 'TimeoutError' ? 'it did not answer within 30 seconds' : `it could not be reached (${code})`
+  const reason = `${host}: ${why}. Nothing was checked. The address may be mistyped or the domain may have lapsed.`
+  await writeFile(join(outDir, 'unreachable.json'), JSON.stringify({ url, reason }, null, 2))
+  console.error(`[audit] ${reason}`)
+  process.exit(5)
+}
+
 const browser = await chromium.launch()
 let desktop, mobile
 try {
@@ -575,6 +587,16 @@ try {
   await browser.close()
 }
 await writeFile(join(outDir, 'checks.json'), JSON.stringify({ url, desktop, mobile }, null, 2))
+
+// Big sites often turn automated browsers away. Scoring the "Access Denied" page would be wrong, so stop here.
+const blockedRe = /access denied|forbidden|just a moment|attention required|request blocked|are you a robot|verify you are human/i
+const blocked = [desktop, mobile].find((c) => (c.status && c.status >= 400) || blockedRe.test(c.title || ''))
+if (blocked) {
+  const reason = `The site turned the audit browser away (HTTP ${blocked.status ?? 'unknown'}, page title "${blocked.title || ''}"). Nothing was scored.`
+  await writeFile(join(outDir, 'blocked.json'), JSON.stringify({ url, reason, screenshots: 'screenshots/' }, null, 2))
+  console.error(`[audit] ${reason}`)
+  process.exit(4)
+}
 
 log('Lighthouse, phone')
 const lhMobile = await runLighthouse('mobile')
