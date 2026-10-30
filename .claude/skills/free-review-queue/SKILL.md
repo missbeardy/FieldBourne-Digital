@@ -11,7 +11,7 @@ Setup is in `docs/review-automation.md`.
 
 ## Step 1: Get the new requests
 
-Every form submission makes Formspree email admin@fieldbournedigital.com.au, which forwards to the **fieldbournedigital@gmail.com** inbox. The email lists every form field by name.
+Every form submission makes Formspree email the **fieldbournedigital@gmail.com** inbox directly (since 29 October 2026; before that it went via admin@fieldbournedigital.com.au, which forwards to the same inbox). The email lists every form field by name.
 
 1. Search that inbox with the Gmail connector (`search_threads`):
 
