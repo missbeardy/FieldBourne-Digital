@@ -210,10 +210,29 @@ async function capture(browser, width, height, label) {
     const { protocol, host } = new URL(address)
     if (!['http:', 'https:', 'ws:', 'wss:'].includes(protocol)) return Promise.resolve('')
     const key = `${protocol}//${host}`
-    if (!hostChecks.has(key)) hostChecks.set(key, notPublicReason(address.replace(/^ws/, 'http')))
+    if (!hostChecks.has(key)) hostChecks.set(key, notPublicReason(address.replace(/^ws/, 'http'), { blockUnresolved: true }))
     return hostChecks.get(key)
   }
-  await context.route('**/*', async (route) => ((await isBlocked(route.request().url())) ? route.abort('blockedbyclient') : route.continue()))
+  // Playwright only routes the first request of a redirect chain, so walk the whole chain here,
+  // checking every hop, before handing the browser the first response to follow.
+  await context.route('**/*', async (route) => {
+    if (await isBlocked(route.request().url())) return route.abort('blockedbyclient')
+    try {
+      const response = await route.fetch({ maxRedirects: 0 })
+      let hop = response
+      let at = route.request().url()
+      for (let i = 0; i < 10; i++) {
+        const location = hop.status() >= 300 && hop.status() < 400 && hop.headers()['location']
+        if (!location) break
+        at = new URL(location, at).toString()
+        if (await isBlocked(at)) return route.abort('blockedbyclient')
+        hop = await route.fetch({ url: at, method: 'GET', maxRedirects: 0 })
+      }
+      return route.fulfill({ response })
+    } catch {
+      return route.abort('failed')
+    }
+  })
   await context.routeWebSocket('**/*', async (ws) => ((await isBlocked(ws.url())) ? ws.close() : ws.connectToServer()))
   const page = await context.newPage()
   const consoleErrors = []
